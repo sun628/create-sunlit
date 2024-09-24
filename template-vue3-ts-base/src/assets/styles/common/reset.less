@@ -1,0 +1,93 @@
+/**********************************
+ * @Author: smigoo
+ * @LastEditor: smigoo
+ * @LastEditTime: 2024/04/24 21:26:38
+ * @Email: xsmigoo@gmail.com
+ * Copyright © 2024 Microvideo
+ **********************************/
+html {
+  box-sizing: border-box;
+  font-size: 12px;
+}
+
+*,
+::before,
+::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html,
+body,
+#app {
+  width: 100%;
+  height: 100%;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:hover,
+a:link,
+a:visited,
+a:active {
+  text-decoration: none;
+}
+
+ol,
+ul,
+dl {
+  margin-bottom: 0;
+  list-style: none;
+}
+
+input,
+textarea {
+  outline: none;
+  border: none;
+  resize: none;
+}
+
+img,
+video {
+  max-width: 100%;
+  height: auto;
+}
+.amap-logo {
+  display: none !important;
+}
+.amap-copyright {
+  display: none !important;
+}
+/* 全局滚动条样式 */
+*::-webkit-scrollbar {
+  width: 6px;
+  height: 5px;
+}
+
+*::-webkit-scrollbar-thumb {
+  border-radius: 8px !important;
+  box-shadow: inset 0 0 5px rgba(221, 220, 220, 0.2);
+  background: #ddd;
+}
+*::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px rgba(201, 201, 201, 0.2);
+  border-radius: 0;
+  background: rgba(201, 201, 201, 0.1);
+}
+
+#nprogress .bar {
+  background: var(--primary-color) !important;
+}
+#nprogress .spinner-icon {
+  border-top-color: var(--primary-color) !important;
+  border-left-color: var(--primary-color) !important;
+}
+#nprogress .peg {
+  box-shadow:
+    0 0 10px var(--primary-color),
+    0 0 5px var(--primary-color) !important;
+}

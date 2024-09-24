@@ -1,0 +1,38 @@
+{
+  "name": "create-sunlit",
+  "version": "1.0.0",
+  "description": "A scaffolding tool for Nuanyang projects",
+  "type": "module",
+  "license": "MIT",
+  "author": "nuanyang",
+  "main": "index.js",
+  "bin": {
+    "create-sunlit": "index.js"
+  },
+  "scripts": {
+    "dev": "unbuild --stub",
+    "build": "unbuild",
+    "typecheck": "tsc --noEmit",
+    "prepublishOnly": "npm run build",
+    "release": "release-it"
+  },
+  "keywords": [
+    "scaffold",
+    "cli"
+  ],
+  "engines": {
+    "node": "^18.0.0 || >=20.0.0"
+  },
+  "devDependencies": {
+    "@types/minimist": "^1.2.5",
+    "@types/prompts": "^2.4.9",
+    "cross-spawn": "^7.0.3",
+    "minimist": "^1.2.8",
+    "picocolors": "^1.1.0",
+    "prompts": "^2.4.2",
+    "unbuild": "^2.0.0"
+  },
+  "dependencies": {
+    "@types/cross-spawn": "^6.0.6"
+  }
+}
