@@ -1,6 +1,6 @@
 {
   "name": "create-sunlit",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "description": "A scaffolding tool for Nuanyang projects",
   "type": "module",
   "license": "MIT",
@@ -9,6 +9,11 @@
   "bin": {
     "create-sunlit": "index.js"
   },
+  "files": [
+    "index.js",
+    "template-*/*",
+    "dist"
+  ],
   "scripts": {
     "dev": "unbuild --stub",
     "build": "unbuild",
@@ -20,6 +25,11 @@
     "scaffold",
     "cli"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sun628/create-sunlit.git",
+    "directory": "packages/create-sunlit"
+  },
   "engines": {
     "node": "^18.0.0 || >=20.0.0"
   },
