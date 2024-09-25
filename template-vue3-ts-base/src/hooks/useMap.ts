@@ -108,8 +108,8 @@ export const useMarker = () => {
    * @todo
    * @param Map
    * @param { Array<ExtraData> } dataList 数据列表
-   * @param { AMap.MarkerOptions | (e: AMap.MarkerEvent<ExtraData>, extData: ExtraData) => void } arg3 点标记点击事件 或者 点标记配置项
-   * @param { (e: AMap.MarkerEvent<ExtraData>, extData: ExtraData) => void } arg4 点标记点击事件
+   * @param {  AMap.MarkerOptions | ((e: AMap.MarkerEvent<ExtraData>, extData: ExtraData) => void} arg3 点标记点击事件 或者 点标记配置项
+   * @param {(e: AMap.MarkerEvent<ExtraData>, extData: ExtraData) => void } arg4 点标记点击事件
    * @returns { AMap.Marker<ExtraData>[] } markerList 点标记列表
    **/
   const drawMarker = <ExtraData extends { lon: number; lat: number; icon?: AMap.Icon | string }>(
@@ -152,7 +152,6 @@ export const useMarker = () => {
   /**
    * @function
    * @todo 清除点标记
-   * @returns {void}
    **/
   const clearMarker = () => {
     if (map && markerList.length) {
@@ -317,6 +316,18 @@ export const addMassMarkers = (
  * @param {DrivingOptions} drivingOptions - 驾车路线规划的选项。
  *      - {number} strategy 19，返回的结果会优先选择高速路，与高德地图的“高速优先”策略一致
  * @property {Driving} driving - 高德地图驾车服务实例。
+ * @example
+    const drivingService = new DrivingService({
+      policy: 19,
+      map: map.value,
+    });
+    drivingService.searchByLngLat(
+      [116.397428, 39.90923],
+      [116.397428, 39.90923],
+      (status, result) => {
+        console.log('搜索结果', status, result);
+      },
+    );
  **/
 export class DrivingService {
   private driving: AMap.Driving | null = null;
@@ -397,12 +408,13 @@ let borderPolygon: AMap.Polygon | null = null;
  * @description 加载地图UI组件
  * @param {AMap.Map} map 地图实例
  * @param cityCodes
- * @returns {number | ConcatArray<number>} cityCodes 城市编码
+ * @returns { ConcatArray<number>} cityCodes 城市编码
  **/
-export const loadMapUI = (map: AMap.Map, cityCodes: number | ConcatArray<number>) => {
-  const countryCode = 100000; // 全国
-  // const provCodes: string[] = [];
-  function getAllRings(feature: any) {
+export const loadMapUI = (map: AMap.Map, cityCodes: ConcatArray<number>) => {
+  const countryCode = 100000; // 全国{
+  const provCodes: string[] = [];
+  // cityCodes = ['320700', '320900', '320600'];
+  function getAllRings(feature) {
     const coords = feature.geometry.coordinates;
     const rings: Array<[number, number]>[] = [];
     for (let i = 0, len = coords.length; i < len; i++) {
@@ -410,47 +422,42 @@ export const loadMapUI = (map: AMap.Map, cityCodes: number | ConcatArray<number>
     }
     return rings;
   }
-  function getLongestRing(feature: any): Array<[number, number]> {
+  function getLongestRing(feature) {
     const rings = getAllRings(feature);
-    rings.sort((a, b) => {
+    rings.sort(function (a, b) {
       return b.length - a.length;
     });
     return rings[0];
   }
-  AMapUI.loadUI(['geo/DistrictExplorer'], (DistrictExplorer: any) => {
+  AMapUI.loadUI(['geo/DistrictExplorer'], (DistrictExplorer) => {
     const districtExplorer = new DistrictExplorer({
       map: map,
     });
-    if (typeof cityCodes === 'number') {
-      cityCodes = [cityCodes];
-    }
-    // 全国省市区数据
     districtExplorer.loadMultiAreaNodes(
       // 只需加载全国和市，全国的节点包含省级
       [countryCode].concat(cityCodes),
-      function (_error: any, areaNodes: string | any[]) {
-        if (!areaNodes) return;
+      function (_error, areaNodes: string | any[]) {
         const countryNode = areaNodes[0];
         const cityNodes = areaNodes.slice(1);
         const path: Array<[number, number]>[] = [];
         // 首先放置背景区域，这里是大陆的边界
         path.push(getLongestRing(countryNode.getParentFeature()));
-        // for (let i = 0, len = provCodes.length; i < len; i++) {
-        //   // 逐个放置需要镂空的省级区域
-        //   // eslint-disable-next-line prefer-spread
-        //   path.push.apply(path, getAllRings(countryNode.getSubFeatureByAdcode(provCodes[i])));
-        // }
+        for (let i = 0, len = provCodes.length; i < len; i++) {
+          // 逐个放置需要镂空的省级区域
+          // eslint-disable-next-line prefer-spread
+          path.push.apply(path, getAllRings(countryNode.getSubFeatureByAdcode(provCodes[i])));
+        }
         for (let i = 0, len = cityNodes.length; i < len; i++) {
           // 逐个放置需要镂空的市级区域
           // eslint-disable-next-line prefer-spread
           path.push.apply(path, getAllRings(cityNodes[i].getParentFeature()));
         }
         // 绘制带环多边形
+        // https://lbs.amap.com/api/javascript-api/reference/overlay#Polygon
         if (borderPolygon) {
           map.remove(borderPolygon);
           borderPolygon = null;
         }
-        // https://lbs.amap.com/api/javascript-api/reference/overlay#Polygon
         borderPolygon = new AMap.Polygon({
           bubble: true,
           strokeColor: '#59A1BC', // 线颜色

@@ -1,4 +1,4 @@
-import { DrivingOptions, LngLat } from './amap';
+import { DrivingOptions, LngLat } from './amap.d';
 // 将声明文件通过 include/import/typeRoots 等方式引入
 import 'amap-jsapi-v2-types';
 
@@ -90,7 +90,7 @@ declare global {
 
     export type DrivingCallback = (
       status: 'complete' | 'error' | 'no_data',
-      result: DrivingResult
+      result: DrivingResult,
     ) => void;
 
     export type DrivingResult = {
@@ -221,7 +221,7 @@ declare global {
         origin: LngLatLike,
         destination: LngLatLike,
         opts: waypoints | { waypoints: waypoints },
-        callback?: DrivingCallback
+        callback?: DrivingCallback,
       ): void;
 
       /**
@@ -249,7 +249,7 @@ declare global {
       constructor(
         map?: Map,
         dataOptions?: MarkerClusterDataOption[],
-        opts?: ExtendMarkerClusterOptions // 使用扩展后的选项接口
+        opts?: ExtendMarkerClusterOptions, // 使用扩展后的选项接口
       ) {
         super(map, dataOptions, opts);
       }

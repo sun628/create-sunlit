@@ -31,7 +31,7 @@ export const mapConfig: MapConfig = {
 
   /** 地图配置项 */
   MAP_OPTIONS: {
-    center: [119.86533401075835, 32.3584429993217],
+    center: [118.797618, 31.970531],
     animateEnable: true,
     zoomEnable: true,
     rotateEnable: true,
