@@ -5,7 +5,7 @@
     </div>
     <ul class="menu-list">
       <li
-        v-for="item in menuList"
+        v-for="item in menu"
         :key="item.path"
         :class="{ 'menu-select': item.path === active }"
         class="menu-item"
@@ -42,17 +42,12 @@ useIntervalFn(() => {
   currentTime.value = parseTime(dateTime, '{y}.{m}.{d} {h}:{i}:{s}');
 }, 1000);
 
-type MenuItem = {
-  title: string;
-  path: string;
-  onClick?: () => void;
-};
-const menuList = ref<Array<MenuItem>>([
-  // {
-  //   title: '菜单1',
-  //   path: '/monitor',
-  // },
-]);
+const menu = [
+  {
+    title: '菜单1',
+    path: '/monitor',
+  },
+];
 
 const currentTime = ref('');
 

@@ -1,5 +1,4 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
-// import { Layout } from './constant';
 
 declare module 'vue-router' {
   interface RouteMeta {
@@ -7,6 +6,8 @@ declare module 'vue-router' {
     transitionName?: string;
   }
 }
+const Layout = () => import('@/layouts/index.vue');
+
 // 导入模块路由
 // const metaRouters = import.meta.glob('./modules/*.ts', { eager: true });
 
@@ -34,16 +35,22 @@ export const routes: RouteRecordRaw[] = [
   {
     path: '/',
     name: 'Layout',
-    redirect: '/example',
+    redirect: '/monitor',
   },
   // ...routerArray,
   {
-    path: '/example',
-    name: 'example',
-    component: () => import('@/views/example/index.vue'),
-    meta: { title: '地圖示例', keepAlive: true },
+    path: '/monitor',
+    name: 'Monitor',
+    component: Layout,
+    meta: { title: '流量监控', keepAlive: true },
+    children: [
+      {
+        path: '/monitor',
+        name: 'monitor',
+        component: () => import('@/views/monitor/index.vue'),
+      },
+    ],
   },
-
   {
     // 找不到路由重定向到404页面
     path: '/:pathMatch(.*)',

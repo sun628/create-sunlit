@@ -5,7 +5,7 @@
 </template>
 <script setup lang="ts">
 import { onMounted, shallowRef } from 'vue';
-import { initMap, loadMapUI } from '@/hooks/useMap';
+import { initMap } from '@/hooks/useMap';
 import { MapKey } from '@/config/constant';
 
 defineOptions({
@@ -42,7 +42,6 @@ onMounted(async () => {
   try {
     const mapOptions = Object.assign({}, $config.MAP_OPTIONS, props.mapOptions);
     map.value = await initMap(props.id, mapOptions);
-    loadMapUI(map.value, [320100]);
     emit('map-load', map.value as AMap.Map);
   } catch (e) {
     console.error(e);

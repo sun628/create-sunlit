@@ -1,10 +1,6 @@
 <template>
   <AConfigProvider :theme="btnTheme">
-    <Button
-      v-bind="{ ...$attrs, ...omit(props, ['color', 'type']) }"
-      :type="buttonType"
-      color="inherit"
-    >
+    <Button v-bind="{ ...$attrs, ...props }" :type="buttonType">
       <template v-for="(_, slotName) of $slots" #[slotName]>
         <slot :name="slotName" />
       </template>
@@ -12,7 +8,6 @@
   </AConfigProvider>
 </template>
 <script lang="ts" setup>
-import { omit } from 'radash';
 import { computed } from 'vue';
 import { Button } from 'ant-design-vue';
 import type { AButtonType, ButtonProps } from './Button';
