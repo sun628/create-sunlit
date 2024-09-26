@@ -74,12 +74,12 @@ const FRAMEWORKS: Framework[] = [
     variants: [
       {
         name: 'vue3-ts-base',
-        display: 'TypeScript',
+        display: 'ts-base',
         color: blue,
       },
       {
-        name: 'vue',
-        display: 'map',
+        name: 'vue3-ts-map',
+        display: 'ts-map',
         color: yellow,
       },
       {
