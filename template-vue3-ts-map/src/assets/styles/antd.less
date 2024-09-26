@@ -1,0 +1,126 @@
+.ant-layout {
+	height: 100%;
+}
+
+.ant-btn {
+	margin-right: 10px;
+	font-size: 14px;
+	height: 28px;
+	padding: 0 15px;
+}
+
+.ant-input {
+	height: 28px;
+	line-height: 28px;
+	padding: 5px 10px;
+}
+
+.ant-select {
+	height: 28px;
+	line-height: 28px;
+	padding: 5px 10px;
+}
+
+.ant-table-pagination {
+	margin-top: 20px;
+}
+
+// 表格
+.ant-table {
+	.ant-table-container {
+		background: #0d1631;
+		overflow-y: auto !important;
+	}
+
+	.ant-table-thead > tr > th {
+		line-height: 15px;
+		background-color: rgb(48, 66, 102);
+		font-size: 16px;
+		font-weight: 400;
+		color: #fff;
+		border-bottom: 0;
+		text-align: center;
+	}
+	.ant-table-cell::before {
+		display: none;
+	}
+
+	.ant-table-tbody {
+		> tr.ant-table-placeholder:hover > td,
+		> tr.ant-table-row:hover > td,
+		> tr > td.ant-table-cell-row-hover {
+			background-color: var(--primary-color);
+		}
+		.ant-table-cell:has(.ant-empty-normal) {
+			background: #101a38 !important;
+		}
+
+		tr td {
+			color: #fff;
+			border-top: 0 !important;
+			border-bottom: 0 !important;
+			text-align: center;
+		}
+		tr:nth-child(n) {
+			background: #101a38 !important;
+		}
+		tr:nth-child(2n) {
+			background: #172343 !important;
+		}
+	}
+	.ant-table-cell-scrollbar:not([rowspan]) {
+		box-shadow: 0 1px 0 1px #304266;
+	}
+}
+
+.ant-empty-normal {
+	color: #fff;
+}
+
+//菜单
+.ant-menu {
+	background: #1c2a45 !important;
+	.ant-menu-item {
+		border-radius: 0;
+		margin: 0;
+		width: 100%;
+		height: 56px;
+		line-height: 56px;
+		color: #fff;
+		font-size: 14px;
+		&:hover {
+			background-color: #00aeff !important;
+		}
+	}
+}
+
+.ant-picker {
+	.ant-picker-suffix {
+		color: inherit;
+	}
+}
+
+.ant-spin-nested-loading {
+	height: 100%;
+	width: 100%;
+	.ant-spin {
+		max-height: 100% !important;
+	}
+	.ant-spin-container {
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+	}
+}
+
+//分页
+.ant-pagination {
+	color: #fff;
+	.ant-pagination-options-quick-jumper input {
+		background-color: #1c2a45;
+	}
+}
+
+.ant-select {
+	min-width: 80px;
+}
