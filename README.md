@@ -27,19 +27,19 @@ You can also directly specify the project name and the template you want to use 
 
 ```bash
 # npm 7+, extra double-dash is needed:
-npm create sunlit@latest my-vue-app -- --template vue
+npm create sunlit@latest my-vue-app -
 
 # yarn
-yarn create sunlit my-vue-app --template vue
+yarn create sunlit my-vue-app
 
 # pnpm
-pnpm create sunlit my-vue-app --template vue
+pnpm create sunlit my-vue-app
 
 
 Currently supported template presets include:
 
-- `vue`
-- `vue-ts`
+- `vue3-ts-base`
+- `vue-ts-map`
 
 You can use `.` for the project name to scaffold in the current directory.
 ```
