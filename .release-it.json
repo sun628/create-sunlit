@@ -1,0 +1,9 @@
+{
+  "hooks": {
+    "after:bump": [
+      "pnpm build",
+      "git add .",
+      "git commit -m 'chore(release): Release v${nextVersion}'"
+    ]
+  }
+}
