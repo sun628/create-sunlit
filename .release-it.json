@@ -5,5 +5,17 @@
       "git add .",
       "git commit -m 'chore(release): Release v${nextVersion}'"
     ]
+  },
+  "npm": {
+    "publish": true,
+    "publishPath": ".",
+    "publishArgs": [],
+    "tag": null,
+    "otp": null,
+    "ignoreVersion": false,
+    "allowSameVersion": false,
+    "versionArgs": [],
+    "skipChecks": false,
+    "timeout": 100
   }
 }
