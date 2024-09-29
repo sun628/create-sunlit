@@ -1,5 +1,5 @@
 import type { App, Plugin } from 'vue';
-import Loading from '@/components/basic/loading';
+import Loading from '@/components/basic-components/loading';
 // import VueEcharts from 'vue-echarts';
 // 获取所有组件，该方法返回一个对象
 const GlobalComp: Plugin = {

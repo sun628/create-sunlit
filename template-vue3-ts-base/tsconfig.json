@@ -17,7 +17,9 @@
     "allowJs": true,
     "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["src/*"],
+      "~basic-components/*": ["src/basic-components/*"],
+      "~business-components/*": ["src/business-components/*"]
     },
     "noImplicitOverride": true,
     "noUnusedLocals": true, // 启用未使用的局部变量检查
