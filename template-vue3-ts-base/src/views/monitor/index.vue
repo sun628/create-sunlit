@@ -4,7 +4,7 @@
 </template>
 
 <script setup lang="ts">
-import MvMap from '@/components/business/mv-map/index.vue';
+import MvMap from '@/components/business-components/mv-map/index.vue';
 const map = ref<AMap.Map>(); // 地图实例
 /**
  * @function

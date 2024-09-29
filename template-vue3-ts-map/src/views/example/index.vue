@@ -17,8 +17,8 @@
 </template>
 
 <script setup lang="ts">
-import Button from '@/components/basic/button';
-import MvMap from '@/components/business/mv-map/index.vue';
+import Button from '~basic-components/button';
+import MvMap from '~business-components/mv-map/index.vue';
 import LngLatSearch from './components/LngLatSearch.vue';
 import { MapKey } from '@/config/constant';
 
@@ -39,6 +39,7 @@ provide(MapKey, map);
  * @param {} data 地图实例
  **/
 function onMapLoad(data: AMap.Map) {
+  console.log('地图加载完毕', data);
   map.value = data;
 }
 </script>
