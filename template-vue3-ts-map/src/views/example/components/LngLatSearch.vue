@@ -8,9 +8,9 @@
     :wrapper-col="{ span: 16 }"
     autocomplete="off"
   >
-    <AFormItem label="起点坐标" name="startlnLat">
+    <AFormItem label="起点坐标" name="startLnLat">
       <AInput
-        v-model:value="formState.startlnLat"
+        v-model:value="formState.startLnLat"
         :style="geInputStyle(1)"
         placeholder="聚焦点击地图获取坐标"
         @focus="currentKey = 1"
@@ -38,13 +38,13 @@ const { token } = useToken();
 const currentKey = ref(1);
 
 interface FormState {
-  startlnLat: string;
+  startLnLat: string;
   endLngLat: string;
 }
 const map = inject(MapKey);
 
 const formState = reactive<FormState>({
-  startlnLat: '',
+  startLnLat: '',
   endLngLat: '',
 });
 
@@ -76,7 +76,7 @@ function clickListener(e) {
   });
   const lngLatStr = ` ${Number(e.lnglat.lng)},${Number(e.lnglat.lat)}`;
   if (currentKey.value === 1) {
-    formState.startlnLat = lngLatStr;
+    formState.startLnLat = lngLatStr;
   } else {
     formState.endLngLat = lngLatStr;
   }
@@ -88,9 +88,9 @@ function clickListener(e) {
  * @todo 根据路径规划绘制路线
  **/
 function drawPolylineByDriving() {
-  const { startlnLat, endLngLat } = formState;
-  if (startlnLat && endLngLat) {
-    const start = startlnLat.split(',').map(Number) as AMap.LngLatLike;
+  const { startLnLat, endLngLat } = formState;
+  if (startLnLat && endLngLat) {
+    const start = startLnLat.split(',').map(Number) as AMap.LngLatLike;
     const end = endLngLat.split(',').map(Number) as AMap.LngLatLike;
     drivingService.searchByLngLat(start, end, (status, result) => {
       if (status === 'complete') {
