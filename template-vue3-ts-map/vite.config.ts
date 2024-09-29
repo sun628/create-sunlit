@@ -13,8 +13,8 @@ export default defineConfig(({ mode }) => {
     resolve: {
       alias: {
         '@/': `${pathSrc}/`,
-        '~basic-components/': `${pathSrc}/basic-components/`, // 基础组件
-        '~business-components/': `${pathSrc}/components/`, // 业务组件
+        '~basic-components/': `${pathSrc}/components/basic-components/`, // 基础组件
+        '~business-components/': `${pathSrc}/components/business-components/`, // 业务组件
       },
     },
     base: './',
