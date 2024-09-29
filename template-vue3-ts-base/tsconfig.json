@@ -18,8 +18,8 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"],
-      "~basic-components/*": ["src/basic-components/*"],
-      "~business-components/*": ["src/business-components/*"]
+      "~basic-components/*": ["src/components/basic-components/*"],
+      "~business-components/*": ["src/components/business-components/*"]
     },
     "noImplicitOverride": true,
     "noUnusedLocals": true, // 启用未使用的局部变量检查
