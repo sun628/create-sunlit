@@ -45,7 +45,7 @@ export const routes: RouteRecordRaw[] = [
   },
 
   {
-    // 找不到路由重定向到404页面
+    // 找不到路由重定向到 404 页面
     path: '/:pathMatch(.*)',
     // redirect: { name: '404' },
     name: '404',

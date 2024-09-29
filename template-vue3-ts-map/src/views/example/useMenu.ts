@@ -1,5 +1,3 @@
-import {} from 'radash';
-
 export type MenuItem = {
   title: string;
   key?: string;
