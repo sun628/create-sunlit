@@ -8,18 +8,15 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     AButton: typeof import('ant-design-vue/es')['Button']
-    ACheckbox: typeof import('ant-design-vue/es')['Checkbox']
     AConfigProvider: typeof import('ant-design-vue/es')['ConfigProvider']
     AForm: typeof import('ant-design-vue/es')['Form']
     AFormItem: typeof import('ant-design-vue/es')['FormItem']
     AInput: typeof import('ant-design-vue/es')['Input']
-    AInputPassword: typeof import('ant-design-vue/es')['InputPassword']
     ALayout: typeof import('ant-design-vue/es')['Layout']
-    ALayoutContent: typeof import('ant-design-vue/es')['LayoutContent']
     ASpace: typeof import('ant-design-vue/es')['Space']
-    ASpin: typeof import('ant-design-vue/es')['Spin']
-    Button: typeof import('./../components/basic/button/Button.vue')['default']
-    Loading: typeof import('./../components/basic/loading/Loading.vue')['default']
+    Button: typeof import('./../components/basic-components/button/Button.vue')['default']
+    Loading: typeof import('./../components/basic-components/loading/Loading.vue')['default']
+    MvMap: typeof import('./../components/business-components/mv-map/index.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
   }
