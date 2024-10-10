@@ -1,5 +1,5 @@
 <template>
-  <ALayout>
+  <ALayout relative>
     <!-- 地图组件 -->
     <MvMap @map-load="onMapLoad"></MvMap>
     <router-view v-slot="{ Component, route }">
@@ -33,13 +33,9 @@ function onMapLoad(data: AMap.Map) {
 </script>
 
 <style scoped lang="less">
-/* 为组件切换添加简单的淡入淡出动画 */
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.5s;
-}
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
+:deep(.ant-card) {
+  .ant-card-body {
+    padding: 0 0 20px 0;
+  }
 }
 </style>

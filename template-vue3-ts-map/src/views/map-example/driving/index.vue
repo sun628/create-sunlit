@@ -1,31 +1,34 @@
 <template>
-  <AForm
-    class="pos-absolute top-20px left-0 right-0 m-auto w-800px"
-    layout="inline"
-    :model="formState"
-    name="basic"
-    :label-col="{ span: 8 }"
-    :wrapper-col="{ span: 16 }"
-    autocomplete="off"
+  <ACard
+    v-draggable
+    class="pos-absolute top-10px left-10px right-0 m-0 w-620px"
+    title="输入框聚焦后，点击地图获取对应坐标"
   >
-    <AFormItem label="起点坐标" name="startLnLat">
-      <AInput
-        v-model:value="formState.startLnLat"
-        :style="geInputStyle(1)"
-        placeholder="聚焦点击地图获取坐标"
-        @focus="currentKey = 1"
-      />
-    </AFormItem>
+    <AForm
+      layout="inline"
+      :model="formState"
+      name="basic"
+      :label-col="{ span: 8 }"
+      :wrapper-col="{ span: 16 }"
+      autocomplete="off"
+    >
+      <AFormItem label="起点坐标" name="startLnLat">
+        <AInput
+          v-model:value="formState.startLnLat"
+          :style="geInputStyle(1)"
+          @focus="currentKey = 1"
+        />
+      </AFormItem>
 
-    <AFormItem label="终点坐标" name="endLngLat">
-      <AInput
-        v-model:value="formState.endLngLat"
-        placeholder="聚焦点击地图获取坐标"
-        :style="geInputStyle(2)"
-        @focus="currentKey = 2"
-      />
-    </AFormItem>
-  </AForm>
+      <AFormItem label="终点坐标" name="endLngLat">
+        <AInput
+          v-model:value="formState.endLngLat"
+          :style="geInputStyle(2)"
+          @focus="currentKey = 2"
+        />
+      </AFormItem>
+    </AForm>
+  </ACard>
 </template>
 
 <script setup lang="ts">
