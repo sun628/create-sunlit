@@ -27,6 +27,14 @@
           @focus="currentKey = 2"
         />
       </AFormItem>
+
+      <AFormItem label="当前规划路径">
+        <AInputSearch v-model:value="lngLatStr">
+          <template #enterButton>
+            <AButton v-copy="lngLatStr" type="primary">复制</AButton>
+          </template>
+        </AInputSearch>
+      </AFormItem>
     </AForm>
   </ACard>
 </template>
@@ -40,7 +48,7 @@ const { useToken } = theme;
 const { token } = useToken();
 
 const currentKey = ref(1);
-
+const lngLatStr = ref('');
 interface FormState {
   startLnLat: string;
   endLngLat: string;
@@ -56,7 +64,7 @@ function geInputStyle(key: number) {
   return { backgroundColor: key === currentKey.value ? toValue(token).colorPrimary : '' };
 }
 let marker;
-let drivingService;
+let drivingService: DrivingService;
 
 watchEffect(() => {
   if (map?.value) {
@@ -100,9 +108,15 @@ function drawPolylineByDriving() {
       if (status === 'complete') {
         const steps = result.routes[0].steps;
         const arr = steps.map((step) => step.path);
+        lngLatStr.value = JSON.stringify(arr);
         console.log('steps:', arr);
       }
     });
   }
 }
 </script>
+<style scoped lang="less">
+.ant-input-search .ant-input-search-button {
+  height: 28px;
+}
+</style>
