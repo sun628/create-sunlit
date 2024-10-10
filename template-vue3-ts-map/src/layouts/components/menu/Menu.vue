@@ -6,22 +6,21 @@
     :open-keys="openKeys"
     @openChange="changeOpen"
   >
-    <template v-for="route in routes">
-      <LayoutMenu v-if="!route.meta?.hidden" :key="route.path" :item="route" />
+    <template v-for="route in routes" :key="route.path">
+      <Submenu :item="route" />
     </template>
   </AMenu>
 </template>
 
 <script setup lang="ts">
 import { routes } from '@/router/routes';
-import LayoutMenu from './components/Menu.vue';
+import Submenu from './components/SubMenu.vue';
 import { useRouter } from 'vue-router';
 const router = useRouter();
 
 const openKeys = ref<string[]>([]);
 const changeOpen = (keys) => {
-  const currentOpenKey = keys.find((key) => openKeys.value.indexOf(key) === -1);
-  openKeys.value = currentOpenKey ? [currentOpenKey] : [];
+  openKeys.value = keys;
 };
 
 const selectedKeys = computed(() => {

@@ -1,5 +1,5 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
-
+import type { SvgName } from '~virtual/svg-component';
 declare module 'vue-router' {
   interface RouteMeta {
     requiresAuth?: boolean;
@@ -8,7 +8,7 @@ declare module 'vue-router' {
     /** 是否展示该菜单 */
     hidden?: boolean; //
     /* 菜单图标 */
-    icon?: string;
+    icon?: SvgName;
     keepAlive?: boolean;
     /* 当只有一级子路由时默认不展示子路由,默认false */
     alwaysShow?: boolean;

@@ -1,31 +1,17 @@
 <template>
-  <ASubMenu :key="props.item.name">
+  <ASubMenu :key="item.name">
     <template #icon>
-      <SvgIcon v-if="props.item.meta.icon" :name="props.item.meta.icon" />
+      <SvgIcon v-if="item.meta?.icon" :name="item.meta.icon" />
     </template>
-    <template #title>{{ props.item.meta.title }}</template>
-    <template v-for="children in props.item.children">
-      <MenuItem
-        v-if="
-          (children.hidden !== true && !children.children) ||
-          (children.children && children.children.length == 1 && children.meta.alwaysShow !== true)
-        "
-        :key="children.name"
-        :item="children"
-      />
-      <SubMenu
-        v-if="
-          children.hidden !== true &&
-          children.children &&
-          (children.children.length > 1 || children.meta.alwaysShow === true)
-        "
-        :key="children.name"
-        :item="children"
-      />
+    <template #title>{{ item.meta?.title }}</template>
+    <template v-for="subItem in item.children" :key="subItem.name">
+      <SubMenu v-if="subItem.children && subItem.children.length > 0" :item="subItem" />
+      <MenuItem v-else :item="subItem" />
     </template>
   </ASubMenu>
 </template>
-<script setup>
+<script setup lang="ts">
+import { RouteRecordRaw } from 'vue-router';
 import MenuItem from './MenuItem.vue';
-const props = defineProps(['item']);
+withDefaults(defineProps<{ item: RouteRecordRaw }>(), {});
 </script>

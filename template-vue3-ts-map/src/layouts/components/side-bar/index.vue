@@ -7,5 +7,5 @@
 </template>
 
 <script setup>
-import LayoutMenu from '../menu/index.vue';
+import LayoutMenu from '../menu/Menu.vue';
 </script>
