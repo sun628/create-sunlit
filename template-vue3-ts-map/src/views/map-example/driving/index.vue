@@ -32,6 +32,7 @@
 import { DrivingService, addMarker } from '@/hooks/useMap';
 import { MapKey } from '@/config/constant';
 import { theme } from 'ant-design-vue';
+defineOptions({ name: 'Driving' });
 const { useToken } = theme;
 const { token } = useToken();
 
@@ -102,5 +103,3 @@ function drawPolylineByDriving() {
   }
 }
 </script>
-
-<style scoped lang="less"></style>

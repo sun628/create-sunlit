@@ -2,10 +2,6 @@
   <ALayout>
     <!-- 地图组件 -->
     <MvMap @map-load="onMapLoad"></MvMap>
-    <!-- <Transition name="fade" mode="out-in">
-      <component :is="currentComponent" :key="$route.path"></component>
-    </Transition> -->
-
     <router-view v-slot="{ Component, route }">
       <Transition appear :name="route.meta.transitionName || ''" mode="out-in">
         <KeepAlive :include="cacheRouter">
