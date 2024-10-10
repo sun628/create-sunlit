@@ -53,6 +53,7 @@
     "typescript-eslint": "^8.7.0",
     "unocss": "^0.62.4",
     "unplugin-auto-import": "^0.18.3",
+    "unplugin-svg-component": "^0.10.3",
     "unplugin-vue-components": "^0.27.4",
     "vite": "^5.4.7",
     "vite-plugin-eslint": "^1.8.1",
