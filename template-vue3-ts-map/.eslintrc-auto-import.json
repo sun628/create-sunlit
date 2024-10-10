@@ -96,6 +96,9 @@
     "MenuStore": true,
     "log": true,
     "useGlobalStore": true,
-    "useUserStore": true
+    "useUserStore": true,
+    "DirectiveBinding": true,
+    "MaybeRef": true,
+    "MaybeRefOrGetter": true
   }
 }
