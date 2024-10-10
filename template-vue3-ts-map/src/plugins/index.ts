@@ -7,6 +7,7 @@ import vueDevTools from 'vite-plugin-vue-devtools';
 import AutoImport from 'unplugin-auto-import/vite';
 import Components from 'unplugin-vue-components/vite';
 import { AntDesignVueResolver } from 'unplugin-vue-components/resolvers';
+import UnpluginSvgComponent from 'unplugin-svg-component/vite';
 import { PluginOption } from 'vite';
 
 const _visualizer = visualizer({
@@ -21,7 +22,10 @@ const lifecycle = process.env.npm_lifecycle_event; //获取当前运行的命令
 
 const VITE_REPORT = lifecycle === 'build:report'; //是否是打包分析
 
-export function createVitePlugins(viteEnv: Record<string, string>): PluginOption[] {
+export function createVitePlugins(
+  viteEnv: Record<string, string>,
+  pathSrc: string,
+): PluginOption[] {
   const { VITE_TITLE } = viteEnv;
   return [
     UnoCSS({
@@ -61,6 +65,13 @@ export function createVitePlugins(viteEnv: Record<string, string>): PluginOption
 
     eslintPlugin({
       include: ['src/**/*.ts', 'src/**/*.vue', 'src/*.ts', 'src/*.vue'],
+    }),
+    UnpluginSvgComponent({
+      iconDir: `${pathSrc}/assets/icons`,
+      dts: true,
+      dtsDir: `${pathSrc}/typings`,
+      componentName: 'SvgIcon',
+      preserveColor: `${pathSrc}/assets/icons`,
     }),
     // 打包分析
     VITE_REPORT && _visualizer,
