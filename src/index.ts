@@ -42,8 +42,8 @@ Options:
   -t, --template NAME        use a specific template
 
 Available templates:
-${yellow    ('vanilla-ts     vanilla'  )}
-${green     ('vue3-ts-base   vue'      )}
+${green     ('vue3-ts-map    vue'      )}
+${yellow    ('vue3-ts-base   vue'      )}
 ${cyan      ('react-ts       react'    )}
 ${cyan      ('react-swc-ts   react-swc')}
 ${magenta   ('preact-ts      preact'   )}
