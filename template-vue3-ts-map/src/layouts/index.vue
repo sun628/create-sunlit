@@ -1,32 +1,17 @@
 <template>
-  <ALayout>
-    <LayoutHeader></LayoutHeader>
-    <ALayoutContent class="layout-main">
-      <router-view v-slot="{ Component }">
-        <KeepAlive :include="cacheRouter" :max="10">
-          <component :is="Component" />
-        </KeepAlive>
-      </router-view>
-    </ALayoutContent>
-  </ALayout>
+  <div class="container-wrapper flex" :class="{ closeSide: !open }">
+    <SideBar class="aside-container" :collapsed="open" />
+    <div class="layout-main">
+      <router-view></router-view>
+    </div>
+  </div>
 </template>
-<script setup lang="ts">
-import LayoutHeader from './Header.vue';
-import cacheRouter from '@/routers/cacheRouter';
-defineOptions({
-  name: 'Layout',
-});
+<script setup>
+import { SideBar } from './components';
+
+const open = ref(true);
 </script>
 
 <style lang="less" scoped>
-/* 主页 */
-.layout-main {
-  background: var(--bg-color);
-  padding: 0;
-  height: calc(100% - 60px);
-  overflow-y: auto;
-  position: relative;
-}
+@import './layout.less';
 </style>
-
-<style lang="less"></style>
