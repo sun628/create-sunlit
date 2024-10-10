@@ -6,6 +6,8 @@ const MapExampleRouter: RouteRecordRaw[] = [
     path: '/',
     name: 'Layout',
     component: Layout,
+    redirect: '/map-example',
+    meta: { hidden: true },
     children: [
       {
         path: '/map-example',
