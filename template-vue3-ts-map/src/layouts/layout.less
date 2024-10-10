@@ -1,3 +1,4 @@
+@layout-sider-width: 240px; // 侧边栏宽度
 .container-wrapper {
   position: relative;
   min-height: 100vh;
@@ -5,12 +6,11 @@
   // 默认左右布局
   //边栏
   .aside-container {
-    width: 240px;
+    width: @layout-sider-width;
     background: #293348;
     height: 100vh;
     overflow: auto;
     transition: width 0.28s;
-    position: fixed;
     top: 0;
     left: 0;
     z-index: 886;
@@ -66,15 +66,14 @@
   // 主内容
   .layout-main {
     height: 100%;
-    width: calc(100% - 240px);
-    margin-left: 240px;
+    width: calc(100% - @layout-sider-width);
     .fixed-header {
       position: fixed;
       top: 0;
       right: 0;
       z-index: 886;
       transition: width 0.28s;
-      width: calc(100% - 240px);
+      width: calc(100% - @layout-sider-width);
       & ~ .app-main {
         padding-top: 54px;
         min-height: 100vh;
