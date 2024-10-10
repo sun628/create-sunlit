@@ -47,5 +47,4 @@ function generateMenu(routes) {
 }
 
 const menuList = generateMenu(routes);
-console.log('🚀 ~ menuList:', menuList);
 </script>
