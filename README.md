@@ -39,7 +39,7 @@ pnpm create sunlit my-vue-app
 Currently supported template presets include:
 
 - `vue3-ts-base`
-- `vue-ts-map`
+- `vue3-ts-map`
 
 You can use `.` for the project name to scaffold in the current directory.
 ```
