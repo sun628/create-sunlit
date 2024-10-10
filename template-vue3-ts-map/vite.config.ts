@@ -3,13 +3,12 @@ import { defineConfig } from 'vite';
 import { loadEnv } from 'vite';
 import { createVitePlugins } from './src/plugins';
 import postCssPxToRem from 'postcss-pxtorem';
-
 const pathSrc = path.resolve(__dirname, 'src');
 
 export default defineConfig(({ mode }) => {
   const viteEnv = loadEnv(mode, process.cwd());
   return {
-    plugins: createVitePlugins(viteEnv),
+    plugins: createVitePlugins(viteEnv, pathSrc),
     resolve: {
       alias: {
         '@/': `${pathSrc}/`,
