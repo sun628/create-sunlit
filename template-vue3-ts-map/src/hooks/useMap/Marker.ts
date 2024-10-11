@@ -12,7 +12,7 @@
  * @returns {AMap.Marker} 点标记对象
  */
 export const addMarker = <ExtraData = any>(
-  opts: AMap.MarkerOptions<ExtraData> & { exData?: ExtraData },
+  opts: AMap.MarkerOptions<ExtraData>,
   callback?: (e: AMap.MarkerEvent<ExtraData>, extData: ExtraData) => void,
 ) => {
   const marker: AMap.Marker<ExtraData> = new AMap.Marker<ExtraData>({ ...opts, cursor: 'pointer' });
