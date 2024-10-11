@@ -66,7 +66,7 @@ function updateContent() {
 </script>
 
 <style scoped lang="less">
-:global(.marker-content) {
+:deep(.marker-content) {
   position: absolute;
   top: -20px;
   right: -118px;
@@ -77,5 +77,8 @@ function updateContent() {
   font-size: 16px;
   background-color: #25a5f7;
   border-radius: 3px;
+}
+.ant-btn {
+  margin-bottom: 10px;
 }
 </style>
