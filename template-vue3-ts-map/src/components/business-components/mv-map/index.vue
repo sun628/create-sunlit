@@ -17,7 +17,7 @@ type MapProps = {
   mapOptions?: AMap.MapOptions;
 };
 
-const map = shallowRef<AMap.Map | null>(null);
+const map = shallowRef<AMap.Map>();
 
 provide(MapKey, map);
 
@@ -50,7 +50,6 @@ onMounted(async () => {
 });
 onBeforeUnmount(() => {
   map.value?.destroy();
-  map.value = null;
 });
 
 defineExpose({
