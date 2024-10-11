@@ -36,8 +36,8 @@ export default defineConfig(({ mode }) => {
     },
     server: {
       host: '0.0.0.0',
-      port: 5173, // 服务端口号
-      // open: true, // 服务启动时是否自动打开浏览器
+      port: 8088, // 服务端口号
+      open: false, // 服务启动时是否自动打开浏览器
       cors: true, // 允许跨域
       proxy: {
         [viteEnv.VITE_BASE_API]: {
@@ -73,7 +73,7 @@ export default defineConfig(({ mode }) => {
               } else if (moduleName.includes('echarts')) {
                 return 'echarts-chunks';
               }
-              // return id.toString().split('node_modules/')[1].split('/')[0].toString(); //静态资源分拆打包
+              // return id.toString().split('node_modules/')[1].split('/')[0].toString();
               return 'vendor';
             }
           },
