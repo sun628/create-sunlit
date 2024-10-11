@@ -1,51 +1,56 @@
 <template>
-  <ACard
-    v-draggable
-    class="pos-absolute top-10px left-10px right-0 m-0 w-620px"
-    title="输入框聚焦后，点击地图获取对应坐标"
-  >
-    <AForm
-      layout="inline"
-      :model="formState"
-      name="basic"
-      :label-col="{ span: 8 }"
-      :wrapper-col="{ span: 16 }"
-      autocomplete="off"
+  <ALayout relative>
+    <!-- 地图组件 -->
+    <MvMap @map-load="onMapLoad"></MvMap>
+    <ACard
+      v-draggable
+      class="pos-absolute top-10px left-10px right-0 m-0 w-620px"
+      title="输入框聚焦后，点击地图获取对应坐标"
     >
-      <AFormItem label="起点坐标" name="startLnLat">
-        <AInput
-          v-model:value="formState.startLnLat"
-          :style="geInputStyle(1)"
-          @focus="currentKey = 1"
-        />
-      </AFormItem>
+      <AForm
+        layout="inline"
+        :model="formState"
+        name="basic"
+        :label-col="{ span: 8 }"
+        :wrapper-col="{ span: 16 }"
+        autocomplete="off"
+      >
+        <AFormItem label="起点坐标" name="startLnLat">
+          <AInput
+            v-model:value="formState.startLnLat"
+            :style="geInputStyle(1)"
+            @focus="currentKey = 1"
+          />
+        </AFormItem>
 
-      <AFormItem label="终点坐标" name="endLngLat">
-        <AInput
-          v-model:value="formState.endLngLat"
-          :style="geInputStyle(2)"
-          @focus="currentKey = 2"
-        />
-      </AFormItem>
+        <AFormItem label="终点坐标" name="endLngLat">
+          <AInput
+            v-model:value="formState.endLngLat"
+            :style="geInputStyle(2)"
+            @focus="currentKey = 2"
+          />
+        </AFormItem>
 
-      <AFormItem label="当前规划路径">
-        <AInputSearch v-model:value="lngLatStr">
-          <template #enterButton>
-            <AButton v-copy="lngLatStr" type="primary">复制</AButton>
-          </template>
-        </AInputSearch>
-      </AFormItem>
-    </AForm>
-  </ACard>
+        <AFormItem label="当前规划路径">
+          <AInputSearch v-model:value="lngLatStr">
+            <template #enterButton>
+              <AButton v-copy="lngLatStr" type="primary">复制</AButton>
+            </template>
+          </AInputSearch>
+        </AFormItem>
+      </AForm>
+    </ACard>
+  </ALayout>
 </template>
 
 <script setup lang="ts">
 import { DrivingService, addMarker } from '@/hooks/useMap';
-import { MapKey } from '@/config/constant';
 import { theme } from 'ant-design-vue';
 defineOptions({ name: 'Driving' });
 const { useToken } = theme;
 const { token } = useToken();
+
+const map = shallowRef<AMap.Map>(); // 地图实例
 
 const currentKey = ref(1);
 const lngLatStr = ref('');
@@ -53,7 +58,6 @@ interface FormState {
   startLnLat: string;
   endLngLat: string;
 }
-const map = inject(MapKey);
 
 const formState = reactive<FormState>({
   startLnLat: '',
@@ -65,17 +69,6 @@ function geInputStyle(key: number) {
 }
 let marker;
 let drivingService: DrivingService;
-
-watchEffect(() => {
-  if (map?.value) {
-    drivingService = new DrivingService({
-      policy: 19,
-      map: map.value,
-      autoFitView: false,
-    });
-    map.value.on('click', clickListener);
-  }
-});
 
 function clickListener(e) {
   if (marker) {
@@ -114,9 +107,24 @@ function drawPolylineByDriving() {
     });
   }
 }
+
+function onMapLoad(data: AMap.Map) {
+  map.value = data;
+  drivingService = new DrivingService({
+    policy: 19,
+    map: map.value,
+    autoFitView: false,
+  });
+  map.value.on('click', clickListener);
+}
 </script>
 <style scoped lang="less">
 .ant-input-search .ant-input-search-button {
   height: 28px;
+}
+:deep(.ant-card) {
+  .ant-card-body {
+    padding: 0 0 20px 0;
+  }
 }
 </style>
