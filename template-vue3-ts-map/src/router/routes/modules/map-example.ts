@@ -3,9 +3,10 @@ import { Layout } from '@/router/constant';
 // 地图示例模块
 const MapExampleRouter: RouteRecordRaw[] = [
   {
-    path: '/',
-    name: 'Layout',
+    path: '/map-example',
+    name: 'map-example',
     component: Layout,
+    redirect: '/map-example/marker',
     meta: { title: '地图示例', icon: 'vite' },
     children: [
       {

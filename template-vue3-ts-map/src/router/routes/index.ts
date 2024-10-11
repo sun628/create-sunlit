@@ -30,7 +30,7 @@ export const routes: RouteRecordRaw[] = [
   {
     path: '/',
     name: 'Layout',
-    redirect: '/map-example/marker',
+    redirect: '/map-example',
     meta: {
       hidden: true,
     },
