@@ -4,15 +4,14 @@
     <MvMap @map-load="onMapLoad"></MvMap>
     <ACard
       v-draggable
-      class="pos-absolute top-10px left-10px right-0 m-0 w-620px"
+      class="pos-absolute top-10px left-10px right-0 m-0 w-420px"
       title="输入框聚焦后，点击地图获取对应坐标"
     >
       <AForm
-        layout="inline"
         :model="formState"
         name="basic"
         :label-col="{ span: 8 }"
-        :wrapper-col="{ span: 16 }"
+        :wrapper-col="{ span: 12 }"
         autocomplete="off"
       >
         <AFormItem label="起点坐标" name="startLnLat">
@@ -31,7 +30,7 @@
           />
         </AFormItem>
 
-        <AFormItem label="当前规划路径">
+        <AFormItem label="当前规划路径" :wrapper-col="{ span: 20 }">
           <AInputSearch v-model:value="lngLatStr">
             <template #enterButton>
               <AButton v-copy="lngLatStr" type="primary">复制</AButton>
@@ -118,13 +117,3 @@ function onMapLoad(data: AMap.Map) {
   map.value.on('click', clickListener);
 }
 </script>
-<style scoped lang="less">
-.ant-input-search .ant-input-search-button {
-  height: 28px;
-}
-:deep(.ant-card) {
-  .ant-card-body {
-    padding: 0 0 20px 0;
-  }
-}
-</style>

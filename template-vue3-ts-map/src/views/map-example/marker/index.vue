@@ -5,8 +5,8 @@
     <ACard class="pos-absolute bottom-10px right-10px m-0 w-520px" title="点标记操作">
       <AButton type="primary" @click="addMarkerClick()">添加点标记</AButton>
       <AButton type="primary" @click="updateIcon()">更新图标</AButton>
+      <AButton type="primary" @click="updateContent()">更新内容</AButton>
       <AButton type="primary" @click="clearMarker()">删除点标记</AButton>
-      <AButton type="primary" @click="updateContent()">更新点标记内容</AButton>
     </ACard>
   </ALayout>
 </template>
