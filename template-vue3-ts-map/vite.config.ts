@@ -35,7 +35,7 @@ export default defineConfig(({ mode }) => {
     },
     server: {
       host: '0.0.0.0',
-      port: 8088, // 服务端口号
+      port: 9999, // 服务端口号
       // open: true, // 服务启动时是否自动打开浏览器
       cors: true, // 允许跨域
       proxy: {
