@@ -28,10 +28,8 @@ export function createVitePlugins(
 ): PluginOption[] {
   const { VITE_TITLE } = viteEnv;
   return [
-    UnoCSS({
-      configFile: 'uno.config.ts',
-    }),
     vue(),
+    vueDevTools(),
     simpleHtmlPlugin({
       minify: true,
       inject: {
@@ -41,7 +39,9 @@ export function createVitePlugins(
         },
       },
     }),
-    vueDevTools(),
+    UnoCSS({
+      configFile: 'uno.config.ts',
+    }),
     Components({
       resolvers: [
         AntDesignVueResolver({
