@@ -44,7 +44,7 @@ useIntervalFn(() => {
 
 const menu = [
   {
-    title: '菜单1',
+    title: '菜单',
     path: '/monitor',
   },
 ];
