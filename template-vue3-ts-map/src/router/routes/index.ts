@@ -1,5 +1,6 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
 import type { SvgName } from '~virtual/svg-component';
+
 declare module 'vue-router' {
   interface RouteMeta {
     requiresAuth?: boolean;
