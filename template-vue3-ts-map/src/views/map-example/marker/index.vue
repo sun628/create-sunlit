@@ -4,15 +4,17 @@
     <MvMap @map-load="onMapLoad"></MvMap>
     <ACard class="pos-absolute bottom-10px right-10px m-0 w-520px" title="点标记操作">
       <AButton type="primary" @click="addMarkerClick()">添加点标记</AButton>
-      <AButton type="primary" @click="updateIcon()">更新图标</AButton>
       <AButton type="primary" @click="updateContent()">更新内容</AButton>
       <AButton type="primary" @click="clearMarker()">删除点标记</AButton>
+      <AButton type="primary" @click="updateIcon()">更新图标</AButton>
+      <BaseDivider class="dddd">自定义点标记</BaseDivider>
     </ACard>
   </ALayout>
 </template>
 
 <script setup lang="ts">
 import { addMarker } from '@/hooks/useMap';
+// import GantryIcon from '@/assets/images/map/gantry.png';
 const map = shallowRef<AMap.Map>(); // 地图实例
 
 function onMapLoad(data: AMap.Map) {
@@ -20,10 +22,7 @@ function onMapLoad(data: AMap.Map) {
 }
 
 let marker: AMap.Marker | null = null;
-/**
- * @function
- * @todo 添加点标记点击事件
- **/
+
 function addMarkerClick() {
   if (marker) return $message.warning('当前点标记已存在');
   marker = addMarker(
@@ -55,12 +54,10 @@ function clearMarker() {
 function updateContent() {
   if (!marker) return $message.warning('请先添加点标记');
   marker.setContent(
-    `
-   <div>
-    <img src="//a.amap.com/jsapi_demos/static/demo-center/icons/poi-marker-red.png" />
-    <span class='marker-content'>更新点标记内容</span>
-   </div>
-  `,
+    `<div>
+      <img src="//a.amap.com/jsapi_demos/static/demo-center/icons/poi-marker-red.png" />
+      <span class='marker-content'>更新点标记内容</span>
+     </div>`,
   );
 }
 </script>
