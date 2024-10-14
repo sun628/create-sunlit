@@ -10,6 +10,8 @@ import directives from '@/directives/index'; // custom directives
 import SvgIcon from '~virtual/svg-component';
 
 const app = createApp(App);
-app.use(router).use(pinia).use(directives);
+
 app.component(SvgIcon.name!, SvgIcon);
+
+app.use(router).use(pinia).use(directives);
 app.mount('#app');
