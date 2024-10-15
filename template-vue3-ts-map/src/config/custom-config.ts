@@ -1,5 +1,6 @@
 import { ThemeConfig } from 'ant-design-vue/es/config-provider/context';
-
+import styles from '@/assets/styles/variables/index.module.less';
+console.log('🚀 ~ styles:', styles);
 export type MapConfig = {
   MAP_KEY: string;
   CITY_CODE: number;
@@ -56,6 +57,7 @@ export const antTheme: ThemeConfig = {
     },
     Button: {
       colorTextLightSolid: '#000', // 按钮文字颜色
+      colorPrimary: styles.colorPrimary,
     },
     Form: {
       colorTextHeading: '#fff', // 表单标题颜色
