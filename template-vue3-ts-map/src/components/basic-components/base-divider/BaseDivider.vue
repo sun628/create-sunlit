@@ -10,7 +10,6 @@
 import { DividerProps } from 'ant-design-vue/es/divider';
 
 const attrs = useAttrs();
-console.log('🚀 ~ attrs:', attrs);
 const props = withDefaults(defineProps<DividerProps>(), {});
 
 const getBindValue = computed(() => ({ ...unref(attrs), ...props }));
