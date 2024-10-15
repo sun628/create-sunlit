@@ -72,7 +72,7 @@ export function createVitePlugins(
       dtsDir: `${pathSrc}/typings`,
       componentName: 'SvgIcon',
       preserveColor: `${pathSrc}/assets/icons`,
-      domInsertionStrategy: 'dynamic', // 默认是replaceHtml，不改成dynamic,hmr会失效
+      domInsertionStrategy: 'replaceHtml',
     }),
     // 打包分析
     VITE_REPORT && _visualizer,

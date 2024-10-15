@@ -7,7 +7,7 @@
       <AButton type="primary" @click="updateContent()">更新内容</AButton>
       <AButton type="primary" @click="clearMarker()">删除点标记</AButton>
       <AButton type="primary" @click="updateIcon()">更新图标</AButton>
-      <BaseDivider class="dddd">自定义点标记</BaseDivider>
+      <Divider class="dddd">自定义点标记</Divider>
     </ACard>
   </ALayout>
 </template>

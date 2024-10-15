@@ -1,6 +1,6 @@
 import { ThemeConfig } from 'ant-design-vue/es/config-provider/context';
 import styles from '@/assets/styles/variables/index.module.less';
-console.log('🚀 ~ styles:', styles);
+
 export type MapConfig = {
   MAP_KEY: string;
   CITY_CODE: number;
