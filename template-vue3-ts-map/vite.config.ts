@@ -20,6 +20,11 @@ export default defineConfig(({ mode }) => {
     base: './',
     publicDir: 'public', //将public目录下的文件复制到dist目录
     css: {
+      preprocessorOptions: {
+        less: {
+          javascriptEnabled: true,
+        },
+      },
       postcss: {
         plugins: [
           postCssPxToRem({
