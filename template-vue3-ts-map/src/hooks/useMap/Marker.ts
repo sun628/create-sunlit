@@ -11,12 +11,11 @@
  * @param callback
  * @returns {AMap.Marker} 点标记对象
  */
-export const addMarker = <ExtraData = any>(
+export const addMarker = <ExtraData>(
   opts: AMap.MarkerOptions<ExtraData>,
   callback?: (e: AMap.MarkerEvent<ExtraData>, extData: ExtraData) => void,
 ) => {
   const marker: AMap.Marker<ExtraData> = new AMap.Marker<ExtraData>({ ...opts, cursor: 'pointer' });
-
   if (callback) {
     marker.on('click', (e: AMap.MarkerEvent<ExtraData>) =>
       callback(e, e.target.getExtData() as ExtraData),
@@ -25,81 +24,79 @@ export const addMarker = <ExtraData = any>(
   return marker;
 };
 
+export type MarkerClickHandler<ExtraData> = {
+  (e: AMap.MarkerEvent<ExtraData>, extData: ExtraData): void;
+};
+
+export type MarkerLayerOptions<ExtraData> = {
+  coordinates?: { lon: string; lat: string; iconActive?: string | AMap.Icon }; // 自定义经纬度字段
+  options?: AMap.MarkerOptions<ExtraData>; // Marker选项
+};
+
+/** 默认匹配字段 */
+const DefaultCoordinates = { lon: 'lon', lat: 'lat' };
+
 /**
  * @function
  * @todo 使用marker
  * @example
- * const {drawMarker}=useMarker()
+ * const { createMarkerLayer,clearMarkerLayer}=useMarker()
  **/
-export const useMarker = () => {
-  const markerList: AMap.Marker[] = [];
-  let map: AMap.Map | null | undefined = null;
+export const useMarker = (Map: AMap.Map) => {
+  const markerArr: AMap.Marker[] = [];
+  const map: AMap.Map = Map;
 
   /**
    * @function
-   * @description 绘制点标记marker
-   * @todo
-   * @param Map
-   * @param { Array<ExtraData> } dataList 数据列表
-   * @param {  AMap.MarkerOptions | ((e: AMap.MarkerEvent<ExtraData>, extData: ExtraData) => void} arg3 点标记点击事件 或者 点标记配置项
-   * @param {(e: AMap.MarkerEvent<ExtraData>, extData: ExtraData) => void } arg4 点标记点击事件
-   * @returns { AMap.Marker<ExtraData>[] } markerList 点标记列表
+   * @todo 绘制marker群组图层
+   * @param { Array<ExtraData> } data 数据源
    **/
-  const drawMarker = <ExtraData extends { lon: number; lat: number; icon?: AMap.Icon | string }>(
-    Map: AMap.Map | null | undefined,
-    dataList: Array<ExtraData>,
-    arg3?: AMap.MarkerOptions | ((e: AMap.MarkerEvent<ExtraData>, extData: ExtraData) => void),
-    arg4?: (e: AMap.MarkerEvent<ExtraData>, extData: ExtraData) => void,
+  const createMarkerLayer = <ExtraData>(
+    data: Array<ExtraData>,
+    {
+      coordinates = DefaultCoordinates,
+      options, // Marker选项
+    }: MarkerLayerOptions<ExtraData>, // 使用封装的类型
+    callback: MarkerClickHandler<ExtraData>,
   ) => {
-    clearMarker();
-    map = Map;
-
-    let options: AMap.MarkerOptions | undefined;
-    let callback: ((e: AMap.MarkerEvent<ExtraData>, extData: ExtraData) => void) | undefined;
-
-    if (typeof arg3 === 'function') {
-      callback = arg3;
-    } else if (typeof arg3 === 'object') {
-      options = arg3;
-      if (typeof arg4 === 'function') {
-        callback = arg4;
-      }
-    }
-
-    dataList.forEach((item) => {
-      const defaultOptions: AMap.MarkerOptions = {
-        position: [item.lon, item.lat],
-        icon: item.icon,
-        offset: new AMap.Pixel(-13, -35), //以 icon 的 [center bottom] 为原点
-        extData: item,
-      };
-      const mergedOptions = { ...defaultOptions, ...options };
-      const marker = addMarker<ExtraData>(mergedOptions, callback);
-      markerList.push(marker);
+    clearMarkerLayer();
+    const { lon, lat, iconActive } = coordinates;
+    const markerClickHandler: MarkerClickHandler<ExtraData> = (
+      e: AMap.MarkerEvent<ExtraData>,
+      extData: ExtraData,
+    ) => {
+      const target = e.target; // 获取当前点击的marker
+      iconActive && target.setIcon(iconActive);
+      callback(e, extData);
+    };
+    data.forEach((item) => {
+      const position = [item[lon], item[lat]] as AMap.LngLatLike;
+      const markerOptions = { position, extra: item, ...options };
+      const marker = addMarker<ExtraData>(markerOptions, markerClickHandler);
+      markerArr.push(marker);
     });
-    if (map) {
-      !!map && map.add(markerList);
-    }
-    return markerList;
+
+    return markerArr;
   };
+
   /**
    * @function
    * @todo 清除点标记
    **/
-  const clearMarker = () => {
-    if (map && markerList.length) {
-      map.remove(markerList);
-      markerList.length = 0;
+  const clearMarkerLayer = () => {
+    if (map && markerArr.length) {
+      map.remove(markerArr);
+      markerArr.length = 0;
     }
   };
+
   onBeforeUnmount(() => {
-    clearMarker();
-    map = null;
+    clearMarkerLayer();
   });
   return {
     addMarker,
-    drawMarker,
-    clearMarker,
+    createMarkerLayer,
+    clearMarkerLayer,
   };
 };
 
