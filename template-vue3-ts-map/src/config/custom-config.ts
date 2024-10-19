@@ -47,17 +47,18 @@ export const mapConfig: MapConfig = {
 
 export const antTheme: ThemeConfig = {
   token: {
-    colorPrimary: '#00aeff', // 主题色
-    colorTextPlaceholder: '#acacac', // 输入框提示文字颜色
-    colorTextQuaternary: '#fff', // 第四级文本色是最浅的文本色，例如表单的输入提示文本、禁用色文本等。
+    colorText: styles.colorBlack,
+    colorPrimary: styles.colorPrimary, // 主题色
+    colorTextDescription: styles.colorTextDescription, // 描述色
   },
   components: {
-    Spin: {
-      colorBgContainer: '#000', // 背景色
-    },
     Button: {
       colorTextLightSolid: '#000', // 按钮文字颜色
       colorPrimary: styles.colorPrimary,
+    },
+    List: {},
+    Spin: {
+      colorBgContainer: '#000', // 背景色
     },
     Form: {
       colorTextHeading: '#fff', // 表单标题颜色
