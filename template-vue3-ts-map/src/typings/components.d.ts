@@ -7,11 +7,9 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
-    AAvatar: typeof import('ant-design-vue/es')['Avatar']
     AButton: typeof import('ant-design-vue/es')['Button']
     ACard: typeof import('ant-design-vue/es')['Card']
     AConfigProvider: typeof import('ant-design-vue/es')['ConfigProvider']
-    ADivider: typeof import('ant-design-vue/es')['Divider']
     AForm: typeof import('ant-design-vue/es')['Form']
     AFormItem: typeof import('ant-design-vue/es')['FormItem']
     AInput: typeof import('ant-design-vue/es')['Input']
@@ -22,11 +20,7 @@ declare module 'vue' {
     AListItemMeta: typeof import('ant-design-vue/es')['ListItemMeta']
     AMenu: typeof import('ant-design-vue/es')['Menu']
     AMenuItem: typeof import('ant-design-vue/es')['MenuItem']
-    ASegmented: typeof import('ant-design-vue/es')['Segmented']
     ASubMenu: typeof import('ant-design-vue/es')['SubMenu']
-    BaseButton: typeof import('./../components/basic-components/base-button/BaseButton.vue')['default']
-    BaseDivider: typeof import('./../components/basic-components/base-divider/BaseDivider.vue')['default']
-    BaseLoading: typeof import('./../components/basic-components/base-loading/BaseLoading.vue')['default']
     Button: typeof import('./../components/basic-components/button/Button.vue')['default']
     Divider: typeof import('./../components/basic-components/divider/Divider.vue')['default']
     Loading: typeof import('./../components/basic-components/loading/Loading.vue')['default']
