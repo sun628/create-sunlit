@@ -62,7 +62,7 @@ export default defineConfig(({ mode }) => {
     },
     assetsInclude: ['**/*.webp', '**/*.svg', '**/*.png', '**/*.jpg', '**/*.gif'],
     build: {
-      outDir: viteEnv.VITE_TITLE + '-' + viteEnv.VITE_MODE + '-dist',
+      outDir: 'dist/' + viteEnv.VITE_TITLE + '-' + viteEnv.VITE_MODE,
       minify: 'esbuild',
       chunkSizeWarningLimit: 1500,
       rollupOptions: {
