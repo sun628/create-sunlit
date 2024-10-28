@@ -20,29 +20,30 @@
 
 <script setup lang="ts">
 import { MapKey } from '@/config/constant';
-import Marker from './Marker.vue';
+import DefaultMarker from './DefaultMarker.vue';
+import LabelMarker from './LabelMarker.vue';
+
 interface Item {
   title: string;
   component: Component;
 }
 const List: Item[] = [
   {
-    title: '默认点标记',
-    component: markRaw(Marker),
+    title: '默认点标记 Marker',
+    component: markRaw(DefaultMarker),
   },
   {
     title: '海量标注 LabelMarker',
-    component: markRaw(Marker),
+    component: markRaw(LabelMarker),
   },
 ];
 
 const currentItem = ref<Item>(List[0]);
 function itemClick(item: Item) {
-  console.log('🚀 ~ itemClick ~ item:', item);
   currentItem.value = item;
 }
 
-const map = shallowRef<AMap.Map>(); // 地图实例
+const map = ref<AMap.Map>(); // 地图实例
 
 provide(MapKey, map);
 
@@ -52,18 +53,6 @@ function onMapLoad(data: AMap.Map) {
 </script>
 
 <style scoped lang="less">
-:deep(.marker-content) {
-  position: absolute;
-  top: -20px;
-  right: -128px;
-  color: #fff;
-  padding: 8px 10px;
-  box-shadow: 1px 1px 1px rgba(10, 10, 10, 0.2);
-  white-space: nowrap;
-  font-size: 16px;
-  background-color: #25a5f7;
-  border-radius: 3px;
-}
 :deep(.ant-btn) {
   margin-bottom: 10px;
 }
@@ -78,5 +67,44 @@ function onMapLoad(data: AMap.Map) {
 
 :deep(.ant-card-body) {
   padding: 0 14px 14px 14px;
+}
+
+:deep(.custom-content-marker) {
+  position: relative;
+  width: 52px;
+  height: 68px;
+  .marker-content {
+    position: absolute;
+    top: -20px;
+    right: -128px;
+    color: #fff;
+    padding: 8px 10px;
+    box-shadow: 1px 1px 1px rgba(10, 10, 10, 0.2);
+    white-space: nowrap;
+    font-size: 16px;
+    background-color: #25a5f7;
+    border-radius: 3px;
+  }
+  img {
+    width: 100%;
+    height: 100%;
+  }
+  .close-btn {
+    position: absolute;
+    top: -6px;
+    right: -8px;
+    width: 15px;
+    height: 15px;
+    font-size: 12px;
+    background: #ccc;
+    border-radius: 50%;
+    color: #fff;
+    text-align: center;
+    line-height: 15px;
+    box-shadow: -1px 1px 1px rgba(10, 10, 10, 0.2);
+  }
+  .close-btn:hover {
+    background: #666;
+  }
 }
 </style>
