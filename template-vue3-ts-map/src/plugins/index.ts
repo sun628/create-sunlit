@@ -9,6 +9,7 @@ import AutoImport from 'unplugin-auto-import/vite';
 import Components from 'unplugin-vue-components/vite';
 import { AntDesignVueResolver } from 'unplugin-vue-components/resolvers';
 import UnpluginSvgComponent from 'unplugin-svg-component/vite';
+import vueJsx from '@vitejs/plugin-vue-jsx';
 
 const _visualizer = visualizer({
   emitFile: true, //是否被触摸
@@ -29,6 +30,7 @@ export function createVitePlugins(
   const { VITE_TITLE } = viteEnv;
   return [
     vue(),
+    vueJsx(),
     vueDevTools(),
     simpleHtmlPlugin({
       minify: true,
