@@ -44,10 +44,11 @@
 
 <script setup lang="ts">
 import { DrivingService, addMarker } from '@/hooks/useMap';
+
 import { theme } from 'ant-design-vue';
-defineOptions({ name: 'Driving' });
 const { useToken } = theme;
 const { token } = useToken();
+defineOptions({ name: 'Driving' });
 
 const map = shallowRef<AMap.Map>(); // 地图实例
 
@@ -64,7 +65,7 @@ const formState = reactive<FormState>({
 });
 
 function geInputStyle(key: number) {
-  return { backgroundColor: key === currentKey.value ? toValue(token).colorPrimary : '' };
+  return { backgroundColor: key === currentKey.value ? toValue(token).colorPrimaryHover : '' };
 }
 let marker;
 let drivingService: DrivingService;
