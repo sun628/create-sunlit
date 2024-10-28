@@ -11,6 +11,7 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "preserve",
+    "jsxImportSource": "vue",
     "strict": true,
     "noFallthroughCasesInSwitch": true,
     "esModuleInterop": true,
@@ -32,7 +33,6 @@
     "removeComments": true,
     "allowSyntheticDefaultImports": true,
     "strictFunctionTypes": true, // 启用严格函数类型
-    "jsxImportSource": "vue",
     "noImplicitAny": false,
     "types": ["node", "vite/client"],
     "plugins": [{ "name": "typescript-plugin-css-modules" }]
