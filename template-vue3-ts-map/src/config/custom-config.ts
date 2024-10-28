@@ -53,7 +53,6 @@ export const antTheme: ThemeConfig = {
   },
   components: {
     Button: {
-      colorTextLightSolid: '#000', // 按钮文字颜色
       colorPrimary: styles.colorPrimary,
     },
     List: {},
@@ -77,7 +76,6 @@ export const antTheme: ThemeConfig = {
       colorBorder: '#527eac', // 边框颜色
     },
     Input: {
-      colorBgContainer: '#1c2a45', // 背景色
       colorBorder: '#527eac', // 边框颜色
       colorText: '#fff', // 文字颜色
     },
