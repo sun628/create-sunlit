@@ -1,3 +1,4 @@
+import { onBeforeUnmount } from 'vue';
 /**
  * @function
  * @todo 添加点标记
@@ -29,53 +30,61 @@ export type MarkerClickHandler<ExtraData> = {
 };
 
 export type MarkerLayerOptions<ExtraData> = {
-  coordinates?: { lon: string; lat: string; iconActive?: string | AMap.Icon }; // 自定义经纬度字段
+  iconActive: AMap.Icon | string;
+  LngLat?: [string, string]; // 自定义经纬度字段
   options?: AMap.MarkerOptions<ExtraData>; // Marker选项
 };
 
 /** 默认匹配字段 */
-const DefaultCoordinates = { lon: 'lon', lat: 'lat' };
-
+const DefaultLngLat = ['lon', 'lat'] as const;
+// const map = shallowRef<AMap.Map>();
+let map: ComputedRef<AMap.Map | undefined>;
 /**
  * @function
  * @todo 使用marker
  * @example
  * const { createMarkerLayer,clearMarkerLayer}=useMarker()
  **/
-export const useMarker = (Map: AMap.Map) => {
+export const useMarker = (Map: MaybeRef<AMap.Map | undefined>) => {
   const markerArr: AMap.Marker[] = [];
-  const map: AMap.Map = Map;
-
+  map = computed(() => {
+    return unref(Map);
+  });
+  // watchEffect(() => {
+  //   map.value = unref(Map);
+  //   console.log('🚀watchEffect ~ map:', map.value);
+  //   console.log('🚀watchEffect ~ map2222:', map2.value);
+  // });
   /**
    * @function
    * @todo 绘制marker群组图层
    * @param { Array<ExtraData> } data 数据源
    **/
-  const createMarkerLayer = <ExtraData>(
+  const createMarkerLayer = <ExtraData = any>(
     data: Array<ExtraData>,
-    {
-      coordinates = DefaultCoordinates,
-      options, // Marker选项
-    }: MarkerLayerOptions<ExtraData>, // 使用封装的类型
-    callback: MarkerClickHandler<ExtraData>,
+    markerLayerOptions?: MarkerLayerOptions<ExtraData>, // 使用封装的类型
+    callback?: MarkerClickHandler<ExtraData>,
   ) => {
     clearMarkerLayer();
-    const { lon, lat, iconActive } = coordinates;
+    const { iconActive, LngLat = DefaultLngLat, options } = markerLayerOptions || {};
+    const [lon, lat] = LngLat;
     const markerClickHandler: MarkerClickHandler<ExtraData> = (
       e: AMap.MarkerEvent<ExtraData>,
       extData: ExtraData,
     ) => {
       const target = e.target; // 获取当前点击的marker
       iconActive && target.setIcon(iconActive);
-      callback(e, extData);
+      callback && callback(e, extData);
     };
     data.forEach((item) => {
+      if (!item[lon] || !item[lat]) return;
       const position = [item[lon], item[lat]] as AMap.LngLatLike;
-      const markerOptions = { position, extra: item, ...options };
+      const markerOptions = { position, ...item, ...options };
       const marker = addMarker<ExtraData>(markerOptions, markerClickHandler);
       markerArr.push(marker);
     });
-
+    console.log(map.value);
+    map.value?.add(markerArr);
     return markerArr;
   };
 
@@ -84,8 +93,8 @@ export const useMarker = (Map: AMap.Map) => {
    * @todo 清除点标记
    **/
   const clearMarkerLayer = () => {
-    if (map && markerArr.length) {
-      map.remove(markerArr);
+    if (map.value && markerArr.length) {
+      map.value.remove(markerArr);
       markerArr.length = 0;
     }
   };
