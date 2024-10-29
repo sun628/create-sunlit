@@ -5,7 +5,7 @@
 </template>
 <script setup lang="ts">
 import { onMounted, shallowRef } from 'vue';
-import { initMap } from '@/hooks/useMap';
+import { initMap, loadMapUI } from '@/hooks/useMap';
 import { MapKey } from '@/config/constant';
 
 defineOptions({
@@ -17,7 +17,7 @@ type MapProps = {
   mapOptions?: AMap.MapOptions;
 };
 
-const map = shallowRef<AMap.Map | null>(null);
+const map = shallowRef<AMap.Map>();
 
 provide(MapKey, map);
 
@@ -42,6 +42,7 @@ onMounted(async () => {
   try {
     const mapOptions = Object.assign({}, $config.MAP_OPTIONS, props.mapOptions);
     map.value = await initMap(props.id, mapOptions);
+    loadMapUI(map.value, [320100]);
     emit('map-load', map.value as AMap.Map);
   } catch (e) {
     console.error(e);
@@ -49,7 +50,6 @@ onMounted(async () => {
 });
 onBeforeUnmount(() => {
   map.value?.destroy();
-  map.value = null;
 });
 
 defineExpose({
