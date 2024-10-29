@@ -1,9 +1,48 @@
 <template>
-  <div class="home">
-    <p>顶顶顶顶的点点滴滴</p>
-  </div>
+  <AWatermark
+    :content="['Sunlit', 'Vue3 Vite Base']"
+    :height="30"
+    :width="130"
+    class="home-container"
+  >
+    <div class="home-title">
+      <h3>Vue3 Vite Base</h3>
+      <p class="">本基础模版基于 Vite + Vue3.5 + Pinia</p>
+      <p class="small">环境要求 node 18+ & pnpm 包管理器</p>
+    </div>
+  </AWatermark>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+defineOptions({ name: 'Home' });
+const a = ref(1);
+console.log('🚀 ~ a:', a);
+</script>
 
-<style scoped lang="less"></style>
+<style scoped lang="less">
+.home-container {
+  background-image: linear-gradient(180deg, rgba(247, 232, 255, 0.54), rgba(191, 223, 255, 0.35));
+  height: 100vh;
+  width: 100vw;
+  .home-title {
+    padding: 0 50px;
+    height: 320px;
+    h3 {
+      font-size: 80px;
+      line-height: 150px;
+      font-weight: bold;
+    }
+    p {
+      font-size: 30px;
+      color: #666;
+      line-height: 40px;
+      font-weight: 300;
+      &.small {
+        font-size: 16px;
+        font-style: italic;
+        color: #888;
+      }
+    }
+  }
+}
+</style>

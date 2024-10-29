@@ -23,6 +23,7 @@ declare module 'vue' {
     ARate: typeof import('ant-design-vue/es')['Rate']
     ASubMenu: typeof import('ant-design-vue/es')['SubMenu']
     ATag: typeof import('ant-design-vue/es')['Tag']
+    AWatermark: typeof import('ant-design-vue/es')['Watermark']
     Button: typeof import('./../components/basic-components/button/Button.vue')['default']
     Divider: typeof import('./../components/basic-components/divider/Divider.vue')['default']
     Loading: typeof import('./../components/basic-components/loading/Loading.vue')['default']
