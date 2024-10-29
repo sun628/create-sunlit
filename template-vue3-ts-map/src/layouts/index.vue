@@ -8,7 +8,7 @@
 </template>
 <script setup>
 import { SideBar } from './components';
-
+defineOptions({ name: 'Layout' });
 const open = ref(true);
 </script>
 
