@@ -1,23 +1,13 @@
-import { DrivingOptions, LngLat } from './amap.d';
 // 将声明文件通过 include/import/typeRoots 等方式引入
 import 'amap-jsapi-v2-types';
 
-export type LngLat = AMap.LngLat;
-
-export type LngLatLike = AMap.LngLatLike;
 declare global {
   // ts namespace/interface 会合并声明
   namespace AMap {
     // 目前大多数类型声明，出于避免严格考虑，采用 type 而不是 interface
-
-    export type MapOptions2 = AMap.MapOptions & { zoom: number };
-
     export interface Line extends Array<AMap.LngLatLike> {}
-    export class ExtraMarker extends AMap.Marker {
-      constructor(opt?: ExtraMarkerOptions);
-      newMethod(): void;
-    }
-    export type MarkerEvent<ExtraData = unknown> = {
+
+    export type MarkerEvent<ExtraData = any> = {
       /**
        * 发生事件时光标所在处的经纬度坐标。
        * */
@@ -35,6 +25,7 @@ declare global {
        */
       type: string;
     };
+
     export type PolylineEvent<ExtraData = any> = {
       target: AMap.Polyline<ExtraData>;
       lnglat: AMap.LngLat;
@@ -86,7 +77,7 @@ declare global {
     };
 
     /**	途径点,最多支持16个 */
-    export type waypoints = Array<LngLatLike | Array<{ keyword: string; city: string }>>;
+    export type waypoints = Array<AMap.LngLatLike | Array<{ keyword: string; city: string }>>;
 
     export type DrivingCallback = (
       status: 'complete' | 'error' | 'no_data',
@@ -209,7 +200,7 @@ declare global {
 
     // noinspection Annotator
     export declare class Driving {
-      constructor(opts: DrivingOptions);
+      constructor(opts: AMap.DrivingOptions);
       /**
        * 根据起点、终点和途经点（可选）坐标或名称，实现驾车路线规划，途经点通过opts设定
        * @param origin 起点经纬度
@@ -218,8 +209,8 @@ declare global {
        * @param callback 回调函数
        */
       search(
-        origin: LngLatLike,
-        destination: LngLatLike,
+        origin: AMap.LngLatLike,
+        destination: AMap.LngLatLike,
         opts: waypoints | { waypoints: waypoints },
         callback?: DrivingCallback,
       ): void;
@@ -230,7 +221,11 @@ declare global {
        * @param destination 终点经纬度
        * @param callback 回调函数
        */
-      search(origin: LngLatLike, destination: LngLatLike, callback?: DrivingCallback): void;
+      search(
+        origin: AMap.LngLatLike,
+        destination: AMap.LngLatLike,
+        callback?: DrivingCallback,
+      ): void;
 
       /**
        * 根据起点、终点和途经点（可选）坐标或名称，实现驾车路线规划，途经点通过opts设定

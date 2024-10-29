@@ -3,14 +3,10 @@ import { onBeforeUnmount } from 'vue';
  * @function
  * @todo 添加点标记
  * @see https://lbs.amap.com/api/javascript-api-v2/documentation#marker
- * @param {AMap.MarkerOptions} opts 点标记参数
- *      - {AMap.LngLatLike } position 点标记位置
- *      - {string | AMap.Icon } icon 点标记图标
- *      - { AMap.PixelLike } offset 点标记显示位置偏移量，默认值为 [0,0]。若需使marker指定位置对准在position处，需根据marker的尺寸设置一定的偏移量。
- *      - {((e: AMap.MarkerEvent<ExtraData>, extData: ExtraData) => void) | undefined } callback 点标记点击事件
- *      - {AMap.MarkerEvent<ExtraData>,ExtraData} e 点标记对象 此对象用于表示地图、覆盖物、叠加层上的各种鼠标事件返回,extraData 自定义数据
- * @param callback
- * @returns {AMap.Marker} 点标记对象
+ * @template {any} ExtraData - 与标记关联的额外数据类型。
+ * @param {AMap.MarkerOptions<ExtraData>} opts - 创建标记的配置选项，包括基本设置和事件监听器，允许对标记的外观和行为进行广泛的自定义。
+ * @param {function(AMap.MarkerEvent<ExtraData>, ExtraData): void} [callback] - 可选的回调函数，在标记事件发生时调用。它接收标记事件对象和与标记关联的额外数据作为参数，便于实现自定义事件处理逻辑。
+ * @returns {AMap.Marker<ExtraData>} 点标记对象
  */
 export const addMarker = <ExtraData>(
   opts: AMap.MarkerOptions<ExtraData>,

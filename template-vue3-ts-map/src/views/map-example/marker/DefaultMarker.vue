@@ -34,6 +34,7 @@ import { MapKey } from '@/config/constant.ts';
 import { defaultMarker } from './lib';
 import { useMarker } from '@/hooks/useMap';
 import { Rate } from 'ant-design-vue';
+import gantryIcon from '@/assets/images/map/gantry.png';
 const map = inject(MapKey);
 
 interface Item {
@@ -43,7 +44,7 @@ interface Item {
   handler?: () => void;
   children?: Item[];
 }
-const { createMarkerLayer } = useMarker(map);
+const { createMarkerLayer, clearMarkerLayer } = useMarker(map);
 
 function itemClick(item: Item) {
   item.handler && item.handler();
@@ -120,11 +121,16 @@ const List: Item[] = [
         description: '`通过map.add(marker)绘制`',
         handler: () => drawMarkerLayer(),
       },
+      {
+        title: '清除点标记组',
+        description: '`通过map.clearMap()`',
+        handler: () => clearMarkerLayer(),
+      },
     ],
   },
 ];
 
-const data = [
+const data: Array<{ lon: string; lat: string; icon: string | AMap.Icon }> = [
   {
     lon: ' 118.811836',
     lat: '32.051376',
@@ -133,14 +139,18 @@ const data = [
   {
     lon: '118.737887',
     lat: '31.956974',
+    icon: gantryIcon,
   },
 ];
 
 function drawMarkerLayer() {
-  const markerArr = createMarkerLayer(data, {
-    iconActive: '//a.amap.com/jsapi_demos/static/demo-center/icons/poi-marker-red.png',
+  const icon = new AMap.Icon({
+    image: gantryIcon,
+    size: new AMap.Size(52, 68), // 图标尺寸
+    imageSize: new AMap.Size(52, 68), // 根据所设置的大小拉伸或压缩图片
   });
-  console.log('🚀 ~ drawMarkerLayer ~ markerArr:', markerArr);
+  data[1].icon = icon;
+  createMarkerLayer(data);
 }
 </script>
 
@@ -162,5 +172,9 @@ function drawMarkerLayer() {
 }
 :deep(.ant-rate-star-zero) {
   display: none;
+}
+:deep(.anticon),
+:deep(.ant-rate) {
+  display: flex;
 }
 </style>
