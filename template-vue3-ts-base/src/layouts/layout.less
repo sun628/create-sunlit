@@ -1,0 +1,208 @@
+@layout-sider-width: 240px; // 侧边栏宽度
+.container-wrapper {
+  position: relative;
+  min-height: 100vh;
+  height: 100%;
+  // 默认左右布局
+  //边栏
+  .aside-container {
+    width: @layout-sider-width;
+    background: #293348;
+    height: 100vh;
+    overflow: auto;
+    transition: width 0.28s;
+    top: 0;
+    left: 0;
+    z-index: 886;
+    .logo-wrapper {
+      position: relative;
+      height: 64px;
+      padding-left: 24px;
+      overflow: hidden;
+      transition: all 0.3s;
+      line-height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      width: 100%;
+      #logo {
+        width: 2rem;
+        height: 2rem;
+        vertical-align: -0.15em;
+        fill: currentColor;
+        overflow: hidden;
+        outline: 0;
+        display: inline-block;
+      }
+      .logo-title {
+        font-size: 14px;
+        color: #fff;
+        font-weight: 600;
+        margin: 0 12px;
+        display: inline-block;
+        overflow: hidden;
+        height: 40px;
+        line-height: 40px;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
+    }
+    .ant-menu {
+      background: #293348;
+    }
+    .ant-menu-inline.ant-menu-sub {
+      background: #131d30 !important;
+      box-shadow: none !important;
+    }
+    .svg-class {
+      width: 1em;
+      height: 1em;
+      vertical-align: -0.15em;
+      fill: currentColor;
+      overflow: hidden;
+      outline: 0;
+    }
+  }
+  // 主内容
+  .layout-main {
+    height: 100%;
+    width: calc(100% - @layout-sider-width);
+    .fixed-header {
+      position: fixed;
+      top: 0;
+      right: 0;
+      z-index: 886;
+      transition: width 0.28s;
+      width: calc(100% - @layout-sider-width);
+      & ~ .app-main {
+        padding-top: 54px;
+        min-height: 100vh;
+      }
+    }
+    .padding-box-container {
+      min-height: calc(100vh - 54px);
+    }
+  }
+
+  .hasTag {
+    .fixed-header {
+      & ~ .app-main {
+        padding-top: 100px !important;
+        min-height: 100vh;
+      }
+    }
+    .padding-box-container {
+      min-height: calc(100vh - 100px);
+    }
+  }
+
+  &.closeSide {
+    .aside-container {
+      width: 80px;
+    }
+    .layout-main {
+      width: calc(100% - 80px);
+      margin-left: 80px;
+    }
+    .fixed-header {
+      width: calc(100% - 80px);
+    }
+    .horizontalSide-wrapper {
+      .logo-title {
+        display: inline-block !important;
+      }
+      .menu-title {
+        display: inline-block !important;
+      }
+    }
+    .logo-title {
+      display: none !important;
+    }
+    .menu-title {
+      display: none !important;
+    }
+  }
+  .ant-breadcrumb a {
+    height: 40px;
+    line-height: 40px;
+  }
+  .right-panl {
+    right: 1px;
+    top: 300px;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    color: #fff;
+    background: #1890ff;
+    border-radius: 6px 0 0 6px;
+    text-align: center;
+    line-height: 50px;
+    font-size: 24px;
+    z-index: 999;
+  }
+  //水平布局
+  &.horizontal {
+    .aside-container {
+      width: 0;
+    }
+    .horizontal-nav {
+      background: #293348;
+      color: #f1f1f1;
+      height: 54px;
+      line-height: 54px;
+      .flex-sub {
+        display: flex;
+        .ant-menu-item {
+          opacity: 1 !important;
+          height: unset !important;
+          display: inline-block;
+          pointer-events: unset !important;
+          position: unset !important;
+        }
+        .ant-menu-overflow-item {
+          opacity: 1 !important;
+          height: unset !important;
+          display: inline-block;
+          pointer-events: unset !important;
+          position: unset !important;
+        }
+        .ant-menu-overflow-item-rest {
+          opacity: 0 !important;
+        }
+      }
+    }
+    .layout-main {
+      width: 100%;
+      margin-left: 0;
+    }
+    .fixed-header {
+      width: 100%;
+    }
+    .nav-user {
+      background: #293348;
+    }
+    .app-main {
+      width: 100%;
+      box-sizing: border-box;
+    }
+  }
+}
+.horizontal {
+  .side-wrapper {
+    display: flex;
+    .logo-wrapper {
+      height: 54px;
+      line-height: 54px;
+      min-width: 250px;
+    }
+    .side-main {
+      height: 100%;
+      flex: auto;
+      color: #fff;
+    }
+    :deep(.ant-menu-horizontal) {
+      height: 54px !important;
+      line-height: 54px;
+    }
+  }
+}
