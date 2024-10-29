@@ -7,4 +7,4 @@ import { ShallowRef } from 'vue';
 /**
  * 地图实例 key
  */
-export const MapKey: InjectionKey<ShallowRef<AMap.Map | null>> = Symbol('MapKey');
+export const MapKey: InjectionKey<ShallowRef<AMap.Map | undefined>> = Symbol('MapKey');

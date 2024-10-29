@@ -1,4 +1,5 @@
 import { ThemeConfig } from 'ant-design-vue/es/config-provider/context';
+import styles from '@/assets/styles/variables/index.module.less';
 
 export type MapConfig = {
   MAP_KEY: string;
@@ -31,7 +32,7 @@ export const mapConfig: MapConfig = {
 
   /** 地图配置项 */
   MAP_OPTIONS: {
-    center: [119.86533401075835, 32.3584429993217],
+    center: [118.797618, 31.970531],
     animateEnable: true,
     zoomEnable: true,
     rotateEnable: true,
@@ -46,16 +47,17 @@ export const mapConfig: MapConfig = {
 
 export const antTheme: ThemeConfig = {
   token: {
-    colorPrimary: '#00aeff', // 主题色
-    colorTextPlaceholder: '#acacac', // 输入框提示文字颜色
-    colorTextQuaternary: '#fff', // 第四级文本色是最浅的文本色，例如表单的输入提示文本、禁用色文本等。
+    colorText: styles.colorBlack,
+    colorPrimary: styles.colorPrimary, // 主题色
+    colorTextDescription: styles.colorTextDescription, // 描述色
   },
   components: {
+    Button: {
+      colorPrimary: styles.colorPrimary,
+    },
+    List: {},
     Spin: {
       colorBgContainer: '#000', // 背景色
-    },
-    Button: {
-      colorTextLightSolid: '#000', // 按钮文字颜色
     },
     Form: {
       colorTextHeading: '#fff', // 表单标题颜色
@@ -74,7 +76,6 @@ export const antTheme: ThemeConfig = {
       colorBorder: '#527eac', // 边框颜色
     },
     Input: {
-      colorBgContainer: '#1c2a45', // 背景色
       colorBorder: '#527eac', // 边框颜色
       colorText: '#fff', // 文字颜色
     },
