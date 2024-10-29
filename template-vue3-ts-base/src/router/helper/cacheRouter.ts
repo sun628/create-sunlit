@@ -1,5 +1,5 @@
-import { RouteRecordRaw, RouteRecordName } from 'vue-router';
-import { routes } from '@/routers/router';
+import { RouteRecordName, RouteRecordRaw } from 'vue-router';
+import { routes } from '@/router/routes';
 
 /**
  * @description 使用递归，过滤需要缓存的路由

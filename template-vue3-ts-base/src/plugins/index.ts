@@ -1,4 +1,5 @@
 import UnoCSS from 'unocss/vite';
+import { PluginOption } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import { visualizer } from 'rollup-plugin-visualizer'; //打包分析
 import eslintPlugin from 'vite-plugin-eslint';
@@ -7,7 +8,8 @@ import vueDevTools from 'vite-plugin-vue-devtools';
 import AutoImport from 'unplugin-auto-import/vite';
 import Components from 'unplugin-vue-components/vite';
 import { AntDesignVueResolver } from 'unplugin-vue-components/resolvers';
-import { PluginOption } from 'vite';
+import UnpluginSvgComponent from 'unplugin-svg-component/vite';
+import vueJsx from '@vitejs/plugin-vue-jsx';
 
 const _visualizer = visualizer({
   emitFile: true, //是否被触摸
@@ -21,13 +23,15 @@ const lifecycle = process.env.npm_lifecycle_event; //获取当前运行的命令
 
 const VITE_REPORT = lifecycle === 'build:report'; //是否是打包分析
 
-export function createVitePlugins(viteEnv: Record<string, string>): PluginOption[] {
+export function createVitePlugins(
+  viteEnv: Record<string, string>,
+  pathSrc: string,
+): PluginOption[] {
   const { VITE_TITLE } = viteEnv;
   return [
-    UnoCSS({
-      configFile: 'uno.config.ts',
-    }),
     vue(),
+    vueJsx(),
+    vueDevTools(),
     simpleHtmlPlugin({
       minify: true,
       inject: {
@@ -37,7 +41,9 @@ export function createVitePlugins(viteEnv: Record<string, string>): PluginOption
         },
       },
     }),
-    vueDevTools(),
+    UnoCSS({
+      configFile: 'uno.config.ts',
+    }),
     Components({
       resolvers: [
         AntDesignVueResolver({
@@ -61,6 +67,14 @@ export function createVitePlugins(viteEnv: Record<string, string>): PluginOption
 
     eslintPlugin({
       include: ['src/**/*.ts', 'src/**/*.vue', 'src/*.ts', 'src/*.vue'],
+    }),
+    UnpluginSvgComponent({
+      iconDir: `${pathSrc}/assets/icons`,
+      dts: true,
+      dtsDir: `${pathSrc}/typings`,
+      componentName: 'SvgIcon',
+      preserveColor: `${pathSrc}/assets/icons`,
+      domInsertionStrategy: 'replaceHtml',
     }),
     // 打包分析
     VITE_REPORT && _visualizer,

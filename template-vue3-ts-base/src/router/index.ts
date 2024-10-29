@@ -1,6 +1,6 @@
 import NProgress from 'nprogress';
 import 'nprogress/nprogress.css';
-import router from '@/routers/router';
+import router from '@/router/routes';
 import { useUserStore } from '@/store/modules/user';
 
 NProgress.configure({
