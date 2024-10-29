@@ -1,15 +1,15 @@
 import path from 'path';
 import { defineConfig } from 'vite';
 import { loadEnv } from 'vite';
-import { createVitePlugins } from './src/plugins';
 import postCssPxToRem from 'postcss-pxtorem';
+import { createVitePlugins } from './src/plugins';
 
 const pathSrc = path.resolve(__dirname, 'src');
 
 export default defineConfig(({ mode }) => {
   const viteEnv = loadEnv(mode, process.cwd());
   return {
-    plugins: createVitePlugins(viteEnv),
+    plugins: createVitePlugins(viteEnv, pathSrc),
     resolve: {
       alias: {
         '@/': `${pathSrc}/`,
@@ -20,6 +20,11 @@ export default defineConfig(({ mode }) => {
     base: './',
     publicDir: 'public', //将public目录下的文件复制到dist目录
     css: {
+      preprocessorOptions: {
+        less: {
+          javascriptEnabled: true,
+        },
+      },
       postcss: {
         plugins: [
           postCssPxToRem({
@@ -37,7 +42,7 @@ export default defineConfig(({ mode }) => {
     server: {
       host: '0.0.0.0',
       port: 8088, // 服务端口号
-      // open: true, // 服务启动时是否自动打开浏览器
+      open: false, // 服务启动时是否自动打开浏览器
       cors: true, // 允许跨域
       proxy: {
         [viteEnv.VITE_BASE_API]: {
@@ -57,7 +62,7 @@ export default defineConfig(({ mode }) => {
     },
     assetsInclude: ['**/*.webp', '**/*.svg', '**/*.png', '**/*.jpg', '**/*.gif'],
     build: {
-      outDir: viteEnv.VITE_TITLE + '-' + viteEnv.VITE_MODE + '-dist',
+      outDir: 'dist/' + viteEnv.VITE_TITLE + '-' + viteEnv.VITE_MODE,
       minify: 'esbuild',
       chunkSizeWarningLimit: 1500,
       rollupOptions: {
@@ -73,7 +78,8 @@ export default defineConfig(({ mode }) => {
               } else if (moduleName.includes('echarts')) {
                 return 'echarts-chunks';
               }
-              return id.toString().split('node_modules/')[1].split('/')[0].toString(); //静态资源分拆打包
+              // return id.toString().split('node_modules/')[1].split('/')[0].toString();
+              return 'vendor';
             }
           },
         },
