@@ -39,6 +39,7 @@ export default defineFlatConfig([
       },
     },
     rules: {
+      'no-debugger': 'off',
       'no-undefined': 'error',
       'no-restricted-syntax': 'error',
       'no-global-assign': 'error',
