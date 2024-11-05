@@ -41,8 +41,7 @@ export const initMap = (
 /**
  * @description 加载地图UI组件
  * @param {AMap.Map} map 地图实例
- * @param cityCodes
- * @returns { ConcatArray<number>} cityCodes 城市编码
+ * @param {ConcatArray<number>} cityCodes 城市代码
  **/
 export const loadMapUI = (map: AMap.Map, cityCodes: ConcatArray<number>) => {
   const countryCode = 100000; // 全国{
