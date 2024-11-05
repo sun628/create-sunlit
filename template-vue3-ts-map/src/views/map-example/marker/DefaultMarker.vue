@@ -1,6 +1,6 @@
 <template>
   <ACard
-    class="defualt-marker-container pos-absolute top-10px right-10px m-0 w-280px overflow-auto"
+    class="default-marker-container pos-absolute top-10px right-10px m-0 w-280px overflow-auto"
     title="点标记操作"
   >
     <AList :data-source="List" item-layout="vertical">
@@ -35,6 +35,7 @@ import { defaultMarker } from './lib';
 import { useMarker } from '@/hooks/useMap';
 import { Rate } from 'ant-design-vue';
 import gantryIcon from '@/assets/images/map/gantry.png';
+
 const map = inject(MapKey);
 
 interface Item {
@@ -144,18 +145,17 @@ const data: Array<{ lon: string; lat: string; icon: string | AMap.Icon }> = [
 ];
 
 function drawMarkerLayer() {
-  const icon = new AMap.Icon({
+  data[1].icon = new AMap.Icon({
     image: gantryIcon,
     size: new AMap.Size(52, 68), // 图标尺寸
     imageSize: new AMap.Size(52, 68), // 根据所设置的大小拉伸或压缩图片
   });
-  data[1].icon = icon;
   createMarkerLayer(data);
 }
 </script>
 
 <style scoped lang="less">
-.defualt-marker-container {
+.default-marker-container {
   height: calc(100vh - 20px);
 }
 .ant-list {
