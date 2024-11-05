@@ -35,6 +35,7 @@ export const usePolyline = () => {
    * @function
    * @todo 绘制折线Polyline
    * @param Map
+   * @template ExtraData 数据源类型
    * @param { Array<ExtraData> } dataList 数据列表
    * @param { AMap.PolylineOptions | (e: AMap.PolylineEvent<ExtraData>, extData: ExtraData) => void } arg3 点标记点击事件 或者 点标记配置项
    * @param { (e: AMap.PolylineEvent<ExtraData>, extData: ExtraData) => void } arg4 点标记点击事件
