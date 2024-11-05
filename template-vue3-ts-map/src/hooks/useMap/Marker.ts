@@ -3,9 +3,9 @@ import { onBeforeUnmount } from 'vue';
  * @function
  * @todo 添加点标记
  * @see https://lbs.amap.com/api/javascript-api-v2/documentation#marker
- * @param {AMap.MarkerOptions} opts 点标记参数
- * @param {(e: AMap.MarkerEvent<ExtraData>, extData: ExtraData) => void} callback 点击回调
- * @returns {AMap.Marker} 点标记对象
+ * @template ExtraData 自定义数据类型
+ * @param {AMap.MarkerOptions<ExtraData>} opts - 创建标记的配置选项，包括基本设置和事件监听器，允许对标记的外观和行为进行广泛的自定义。
+ * @param {(e: AMap.MarkerEvent<ExtraData>, extData: ExtraData) => void} callback - 点击回调函数，参数为点击事件对象和自定义数据。
  */
 export const addMarker = <ExtraData>(
   opts: AMap.MarkerOptions<ExtraData>,
@@ -39,8 +39,11 @@ export const useMarker = (Map: MaybeRef<AMap.Map | undefined>) => {
   map = computed(() => unref(Map));
   /**
    * @function
-   * @todo 绘制marker群组图层
+   * @todo 创建点标记marker群组图层
+   * @template ExtraData 数据源类型
    * @param { Array<ExtraData> } data 数据源
+   * @param markerLayerOptions 配置项
+   * @param callback 点击回调
    **/
   const createMarkerLayer = <ExtraData extends { active?: boolean; [key: string]: any }>(
     data: Array<ExtraData>,
@@ -84,23 +87,10 @@ export const useMarker = (Map: MaybeRef<AMap.Map | undefined>) => {
 
 /**
  * @description 海量点类, [亲手试一试](https://lbs.amap.com/api/jsapi-v2/example/marker/massmarks)
- * @name MassMarks
- * @extends {AMap.Event}
- * @param {MassData[]} data 海量点数据参数
- * @param {LngLat} data.lnglat 经纬度
- * @param {number} data.style 样式索引值
- * @param {MassMarkersOptions[]} opts 海量点参数
- * @param callback
- * @param {number} opts.zIndex 图标 url
- * @param {number} opts.opacity 图标显示大小
- * @param {Vector2} opts.zooms 旋转角度
- * @param {string} opts.cursor 锚点位置
- * @param {MassMarkersStyleOptions | MassMarkersStyleOptions[]} opts.style 点展示优先级
- * @param {string} opts.style.url 图标 url
- * @param {Vector2 | Size} opts.style.size 图标显示大小
- * @param {number} opts.style.rotation 旋转角度
- * @param {pixel} opts.style.anchor 锚点位置
- * @param {number} opts.style.zIndex 点展示优先级，默认为使用样式的索引值。
+ * @name addMassMarkers
+ * @param {Array<AMap.MassMarkersDataOption>} data 数据源
+ * @param {AMap.MassMarkersOptions} opts 配置项
+ * @param {(e: Event) => void} callback 回调函数
  * @example
  * var massMarks = new AMap.MassMarks(data, {
  *     opacity: 0.8,
