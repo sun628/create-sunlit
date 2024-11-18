@@ -57,7 +57,7 @@ export function createVitePlugins(
       imports: ['vue', 'pinia', 'vue-router'], // 自动导入vue和vue-router相关函数
       resolvers: [AntDesignVueResolver()],
       eslintrc: {
-        enabled: true, // 1、改为true用于生成eslint配置。2、生成后改回false，避免重复生成消耗
+        enabled: false, // 1、改为true用于生成eslint配置。2、生成后改回false，避免重复生成消耗
         filepath: './.eslintrc-auto-import.json', // Default `./.eslintrc-auto-import.json`
         globalsPropValue: true,
       },

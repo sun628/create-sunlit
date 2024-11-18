@@ -1,37 +1,21 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
-import type { SvgName } from '~virtual/svg-component';
-
-declare module 'vue-router' {
-  interface RouteMeta {
-    requiresAuth?: boolean;
-    transitionName?: string;
-    title?: string;
-    /** 是否展示该菜单 */
-    hidden?: boolean; //
-    /* 菜单图标 */
-    icon?: SvgName;
-    keepAlive?: boolean;
-    /* 当只有一级子路由时默认不展示子路由,默认false */
-    alwaysShow?: boolean;
-  }
-}
 
 // 导入模块路由
 const metaRouters = import.meta.glob('./modules/*.ts', { eager: true });
 
 // 处理路由表
-export const routerArray: RouteRecordRaw[] = [];
+export const routerArray: AppRouteRecordRaw[] = [];
 Object.keys(metaRouters).forEach((item) => {
   Object.keys(metaRouters[item] as object).forEach((key) => {
     routerArray.push(...(metaRouters[item] as any)[key]);
   });
 });
 
-export const routes: RouteRecordRaw[] = [
+export const routes: AppRouteRecordRaw[] = [
   {
     path: '/',
     name: 'Layout',
-    redirect: '/map-example',
+    redirect: '/home',
     meta: {
       hidden: true,
     },

@@ -1,12 +1,10 @@
-// * Menu
-declare namespace Menu {
-  interface MenuOptions {
-    path: string;
-    title: string;
-    icon?: string;
-    isLink?: string;
-    close?: boolean;
-    children?: MenuOptions[];
+declare global {
+  interface Navigator {
+    msSaveOrOpenBlob: (blob: Blob, fileName: string) => void;
+    browserLanguage: string;
+  }
+  interface _AMapSecurityConfig {
+    securityJsCode: string;
   }
 }
 
