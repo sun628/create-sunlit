@@ -15,7 +15,7 @@ export const routes: AppRouteRecordRaw[] = [
   {
     path: '/',
     name: 'Layout',
-    redirect: '/home',
+    redirect: '/map-example',
     meta: {
       hidden: true,
     },

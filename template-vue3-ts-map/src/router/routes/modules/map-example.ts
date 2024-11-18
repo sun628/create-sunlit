@@ -1,7 +1,8 @@
-import { RouteRecordRaw } from 'vue-router';
-import { Layout } from '@/router/constant';
-// 地图示例模块
-const MapExampleRouter: RouteRecordRaw[] = [
+import { Layout } from '@/router/helper/constant';
+/**
+ * @description 地图示例模块
+ **/
+export default [
   {
     path: '/map-example',
     name: 'map-example',
@@ -24,5 +25,3 @@ const MapExampleRouter: RouteRecordRaw[] = [
     ],
   },
 ];
-
-export default MapExampleRouter;
