@@ -5,9 +5,7 @@ import { isNil } from 'lodash-es';
  * @todo 判断是否需要排序
  **/
 export function handRank(routeInfo: AppRouteRecordRaw) {
-  const { meta } = routeInfo;
-  console.log('meta', isNil(meta?.rank), meta?.rank);
-  return isNil(meta?.rank);
+  return isNil(routeInfo.meta?.rank);
 }
 
 /** 按照路由中meta下的rank等级升序来排序路由 */

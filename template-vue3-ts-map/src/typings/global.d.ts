@@ -1,3 +1,4 @@
+// * global
 declare global {
   interface Navigator {
     msSaveOrOpenBlob: (blob: Blob, fileName: string) => void;
@@ -8,9 +9,4 @@ declare global {
   }
 }
 
-declare type ReqDate = {
-  startTime: string;
-  endTime: string;
-};
-
-declare var AMapUI: any;
+export {};

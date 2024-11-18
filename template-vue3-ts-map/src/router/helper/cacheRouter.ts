@@ -1,4 +1,4 @@
-import { RouteRecordName, RouteRecordRaw } from 'vue-router';
+import { RouteRecordName } from 'vue-router';
 import { routes } from '@/router/routes';
 
 /**
@@ -8,7 +8,7 @@ import { routes } from '@/router/routes';
  * @return void
  * */
 const cacheRouter: string[] = [];
-const filterKeepAlive = (_route: RouteRecordRaw[], _cache: RouteRecordName[]): void => {
+const filterKeepAlive = (_route: AppRouteRecordRaw[], _cache: RouteRecordName[]): void => {
   _route.forEach((item) => {
     item.meta?.keepAlive && item.name && _cache.push(item.name);
     item.children && item.children.length !== 0 && filterKeepAlive(item.children, _cache);
