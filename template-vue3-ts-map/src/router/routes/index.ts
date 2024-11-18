@@ -1,15 +1,11 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
+import { generateRoutes } from '@/router/helper/utils';
 
 // 导入模块路由
 const metaRouters = import.meta.glob('./modules/*.ts', { eager: true });
 
 // 处理路由表
-export const routerArray: AppRouteRecordRaw[] = [];
-Object.keys(metaRouters).forEach((item) => {
-  Object.keys(metaRouters[item] as object).forEach((key) => {
-    routerArray.push(...(metaRouters[item] as any)[key]);
-  });
-});
+export const routerArray = generateRoutes(metaRouters);
 
 export const routes: AppRouteRecordRaw[] = [
   {

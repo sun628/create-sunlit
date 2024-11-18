@@ -5,7 +5,10 @@
     </template>
     <template #title>{{ item.meta?.title }}</template>
     <template v-for="subItem in item.children" :key="subItem.name">
-      <SubMenu v-if="subItem.children && subItem.children.length > 0" :item="subItem" />
+      <SubMenu
+        v-if="subItem.children && (subItem.children.length > 1 || subItem?.meta?.alwaysShow)"
+        :item="subItem"
+      />
       <MenuItem v-else :item="subItem" />
     </template>
   </ASubMenu>
