@@ -12,6 +12,8 @@ declare global {
     alwaysShow?: boolean;
     requiresAuth?: boolean;
     transitionName?: string;
+    //菜单升序排序，值越高排的越后（只针对顶级路由）可选
+    rank?: number;
   }
 
   interface AppRouteRecordRaw {
