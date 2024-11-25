@@ -52,6 +52,12 @@ export function createVitePlugins(
       ],
       dirs: ['src/components/'], // 指定组件所在目录
       dts: 'src/typings/components.d.ts',
+      // types: [
+      //   {
+      //     from: 'vue-echarts',
+      //     names: ['VChart'],
+      //   },
+      // ],
     }),
     AutoImport({
       imports: ['vue', 'pinia', 'vue-router'], // 自动导入vue和vue-router相关函数
@@ -74,7 +80,7 @@ export function createVitePlugins(
       dtsDir: `${pathSrc}/typings`,
       componentName: 'SvgIcon',
       preserveColor: `${pathSrc}/assets/icons`,
-      domInsertionStrategy: 'replaceHtml',
+      domInsertionStrategy: 'dynamic',
     }),
     // 打包分析
     VITE_REPORT && _visualizer,
