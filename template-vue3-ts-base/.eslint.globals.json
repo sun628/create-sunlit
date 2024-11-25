@@ -1,6 +1,7 @@
 {
   "globals": {
     "NodeJS": true,
-    "AMap": true
+    "AMap": true,
+    "echarts": true
   }
 }
