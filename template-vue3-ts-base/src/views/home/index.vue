@@ -15,8 +15,6 @@
 
 <script setup lang="ts">
 defineOptions({ name: 'Home' });
-const a = ref(1);
-console.log('🚀 ~ a:', a);
 </script>
 
 <style scoped lang="less">

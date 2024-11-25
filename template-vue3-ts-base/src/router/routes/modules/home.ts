@@ -1,13 +1,12 @@
-import { RouteRecordRaw } from 'vue-router';
-import { Layout } from '@/router/constant';
-// 地图示例模块
-const HomeRouter: RouteRecordRaw[] = [
+import { Layout } from '@/router/helper/constant';
+
+export default [
   {
     path: '/home',
-    name: 'home',
+    name: 'Home',
     component: Layout,
     redirect: '/home/index',
-    meta: { title: '首页', hidden: true },
+    meta: { title: '首页', hidden: true, rank: 0 },
     children: [
       {
         path: '/home/index',
@@ -18,5 +17,3 @@ const HomeRouter: RouteRecordRaw[] = [
     ],
   },
 ];
-
-export default HomeRouter;
