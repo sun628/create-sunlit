@@ -1,6 +1,6 @@
 import { Layout } from '@/router/helper/constant';
 
-export default [
+const routes: AppRouteRecordRaw[] = [
   {
     path: '/home',
     name: 'Home',
@@ -17,3 +17,4 @@ export default [
     ],
   },
 ];
+export default routes;
