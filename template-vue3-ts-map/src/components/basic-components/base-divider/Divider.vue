@@ -1,14 +1,13 @@
 <template>
-  <Divider v-bind="getBindValue" orientation="center" :orientationMargin="0">
+  <ADivider v-bind="getBindValue" orientation="center" :orientationMargin="0">
     <template v-for="(_, slotName) of $slots" #[slotName]>
       <slot :name="slotName" />
     </template>
-  </Divider>
+  </ADivider>
 </template>
 
 <script setup lang="ts">
 import { DividerProps } from 'ant-design-vue/es/divider';
-import { Divider } from 'ant-design-vue';
 
 const attrs = useAttrs();
 const props = withDefaults(defineProps<DividerProps>(), {});
