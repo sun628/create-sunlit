@@ -14,5 +14,3 @@ declare type ReqDate = {
   startTime: string;
   endTime: string;
 };
-
-declare var AMapUI: any;

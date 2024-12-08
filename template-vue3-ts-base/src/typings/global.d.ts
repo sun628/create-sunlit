@@ -7,9 +7,6 @@ declare global {
     msSaveOrOpenBlob: (blob: Blob, fileName: string) => void;
     browserLanguage: string;
   }
-  interface _AMapSecurityConfig {
-    securityJsCode: string;
-  }
 }
 
 interface CustomGlobalComponents {

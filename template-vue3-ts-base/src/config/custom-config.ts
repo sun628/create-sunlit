@@ -1,14 +1,6 @@
 import { ThemeConfig } from 'ant-design-vue/es/config-provider/context';
 import styles from '@/assets/styles/variables/index.module.less';
 
-export type MapConfig = {
-  MAP_KEY: string;
-  CITY_CODE: number;
-  SECURITY_JS_CODE: string;
-  MAP_OPTIONS: AMap.MapOptions;
-  MAP_PLUGINS: string[];
-};
-
 export const servers = [
   {
     name: 'base_server',
@@ -19,31 +11,6 @@ export const servers = [
     url: import.meta.env.FLOW_SERVER as string,
   },
 ] as const;
-
-export const mapConfig: MapConfig = {
-  /** 高德地图key */
-  MAP_KEY: '916919393f49e9132baa000648891c5f',
-
-  /** 安全密钥 */
-  SECURITY_JS_CODE: '5cbdba41718dc13ecccbd4cbdd5a493a',
-
-  /** 高德地图城市代码 */
-  CITY_CODE: 320000,
-
-  /** 地图配置项 */
-  MAP_OPTIONS: {
-    center: [118.797618, 31.970531],
-    animateEnable: true,
-    zoomEnable: true,
-    rotateEnable: true,
-    zooms: [6, 20],
-    zoom: 10,
-    viewMode: '3D',
-    mapStyle: 'amap://styles/9031513b011ff6a394e2078df5fcfcc9', //设置地图的显示样式
-  },
-  /** 地图插件 */
-  MAP_PLUGINS: ['AMap.Driving', 'AMap.MarkerCluster'],
-} as const;
 
 export const antTheme: ThemeConfig = {
   token: {
@@ -85,4 +52,4 @@ export const antTheme: ThemeConfig = {
   },
 } as const;
 
-export default Object.assign({}, servers, mapConfig, antTheme);
+export default Object.assign({}, servers, antTheme);

@@ -17,7 +17,6 @@
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,css,vue}\""
   },
   "dependencies": {
-    "@amap/amap-jsapi-loader": "^1.0.1",
     "@ant-design/icons-vue": "^7.0.1",
     "@vueuse/core": "^11.2.0",
     "ant-design-vue": "^4.2.6",
@@ -40,7 +39,6 @@
     "@types/node": "^22.9.0",
     "@vitejs/plugin-vue": "^5.2.0",
     "@vitejs/plugin-vue-jsx": "^4.1.0",
-    "amap-jsapi-v2-types": "^1.5.0",
     "eslint": "^9.15.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-define-config": "^2.1.0",

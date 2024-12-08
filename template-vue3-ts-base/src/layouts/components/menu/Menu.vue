@@ -26,6 +26,11 @@ const selectedKeys = computed(() => {
   return [router.currentRoute.value.name] as string[];
 });
 
+/**
+ * @function
+ * @todo 生成菜单
+ * @param {Array} routes 路由列表
+ **/
 function generateMenu(routes) {
   return routes.reduce((acc, route) => {
     const isHidden = route.meta && route.meta.hidden;

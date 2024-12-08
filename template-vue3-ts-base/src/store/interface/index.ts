@@ -1,8 +1,7 @@
 /* GlobalState */
 export interface GlobalState {
-  sectionMap: {
-    [key: string]: AMap.Line | AMap.Line[];
-  };
+  language?: string;
+  theme?: string;
 }
 
 /* UserState */
