@@ -3,8 +3,7 @@ import { MenuState } from '../interface';
 import piniaPersistConfig from '@/store/piniaPersist';
 
 // MenuStore
-export const MenuStore = defineStore({
-  id: 'MenuState',
+export const MenuStore = defineStore('MenuState', {
   state: (): MenuState => ({
     isCollapse: false, // menu collapse
     menuList: [], // menu List
