@@ -2,19 +2,18 @@ import path from 'path';
 import { defineConfig } from 'vite';
 import { loadEnv } from 'vite';
 import postCssPxToRem from 'postcss-pxtorem';
-import { createVitePlugins } from './src/plugins';
+import { createVitePlugin } from './src/plugins';
+import config from './src/config/default-config';
 
 const pathSrc = path.resolve(__dirname, 'src');
 
 export default defineConfig(({ mode }) => {
   const viteEnv = loadEnv(mode, process.cwd());
   return {
-    plugins: createVitePlugins(viteEnv, pathSrc),
+    plugins: createVitePlugin(viteEnv),
     resolve: {
       alias: {
-        '@/': `${pathSrc}/`,
-        '~basic-components/': `${pathSrc}/components/basic-components/`, // 基础组件
-        '~business-components/': `${pathSrc}/components/business-components/`, // 业务组件
+        '@': pathSrc,
       },
     },
     base: './',
@@ -26,17 +25,7 @@ export default defineConfig(({ mode }) => {
         },
       },
       postcss: {
-        plugins: [
-          postCssPxToRem({
-            rootValue: 100,
-            propList: ['*'], // 是一个存储哪些将被转换的属性列表，这里设置为['*']全部，假设需要仅对边框进行设置，可以写['*', '!border*']
-            unitPrecision: 5, // 保留rem小数点多少位
-            minPixelValue: 0, // 设置要替换的最小像素值 px小于x的不会被转换
-            selectorBlackList: ['.norem'], // 过滤掉.norem开头的class，不进行rem转换
-            exclude: /node_modules/i, // 这里表示不处理node_modules文件下的css
-            mediaQuery: false, // 是否在媒体查询的css代码中也进行转换
-          }),
-        ],
+        plugins: [postCssPxToRem(config.pxtorem)],
       },
     },
     server: {
