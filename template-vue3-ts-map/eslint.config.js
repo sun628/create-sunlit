@@ -5,8 +5,8 @@ import pluginVue from 'eslint-plugin-vue';
 import parserVue from 'vue-eslint-parser';
 import pluginPrettierRecommended from 'eslint-plugin-prettier/recommended';
 import { defineFlatConfig } from 'eslint-define-config';
-import fs from 'node:fs';
 import { fileURLToPath, URL } from 'node:url';
+import fs from 'node:fs';
 
 const autoImportPath = fileURLToPath(new URL('./.eslintrc-auto-import.json', import.meta.url));
 const globalPath = fileURLToPath(new URL('./.eslint.globals.json', import.meta.url));
