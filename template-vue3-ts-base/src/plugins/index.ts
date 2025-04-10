@@ -2,13 +2,12 @@ import UnoCSS from 'unocss/vite';
 import { PluginOption } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import { visualizer } from 'rollup-plugin-visualizer'; //打包分析
-import eslintPlugin from 'vite-plugin-eslint';
+import eslintPlugin from 'vite-plugin-eslint2';
 import simpleHtmlPlugin from 'vite-plugin-simple-html'; // 生成html
 import vueDevTools from 'vite-plugin-vue-devtools';
 import AutoImport from 'unplugin-auto-import/vite';
 import Components from 'unplugin-vue-components/vite';
 import { AntDesignVueResolver } from 'unplugin-vue-components/resolvers';
-import UnpluginSvgComponent from 'unplugin-svg-component/vite';
 import vueJsx from '@vitejs/plugin-vue-jsx';
 
 const _visualizer = visualizer({
@@ -23,10 +22,7 @@ const lifecycle = process.env.npm_lifecycle_event; //获取当前运行的命令
 
 const VITE_REPORT = lifecycle === 'build:report'; //是否是打包分析
 
-export function createVitePlugins(
-  viteEnv: Record<string, string>,
-  pathSrc: string,
-): PluginOption[] {
+export function createVitePlugin(viteEnv: Record<string, string>): PluginOption[] {
   const { VITE_TITLE } = viteEnv;
   return [
     vue(),
@@ -41,6 +37,7 @@ export function createVitePlugins(
         },
       },
     }),
+
     UnoCSS({
       configFile: 'uno.config.ts',
     }),
@@ -52,12 +49,6 @@ export function createVitePlugins(
       ],
       dirs: ['src/components/'], // 指定组件所在目录
       dts: 'src/typings/components.d.ts',
-      // types: [
-      //   {
-      //     from: 'vue-echarts',
-      //     names: ['VChart'],
-      //   },
-      // ],
     }),
     AutoImport({
       imports: ['vue', 'pinia', 'vue-router'], // 自动导入vue和vue-router相关函数
@@ -67,20 +58,12 @@ export function createVitePlugins(
         filepath: './.eslintrc-auto-import.json', // Default `./.eslintrc-auto-import.json`
         globalsPropValue: true,
       },
-      dirs: ['src/store/modules/**', 'src/utils/auto-import/**'],
+      dirs: ['src/store/modules/**', 'src/config/auto-import/**'],
       dts: 'src/typings/auto-imports.d.ts', // 生成 `auto-import.d.ts` 全局声明
     }),
 
     eslintPlugin({
       include: ['src/**/*.ts', 'src/**/*.vue', 'src/*.ts', 'src/*.vue'],
-    }),
-    UnpluginSvgComponent({
-      iconDir: `${pathSrc}/assets/icons`,
-      dts: true,
-      dtsDir: `${pathSrc}/typings`,
-      componentName: 'SvgIcon',
-      preserveColor: `${pathSrc}/assets/icons`,
-      domInsertionStrategy: 'dynamic',
     }),
     // 打包分析
     VITE_REPORT && _visualizer,
