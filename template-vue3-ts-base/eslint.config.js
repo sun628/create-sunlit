@@ -4,7 +4,6 @@ import tsEslint from 'typescript-eslint';
 import pluginVue from 'eslint-plugin-vue';
 import parserVue from 'vue-eslint-parser';
 import pluginPrettierRecommended from 'eslint-plugin-prettier/recommended';
-import { defineFlatConfig } from 'eslint-define-config';
 import fs from 'node:fs';
 import { fileURLToPath, URL } from 'node:url';
 
@@ -13,7 +12,7 @@ const globalPath = fileURLToPath(new URL('./.eslint.globals.json', import.meta.u
 const importJson = JSON.parse(fs.readFileSync(autoImportPath, 'utf8'));
 const globalJson = JSON.parse(fs.readFileSync(globalPath, 'utf8'));
 
-export default defineFlatConfig([
+export default [
   { files: ['**/*.{js,mjs,cjs,jsx,ts,tsx,vue}'] },
   {
     ignores: ['*dist/', 'node_modules/**/**', '*.svg', '**/*.d.ts', '*.min.js', '**/*.cjs'],
@@ -90,4 +89,4 @@ export default defineFlatConfig([
       parserOptions: { ecmaFeatures: { jsx: true }, parser: tsEslint.parser },
     },
   },
-]);
+];
