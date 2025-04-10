@@ -1,42 +1,11 @@
 {
-  "compilerOptions": {
-    "target": "ESNext",
-    "useDefineForClassFields": true,
-    "module": "ESNext",
-    "lib": ["ESNext", "DOM", "DOM.Iterable"],
-    "skipLibCheck": true,
-    "moduleResolution": "Bundler",
-    "allowImportingTsExtensions": true,
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "noEmit": true,
-    "jsx": "preserve",
-    "jsxImportSource": "vue",
-    "strict": true,
-    "noFallthroughCasesInSwitch": true,
-    "esModuleInterop": true,
-    "allowJs": true,
-    "baseUrl": ".",
-    "paths": {
-      "@/*": ["src/*"],
-      "~basic-components/*": ["src/components/basic-components/*"],
-      "~business-components/*": ["src/components/business-components/*"]
+  "files": [],
+  "references": [
+    {
+      "path": "./tsconfig.app.json"
     },
-    "noImplicitOverride": true,
-    "noUnusedLocals": true, // 启用未使用的局部变量检查
-    "useUnknownInCatchVariables": false,
-    "composite": false,
-    "declarationMap": false,
-    "forceConsistentCasingInFileNames": true,
-    "inlineSources": false,
-    "noUnusedParameters": true, // 启用未使用的参数检查
-    "removeComments": true,
-    "allowSyntheticDefaultImports": true,
-    "strictFunctionTypes": true, // 启用严格函数类型
-    "noImplicitAny": false,
-    "types": ["node", "vite/client"],
-    "plugins": [{ "name": "typescript-plugin-css-modules" }]
-  },
-  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
-  "exclude": ["node_modules", "dist"]
+    {
+      "path": "./tsconfig.node.json"
+    }
+  ]
 }
