@@ -1,4 +1,4 @@
-import { ShallowRef } from 'vue';
+import { ShallowRef, InjectionKey } from 'vue';
 
 /**
  * @description provide/inject key

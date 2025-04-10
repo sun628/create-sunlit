@@ -19,9 +19,6 @@ export const antTheme: ThemeConfig = {
     colorTextDescription: styles.colorTextDescription, // 描述色
   },
   components: {
-    Button: {
-      colorPrimary: styles.colorPrimary,
-    },
     List: {},
     Spin: {
       colorBgContainer: '#000', // 背景色
