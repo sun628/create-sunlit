@@ -1,4 +1,5 @@
 import { isNil } from 'lodash-es';
+import type { AppRouteRecordRaw } from '../types';
 
 /**
  * @function
