@@ -220,8 +220,7 @@ pnpm run lint:fix
 │   │   │   ├── date.ts                                # 日期相关工具
 │   │   │   ├── index.ts                               # 工具入口文件
 │   │   │   ├── mitt.ts                                # 事件总线工具
-│   │   │   ├── request.ts                             # 请求相关工具
-│   │   │   └── WebSocket.ts                           # WebSocket相关工具
+│   │   │   └── request.ts                             # 请求相关工具
 │   ├── views                                          # views 所有页面（按业务分文件夹）
 │   ├── App.vue                                        # vue入口页面
 │   └── main.ts                                        # ts入口文件 加载组件 初始化等
