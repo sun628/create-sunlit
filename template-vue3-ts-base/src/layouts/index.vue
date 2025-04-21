@@ -1,17 +1,10 @@
 <template>
-  <div class="container-wrapper flex" :class="{ closeSide: !open }">
-    <SideBar class="aside-container" :collapsed="open" />
-    <div class="layout-main">
-      <router-view></router-view>
-    </div>
+  <div class="container-wrapper flex">
+    <router-view></router-view>
   </div>
 </template>
 <script setup>
-import { SideBar } from './components';
 defineOptions({ name: 'Layout' });
-const open = ref(true);
 </script>
 
-<style lang="less" scoped>
-@import './layout.less';
-</style>
+<style lang="less" scoped></style>
