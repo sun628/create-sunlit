@@ -6,7 +6,7 @@ const routes: AppRouteRecordRaw[] = [
     name: 'Home',
     component: Layout,
     redirect: '/home/index',
-    meta: { title: '首页', hidden: true, rank: 0 },
+    meta: { title: '首页', rank: 0 },
     children: [
       {
         path: '/home/index',
