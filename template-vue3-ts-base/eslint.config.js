@@ -4,13 +4,8 @@ import tsEslint from 'typescript-eslint';
 import pluginVue from 'eslint-plugin-vue';
 import parserVue from 'vue-eslint-parser';
 import pluginPrettierRecommended from 'eslint-plugin-prettier/recommended';
-import fs from 'node:fs';
-import { fileURLToPath, URL } from 'node:url';
-
-const autoImportPath = fileURLToPath(new URL('./.eslintrc-auto-import.json', import.meta.url));
-const globalPath = fileURLToPath(new URL('./.eslint.globals.json', import.meta.url));
-const importJson = JSON.parse(fs.readFileSync(autoImportPath, 'utf8'));
-const globalJson = JSON.parse(fs.readFileSync(globalPath, 'utf8'));
+import importJson from './.eslintrc-auto-import.json' assert { type: 'json' };
+import globalJson from './.eslint.globals.json' assert { type: 'json' };
 
 export default [
   { files: ['**/*.{js,mjs,cjs,jsx,ts,tsx,vue}'] },
