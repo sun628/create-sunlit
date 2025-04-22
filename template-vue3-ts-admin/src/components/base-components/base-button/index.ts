@@ -1,4 +1,4 @@
-import BaseButton from './Button.vue';
+import BaseButton from './BaseButton.vue';
 
 export const Button = BaseButton;
 

@@ -1,4 +1,4 @@
-import BaseDivider from './Divider.vue';
+import BaseDivider from './BaseDivider.vue';
 
 export const Divider = BaseDivider;
 

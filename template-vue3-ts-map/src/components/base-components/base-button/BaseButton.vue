@@ -1,22 +1,23 @@
 <template>
-  <AConfigProvider :theme="btnTheme">
+  <ConfigProvider :theme="ButtonTheme">
     <Button
       v-bind="{ ...$attrs, ...omit(props, ['color', 'type']) }"
       :type="buttonType"
-      color="inherit"
+      class="base-button"
     >
       <template v-for="(_, slotName) of $slots" #[slotName]>
         <slot :name="slotName" />
       </template>
     </Button>
-  </AConfigProvider>
+  </ConfigProvider>
 </template>
 <script lang="ts" setup>
 import { omit } from 'radash';
 import { computed } from 'vue';
-import { Button } from 'ant-design-vue';
+import { Button, ConfigProvider } from 'ant-design-vue';
 import type { AButtonType, ButtonProps } from './Button';
 import { aButtonTypes, buttonColorPrimary } from './Button';
+import { lightenColor } from './color';
 
 defineOptions({
   name: 'BaseButton',
@@ -35,16 +36,26 @@ const buttonType = computed<AButtonType>(() => {
   return 'default';
 });
 
-const btnTheme = computed(() => {
-  const type = props.type!;
-
+const ButtonTheme = computed(() => {
   if (props.color || isCustomType.value) {
+    const type = props.type as keyof typeof buttonColorPrimary;
+    const colorPrimary = props.color || buttonColorPrimary[type];
+    const lightenColorValue = lightenColor(colorPrimary, 20);
     return {
       token: {
-        colorPrimary: props.color || buttonColorPrimary[type],
+        colorPrimary: colorPrimary,
+        controlOutline: colorPrimary,
+        colorLink: colorPrimary,
+        colorLinkHover: lightenColorValue,
+        colorLinkActive: lightenColorValue,
       },
     };
   }
   return void 0;
 });
 </script>
+<style lang="less" scoped>
+.base-button {
+  box-shadow: none;
+}
+</style>

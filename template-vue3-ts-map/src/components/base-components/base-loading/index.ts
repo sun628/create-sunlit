@@ -1,4 +1,4 @@
-import BaseLoading from './Loading.vue';
+import BaseLoading from './BaseLoading.vue';
 
 export const Loading = BaseLoading;
 
