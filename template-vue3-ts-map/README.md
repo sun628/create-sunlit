@@ -67,13 +67,13 @@ pnpm run dev:test
 3.生产环境
 
 ```
-npm run dev:pro
+npm run dev:prod
 ```
 
 或者
 
 ```
-pnpm run dev:pro
+pnpm run dev:prod
 ```
 
 ### 打包项目

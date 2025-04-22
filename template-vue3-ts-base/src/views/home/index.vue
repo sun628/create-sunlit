@@ -10,10 +10,12 @@
       <p class="">本基础模版基于 Vite + Vue3.5 + Pinia + Unocss + Ant Design Vue</p>
       <p class="small">环境要求 node 22+ & pnpm 包管理器</p>
     </div>
+    <BaseButton>点击</BaseButton>
   </AWatermark>
 </template>
 
 <script setup lang="ts">
+import BaseButton from '@/components/base-components/base-button';
 defineOptions({ name: 'Home' });
 </script>
 

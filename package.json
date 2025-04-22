@@ -19,7 +19,8 @@
     "build": "unbuild",
     "typecheck": "tsc --noEmit",
     "prepublishOnly": "npm run build",
-    "release": "release-it"
+    "release": "release-it",
+    "prepare": "npx tsx scripts/prepare-package.ts"
   },
   "keywords": [
     "scaffold",
@@ -35,12 +36,16 @@
   "devDependencies": {
     "@types/cross-spawn": "^6.0.6",
     "@types/minimist": "^1.2.5",
+    "@types/node": "^22.14.1",
     "@types/prompts": "^2.4.9",
     "cross-spawn": "^7.0.3",
     "minimist": "^1.2.8",
     "picocolors": "^1.1.0",
     "prompts": "^2.4.2",
     "release-it": "^17.6.0",
+    "tslib": "^2.8.1",
+    "tsx": "^4.19.3",
+    "typescript": "^5.8.3",
     "unbuild": "^2.0.0"
   }
 }

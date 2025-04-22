@@ -45,7 +45,7 @@ export const useDownload = async (
   }
 };
 
-const clearTimer = (timer: string | number | NodeJS.Timeout | null | undefined) => {
+const clearTimer = (timer) => {
   if (timer) {
     clearTimeout(timer);
     timer = null;

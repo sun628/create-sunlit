@@ -11,5 +11,5 @@
     "noUnusedLocals": true,
     "esModuleInterop": true
   },
-  "include": ["build.config.ts", "src"]
+  "include": ["build.config.ts", "src", "scripts/*.ts"]
 }
