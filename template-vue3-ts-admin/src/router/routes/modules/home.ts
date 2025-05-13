@@ -12,9 +12,9 @@ const routes: AppRouteRecordRaw[] = [
         path: '/home/index',
         name: 'home/index',
         component: () => import('@/views/home/index.vue'),
-        meta: { title: '首页', icon: 'vite' },
-      },
-    ],
-  },
+        meta: { title: '首页', icon: 'vite' }
+      }
+    ]
+  }
 ];
 export default routes;

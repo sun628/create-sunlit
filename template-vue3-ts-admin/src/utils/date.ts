@@ -15,7 +15,7 @@ import dayjs, { Dayjs } from 'dayjs';
  **/
 export function getDayRange(
   daysAgo = 0,
-  format = 'YYYY-MM-DD HH:mm:ss',
+  format = 'YYYY-MM-DD HH:mm:ss'
 ): [string, string] | [Dayjs, Dayjs] {
   const start = dayjs().subtract(daysAgo, 'day').startOf('day').format(format);
   const end =
@@ -113,7 +113,7 @@ export function parseTime(time: string | number | Date, pattern: string | undefi
     h: date.getHours(),
     i: date.getMinutes(),
     s: date.getSeconds(),
-    a: date.getDay(),
+    a: date.getDay()
   } as const;
 
   return format.replace(
@@ -129,6 +129,6 @@ export function parseTime(time: string | number | Date, pattern: string | undefi
         }
       }
       return value;
-    },
+    }
   );
 }

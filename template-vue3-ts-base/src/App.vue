@@ -1,8 +1,8 @@
 <template>
   <StyleProvider :transformers="[px2rem]">
-    <AConfigProvider :locale="zhCN" :theme="antTheme">
+    <a-config-provider :locale="zhCN" :theme="antTheme">
       <router-view></router-view>
-    </AConfigProvider>
+    </a-config-provider>
   </StyleProvider>
 </template>
 <script setup lang="ts">

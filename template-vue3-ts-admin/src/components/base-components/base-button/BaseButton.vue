@@ -12,7 +12,7 @@
   </ConfigProvider>
 </template>
 <script lang="ts" setup>
-import { omit } from 'radash';
+import { omit } from 'lodash-es';
 import { computed } from 'vue';
 import { Button, ConfigProvider } from 'ant-design-vue';
 import type { AButtonType, ButtonProps } from './Button';
@@ -20,7 +20,7 @@ import { aButtonTypes, buttonColorPrimary } from './Button';
 import { lightenColor } from './color';
 
 defineOptions({
-  name: 'BaseButton',
+  name: 'BaseButton'
 });
 
 const props = withDefaults(defineProps<ButtonProps>(), {});
@@ -47,8 +47,8 @@ const ButtonTheme = computed(() => {
         controlOutline: colorPrimary,
         colorLink: colorPrimary,
         colorLinkHover: lightenColorValue,
-        colorLinkActive: lightenColorValue,
-      },
+        colorLinkActive: lightenColorValue
+      }
     };
   }
   return void 0;

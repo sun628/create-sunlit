@@ -4,8 +4,8 @@ import tsEslint from 'typescript-eslint';
 import pluginVue from 'eslint-plugin-vue';
 import parserVue from 'vue-eslint-parser';
 import pluginPrettierRecommended from 'eslint-plugin-prettier/recommended';
-import importJson from './.eslintrc-auto-import.json' assert { type: 'json' };
-import globalJson from './.eslint.globals.json' assert { type: 'json' };
+import importJson from './.eslintrc-auto-import.json' with { type: 'json' };
+import globalJson from './.eslint.globals.json' with { type: 'json' };
 
 export default [
   { files: ['**/*.{js,mjs,cjs,jsx,ts,tsx,vue}'] },
@@ -38,6 +38,25 @@ export default [
       'no-restricted-syntax': 'error',
       'no-global-assign': 'error',
       'no-unused-expressions': 'off',
+      '@typescript-eslint/no-explicit-any': 'off',
+      '@typescript-eslint/no-unused-expressions': ['off'],
+      '@typescript-eslint/no-namespace': 'warn',
+      '@typescript-eslint/no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
+      'prefer-const': [
+        'error',
+        {
+          destructuring: 'any',
+          ignoreReadBeforeAssign: false,
+        },
+      ],
+    },
+  },
+  {
+    files: ['**/*.vue'],
+    languageOptions: {
+      parserOptions: { ecmaFeatures: { jsx: true }, parser: tsEslint.parser },
+    },
+    rules: {
       'vue/multi-word-component-names': 'off',
       'vue/attributes-order': [
         'warn',
@@ -61,27 +80,10 @@ export default [
         'error',
         'PascalCase',
         {
-          ignores: ['router-view', 'router-link', 'scroll-view'],
+          ignores: ['router-view', 'router-link', 'scroll-view', '/^a-/'],
           registeredComponentsOnly: false,
         },
       ],
-      '@typescript-eslint/no-explicit-any': 'off',
-      '@typescript-eslint/no-unused-expressions': ['off'],
-      '@typescript-eslint/no-namespace': 'warn',
-      '@typescript-eslint/no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
-      'prefer-const': [
-        'error',
-        {
-          destructuring: 'any',
-          ignoreReadBeforeAssign: false,
-        },
-      ],
-    },
-  },
-  {
-    files: ['**/*.vue'],
-    languageOptions: {
-      parserOptions: { ecmaFeatures: { jsx: true }, parser: tsEslint.parser },
     },
   },
 ];

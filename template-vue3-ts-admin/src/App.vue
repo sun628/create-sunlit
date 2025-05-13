@@ -1,8 +1,8 @@
 <template>
   <StyleProvider :transformers="[px2rem]">
-    <AConfigProvider :locale="zhCN" :theme="antTheme">
+    <a-config-provider :locale="zhCN" :theme="antTheme">
       <router-view></router-view>
-    </AConfigProvider>
+    </a-config-provider>
   </StyleProvider>
 </template>
 <script setup lang="ts">
@@ -13,7 +13,7 @@ import 'dayjs/locale/zh-cn';
 import { px2remTransformer, StyleProvider } from 'ant-design-vue';
 
 const px2rem = px2remTransformer({
-  rootValue: $config.pxtorem.rootValue,
+  rootValue: $config.pxtorem.rootValue
 });
 
 dayjs.locale('zh-cn');

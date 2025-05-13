@@ -4,11 +4,10 @@ import tsEslint from 'typescript-eslint';
 import pluginVue from 'eslint-plugin-vue';
 import parserVue from 'vue-eslint-parser';
 import pluginPrettierRecommended from 'eslint-plugin-prettier/recommended';
-import { defineFlatConfig } from 'eslint-define-config';
-import importJson from './.eslintrc-auto-import.json';
-import globalJson from './.eslint.globals.json';
+import importJson from './.eslintrc-auto-import.json' assert { type: 'json' };
+import globalJson from './.eslint.globals.json' assert { type: 'json' };
 
-export default defineFlatConfig([
+export default [
   { files: ['**/*.{js,mjs,cjs,jsx,ts,tsx,vue}'] },
   {
     ignores: ['*dist/', 'node_modules/**/**', '*.svg', '**/*.d.ts', '*.min.js', '**/*.cjs'],
@@ -39,6 +38,25 @@ export default defineFlatConfig([
       'no-restricted-syntax': 'error',
       'no-global-assign': 'error',
       'no-unused-expressions': 'off',
+      '@typescript-eslint/no-explicit-any': 'off',
+      '@typescript-eslint/no-unused-expressions': ['off'],
+      '@typescript-eslint/no-namespace': 'warn',
+      '@typescript-eslint/no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
+      'prefer-const': [
+        'error',
+        {
+          destructuring: 'any',
+          ignoreReadBeforeAssign: false,
+        },
+      ],
+    },
+  },
+  {
+    files: ['**/*.vue'],
+    languageOptions: {
+      parserOptions: { ecmaFeatures: { jsx: true }, parser: tsEslint.parser },
+    },
+    rules: {
       'vue/multi-word-component-names': 'off',
       'vue/attributes-order': [
         'warn',
@@ -62,27 +80,10 @@ export default defineFlatConfig([
         'error',
         'PascalCase',
         {
-          ignores: ['router-view', 'router-link', 'scroll-view'],
+          ignores: ['router-view', 'router-link', 'scroll-view', '/^a-/'],
           registeredComponentsOnly: false,
         },
       ],
-      '@typescript-eslint/no-explicit-any': 'off',
-      '@typescript-eslint/no-unused-expressions': ['off'],
-      '@typescript-eslint/no-namespace': 'warn',
-      '@typescript-eslint/no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
-      'prefer-const': [
-        'error',
-        {
-          destructuring: 'any',
-          ignoreReadBeforeAssign: false,
-        },
-      ],
     },
   },
-  {
-    files: ['**/*.vue'],
-    languageOptions: {
-      parserOptions: { ecmaFeatures: { jsx: true }, parser: tsEslint.parser },
-    },
-  },
-]);
+];

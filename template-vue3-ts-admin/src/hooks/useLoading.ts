@@ -67,6 +67,6 @@ export function useLoading(options?: UseLoadingOptions) {
     loadingCount,
     showLoading,
     hideLoading,
-    resetLoading,
+    resetLoading
   };
 }

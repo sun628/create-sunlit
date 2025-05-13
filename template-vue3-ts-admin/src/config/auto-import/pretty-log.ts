@@ -1,11 +1,11 @@
-import { isEmpty } from 'radash';
+import { isEmpty } from 'lodash-es';
 
 const prettyPrint = (title: string, text: string, color: string) => {
   console.log(
     `%c ${title} %c ${text} %c`,
     `background:${color};border:1px solid ${color}; padding: 1px; border-radius: 2px 0 0 2px; color: #fff;`,
     `border:1px solid ${color}; padding: 1px; border-radius: 0 2px 2px 0; color: ${color};`,
-    'background:transparent',
+    'background:transparent'
   );
 };
 
@@ -39,7 +39,7 @@ const imagePrint = (title: string, url: string, scale = 1) => {
          background-repeat: no-repeat;
          background-size: ${img.width * scale}px ${img.height * scale}px;
          color: transparent;
-        `,
+        `
       );
     }
   };
@@ -90,7 +90,7 @@ const prettyLog = () => {
     success,
     title,
     table,
-    image,
+    image
   };
 };
 
@@ -105,5 +105,5 @@ export const log =
         success: () => {},
         title: () => {},
         table: () => {},
-        image: () => {},
+        image: () => {}
       };

@@ -12,7 +12,7 @@ const piniaPersistConfig = (key: string, options: PersistenceOptions = {}) => {
   const persist: PersistenceOptions = {
     key,
     storage: localStorage,
-    ...options,
+    ...options
   };
   return persist;
 };

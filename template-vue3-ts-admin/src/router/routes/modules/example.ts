@@ -12,9 +12,9 @@ const routes: AppRouteRecordRaw[] = [
         path: '/example/echarts',
         name: 'example/echarts',
         component: () => import('@/views/example/Echarts.vue'),
-        meta: { title: 'echarts', icon: 'vite' },
-      },
-    ],
-  },
+        meta: { title: 'echarts', icon: 'vite' }
+      }
+    ]
+  }
 ];
 export default routes;

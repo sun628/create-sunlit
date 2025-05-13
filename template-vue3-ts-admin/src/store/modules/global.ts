@@ -6,5 +6,5 @@ export const useGlobalStore = defineStore('GlobalState', {
   state: (): GlobalState => ({}),
   getters: {},
   actions: {},
-  persist: true,
+  persist: true
 });

@@ -4,13 +4,13 @@ import tsEslint from 'typescript-eslint';
 import pluginVue from 'eslint-plugin-vue';
 import parserVue from 'vue-eslint-parser';
 import pluginPrettierRecommended from 'eslint-plugin-prettier/recommended';
-import importJson from './.eslintrc-auto-import.json' assert { type: 'json' };
-import globalJson from './.eslint.globals.json' assert { type: 'json' };
+import importJson from './.eslintrc-auto-import.json' with { type: 'json' };
+import globalJson from './.eslint.globals.json' with { type: 'json' };
 
 export default [
   { files: ['**/*.{js,mjs,cjs,jsx,ts,tsx,vue}'] },
   {
-    ignores: ['*dist/', 'node_modules/**/**', '*.svg', '**/*.d.ts', '*.min.js', '**/*.cjs'],
+    ignores: ['*dist/', 'node_modules/**/**', '*.svg', '**/*.d.ts', '*.min.js', '**/*.cjs']
   },
   pluginJs.configs.recommended,
   ...tsEslint.configs.recommended,
@@ -23,21 +23,40 @@ export default [
         ...globals.es2024,
         ...globals.node,
         ...importJson.globals,
-        ...globalJson.globals,
+        ...globalJson.globals
       },
       ecmaVersion: 'latest',
       parser: parserVue,
       parserOptions: {
         ecmaFeatures: { jsx: true },
-        parser: tsEslint.parser,
-      },
+        parser: tsEslint.parser
+      }
     },
     rules: {
       'no-debugger': 'off',
       'no-undefined': 'error',
       'no-restricted-syntax': 'error',
       'no-global-assign': 'error',
-      'no-unused-expressions': 'off',
+      'comma-dangle': 'off',
+      '@typescript-eslint/no-explicit-any': 'off',
+      '@typescript-eslint/no-unused-expressions': ['off'],
+      '@typescript-eslint/no-namespace': 'warn',
+      '@typescript-eslint/no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
+      'prefer-const': [
+        'error',
+        {
+          destructuring: 'any',
+          ignoreReadBeforeAssign: false
+        }
+      ]
+    }
+  },
+  {
+    files: ['**/*.vue'],
+    languageOptions: {
+      parserOptions: { ecmaFeatures: { jsx: true }, parser: tsEslint.parser }
+    },
+    rules: {
       'vue/multi-word-component-names': 'off',
       'vue/attributes-order': [
         'warn',
@@ -53,35 +72,18 @@ export default [
             'OTHER_DIRECTIVES',
             'OTHER_ATTR',
             'EVENTS',
-            'CONTENT',
-          ],
-        },
+            'CONTENT'
+          ]
+        }
       ],
       'vue/component-name-in-template-casing': [
         'error',
         'PascalCase',
         {
-          ignores: ['router-view', 'router-link', 'scroll-view'],
-          registeredComponentsOnly: false,
-        },
-      ],
-      '@typescript-eslint/no-explicit-any': 'off',
-      '@typescript-eslint/no-unused-expressions': ['off'],
-      '@typescript-eslint/no-namespace': 'warn',
-      '@typescript-eslint/no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
-      'prefer-const': [
-        'error',
-        {
-          destructuring: 'any',
-          ignoreReadBeforeAssign: false,
-        },
-      ],
-    },
-  },
-  {
-    files: ['**/*.vue'],
-    languageOptions: {
-      parserOptions: { ecmaFeatures: { jsx: true }, parser: tsEslint.parser },
-    },
-  },
+          ignores: ['router-view', 'router-link', 'scroll-view', '/^a-/'],
+          registeredComponentsOnly: false
+        }
+      ]
+    }
+  }
 ];

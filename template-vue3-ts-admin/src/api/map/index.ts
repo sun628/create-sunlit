@@ -10,10 +10,10 @@ export type * from './interface';
  **/
 export const getSectionPolyLinesApi = () => {
   return request.get<Array<Map.ResSectionPolyLines>>('/gantry/getSectionPolyLines', {
-    loading: true,
+    loading: true
   });
 };
 
 export default {
-  getSectionPolyLinesApi,
+  getSectionPolyLinesApi
 };

@@ -22,7 +22,7 @@ const copy: Directive = {
   },
   beforeUnmount(el: ElType) {
     el.removeEventListener('click', el.__handleClick__);
-  },
+  }
 };
 
 function handleClick(this: ElType) {

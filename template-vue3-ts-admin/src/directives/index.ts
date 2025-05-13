@@ -9,7 +9,7 @@ const directivesList: Record<string, Directive> = {
   copy,
   draggable,
   debounce,
-  throttle,
+  throttle
 };
 
 const directives = {
@@ -18,7 +18,7 @@ const directives = {
       // 注册所有自定义指令
       app.directive(key, directivesList[key]);
     });
-  },
+  }
 };
 
 export default directives;

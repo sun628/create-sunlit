@@ -6,7 +6,7 @@ import piniaPersistConfig from '@/store/piniaPersist';
 export const MenuStore = defineStore('MenuState', {
   state: (): MenuState => ({
     isCollapse: false, // menu collapse
-    menuList: [], // menu List
+    menuList: [] // menu List
   }),
   getters: {},
   actions: {
@@ -15,7 +15,7 @@ export const MenuStore = defineStore('MenuState', {
     },
     async setMenuList(menuList: Menu.MenuOptions[]) {
       this.menuList = menuList;
-    },
+    }
   },
-  persist: piniaPersistConfig('MenuState'),
+  persist: piniaPersistConfig('MenuState')
 });

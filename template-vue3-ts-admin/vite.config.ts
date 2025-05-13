@@ -13,20 +13,20 @@ export default defineConfig(({ mode }) => {
     plugins: createVitePlugin(viteEnv),
     resolve: {
       alias: {
-        '@': pathSrc,
-      },
+        '@': pathSrc
+      }
     },
     base: './',
     publicDir: 'public',
     css: {
       preprocessorOptions: {
         less: {
-          javascriptEnabled: true,
-        },
+          javascriptEnabled: true
+        }
       },
       postcss: {
-        plugins: [postCssPxToRem(config.pxtorem)],
-      },
+        plugins: [postCssPxToRem(config.pxtorem)]
+      }
     },
     server: {
       host: '0.0.0.0',
@@ -45,9 +45,9 @@ export default defineConfig(({ mode }) => {
               proxyRes.headers['x-real-url'] =
                 new URL(req.url || '', options.target as string)?.href || '';
             });
-          },
-        },
-      },
+          }
+        }
+      }
     },
     assetsInclude: ['**/*.webp', '**/*.svg', '**/*.png', '**/*.jpg', '**/*.gif'],
     build: {
@@ -70,9 +70,9 @@ export default defineConfig(({ mode }) => {
               // return id.toString().split('node_modules/')[1].split('/')[0].toString();
               return 'vendor';
             }
-          },
-        },
-      },
-    },
+          }
+        }
+      }
+    }
   };
 });

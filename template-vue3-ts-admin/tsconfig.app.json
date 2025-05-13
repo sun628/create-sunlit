@@ -2,14 +2,14 @@
   "compilerOptions": {
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
     "composite": true, // 启用复合项目
-    "target": "ES2020", // 目标版本
+    "target": "es2022", // 目标版本
     "useDefineForClassFields": true, // 启用类字段定义
-    "module": "ESNext", // 模块类型
-    "lib": ["ES2020", "DOM", "DOM.Iterable"], // 库
+    "module": "esnext", // 模块类型
+    "lib": ["esnext", "DOM", "DOM.Iterable"], // 库
     "skipLibCheck": true, // 跳过库检查
 
     /* Bundler mode */
-    "moduleResolution": "Bundler", // 模块解析
+    "moduleResolution": "node", // 模块解析
     "allowImportingTsExtensions": true, // 允许导入ts扩展
     "resolveJsonModule": true, // 解析json模块
     "isolatedModules": true, // 独立模块

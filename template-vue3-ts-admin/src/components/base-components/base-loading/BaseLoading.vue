@@ -7,7 +7,7 @@
 import { LoadingProps } from './Loading';
 
 const props = withDefaults(defineProps<LoadingProps>(), {
-  loading: false,
+  loading: false
 });
 
 const loading = ref(props.loading);
@@ -17,7 +17,7 @@ watch(
   (n) => {
     loading.value = n;
   },
-  { deep: true },
+  { deep: true }
 );
 </script>
 <style>

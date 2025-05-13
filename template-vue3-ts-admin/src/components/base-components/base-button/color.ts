@@ -35,7 +35,7 @@ const colorNameToHex: Record<string, string> = {
   teal: '#008080',
   silver: '#C0C0C0',
   aqua: '#00FFFF',
-  fuchsia: '#FF00FF',
+  fuchsia: '#FF00FF'
 };
 
 /**

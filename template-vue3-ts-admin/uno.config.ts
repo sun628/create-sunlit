@@ -8,7 +8,7 @@ export default defineConfig({
   theme: {
     colors: {
       // ...
-    },
+    }
   },
 
   presets: [presetUno(), presetAttributify()],
@@ -20,10 +20,10 @@ export default defineConfig({
     ['flex-column', { display: 'flex', 'flex-direction': 'column' }],
     [
       'flex-between',
-      { display: 'flex', 'justify-content': 'space-between', 'align-items': 'center' },
+      { display: 'flex', 'justify-content': 'space-between', 'align-items': 'center' }
     ],
     ['flex-1', { flex: 1 }],
     ['bg-cover', { 'background-size': '100% 100%', 'background-repeat': 'no-repeat' }],
-    ['disabled', { cursor: 'not-allowed', color: 'rgba(0, 0, 0, 0.25)' }],
-  ],
+    ['disabled', { cursor: 'not-allowed', color: 'rgba(0, 0, 0, 0.25)' }]
+  ]
 });

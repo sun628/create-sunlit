@@ -1,4 +1,4 @@
-import { isString } from 'radash';
+import { isString } from 'lodash-es';
 /**
  * @function
  * @todo  是否为经纬度LngLatLike数组
@@ -24,7 +24,7 @@ export function isValidLicense(val: unknown): val is boolean {
     /^WJ[0-9]{5}[A-HJ-NP-Z]$/, // 军队车辆
     /^[京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵粤青藏川宁琼]?警[A-Z][0-9]{4}$/, // 警车，假设“警”字后面是一个字母和四个数字
     /^[京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵粤青藏川宁琼][A-Z][0-9]{4}警$/, // 可能的地方性警车车牌
-    /^民航[A-Z][0-9]{5}$/, // 民航车辆
+    /^民航[A-Z][0-9]{5}$/ // 民航车辆
     // 更多的车牌格式
   ];
 

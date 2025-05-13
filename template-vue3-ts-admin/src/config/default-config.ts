@@ -4,7 +4,7 @@ const network = {
    * 暂时按公司后端2.0框架：200表示请求成功 | 201请求成功，并创建新的资源 | 204请求成功，并删除资源
    */
   successCode: [200, 201, 204, '200', 0, '0'],
-  routerWhiteList: ['/403', '/404', '/500', '/layout', '/login'],
+  routerWhiteList: ['/403', '/404', '/500', '/layout', '/login']
 };
 
 const setting = {
@@ -23,7 +23,7 @@ const setting = {
   // 标题分隔符
   titleSeparator: ' | ',
   // 标题是否反转 如果为false:"page - title"，如果为ture:"title - page"
-  titleReverse: true,
+  titleReverse: true
 } as const;
 
 const theme = {
@@ -34,12 +34,12 @@ const theme = {
     minPixelValue: 0, // 设置要替换的最小像素值 px小于x的不会被转换
     selectorBlackList: ['.norem'], // 过滤掉.norem开头的class，不进行rem转换
     exclude: /node_modules/i, // 这里表示不处理node_modules文件下的css
-    mediaQuery: false, // 是否在媒体查询的css代码中也进行转换
+    mediaQuery: false // 是否在媒体查询的css代码中也进行转换
   },
   layoutType: 'horizontal', // 布局模式 inline上下布局、horizontal左右布局
   tagShow: false, // 是否需要显示面包屑
   fixHeader: true, // 是否需要固定头部
-  theme: 'mixins', // 浅色主题white，深色主题dark，混合主题mixins
+  theme: 'mixins' // 浅色主题white，深色主题dark，混合主题mixins
 };
 
 export default Object.assign({}, network, setting, theme);

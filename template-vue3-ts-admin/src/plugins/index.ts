@@ -15,7 +15,7 @@ const _visualizer = visualizer({
   filename: 'report.html', //生成分析网页文件名
   open: true, //在默认用户代理中打开生成的文件
   gzipSize: false, //从源代码中收集 gzip 大小并将其显示在图表中
-  brotliSize: true, //从源代码中收集 brotli 大小并将其显示在图表中
+  brotliSize: true //从源代码中收集 brotli 大小并将其显示在图表中
 });
 
 const lifecycle = process.env.npm_lifecycle_event; //获取当前运行的命令
@@ -33,22 +33,22 @@ export function createVitePlugin(viteEnv: Record<string, string>): PluginOption[
       inject: {
         data: {
           title: VITE_TITLE,
-          versions: new Date().getTime().toString(),
-        },
-      },
+          versions: new Date().getTime().toString()
+        }
+      }
     }),
 
     UnoCSS({
-      configFile: 'uno.config.ts',
+      configFile: 'uno.config.ts'
     }),
     Components({
       resolvers: [
         AntDesignVueResolver({
-          importStyle: false, // css in js
-        }),
+          importStyle: false // css in js
+        })
       ],
-      dirs: ['src/components/'], // 指定组件所在目录
-      dts: 'src/typings/components.d.ts',
+      dirs: ['src/components'], // 指定组件所在目录
+      dts: 'src/typings/components.d.ts'
     }),
     AutoImport({
       imports: ['vue', 'pinia', 'vue-router'], // 自动导入vue和vue-router相关函数
@@ -56,16 +56,16 @@ export function createVitePlugin(viteEnv: Record<string, string>): PluginOption[
       eslintrc: {
         enabled: true, // 1、改为true用于生成eslint配置。2、生成后改回false，避免重复生成消耗
         filepath: './.eslintrc-auto-import.json', // Default `./.eslintrc-auto-import.json`
-        globalsPropValue: true,
+        globalsPropValue: true
       },
       dirs: ['src/store/modules/**', 'src/config/auto-import/**'],
-      dts: 'src/typings/auto-imports.d.ts', // 生成 `auto-import.d.ts` 全局声明
+      dts: 'src/typings/auto-imports.d.ts' // 生成 `auto-import.d.ts` 全局声明
     }),
 
     eslintPlugin({
-      include: ['src/**/*.ts', 'src/**/*.vue', 'src/*.ts', 'src/*.vue'],
+      include: ['src/**/*.ts', 'src/**/*.vue', 'src/*.ts', 'src/*.vue']
     }),
     // 打包分析
-    VITE_REPORT && _visualizer,
+    VITE_REPORT && _visualizer
   ];
 }
