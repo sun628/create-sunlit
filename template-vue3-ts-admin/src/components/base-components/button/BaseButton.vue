@@ -15,8 +15,7 @@
 import { omit } from 'lodash-es';
 import { computed } from 'vue';
 import { Button, ConfigProvider } from 'ant-design-vue';
-import type { AButtonType, ButtonProps } from './Button';
-import { aButtonTypes, buttonColorPrimary } from './Button';
+import { aButtonTypes, buttonColorPrimary, type AButtonType, type ButtonProps } from './types';
 import { lightenColor } from './color';
 
 defineOptions({

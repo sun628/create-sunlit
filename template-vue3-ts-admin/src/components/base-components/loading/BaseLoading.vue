@@ -4,7 +4,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import { LoadingProps } from './Loading';
+import { LoadingProps } from './types';
 
 const props = withDefaults(defineProps<LoadingProps>(), {
   loading: false

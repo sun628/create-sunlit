@@ -47,7 +47,7 @@ export function createVitePlugin(viteEnv: Record<string, string>): PluginOption[
           importStyle: false // css in js
         })
       ],
-      dirs: ['src/components'], // 指定组件所在目录
+      globs: ['src/components/**/*.vue', '!src/components/pro-layout/**/*.vue'],
       dts: 'src/typings/components.d.ts'
     }),
     AutoImport({

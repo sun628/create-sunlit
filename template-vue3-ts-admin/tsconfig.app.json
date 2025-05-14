@@ -9,7 +9,7 @@
     "skipLibCheck": true, // 跳过库检查
 
     /* Bundler mode */
-    "moduleResolution": "node", // 模块解析
+    "moduleResolution": "Bundler", // 模块解析
     "allowImportingTsExtensions": true, // 允许导入ts扩展
     "resolveJsonModule": true, // 解析json模块
     "isolatedModules": true, // 独立模块

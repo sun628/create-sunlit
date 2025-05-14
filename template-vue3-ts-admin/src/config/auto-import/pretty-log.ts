@@ -30,11 +30,13 @@ const imagePrint = (title: string, url: string, scale = 1) => {
       c.height = img.height;
       ctx.drawImage(img, 0, 0);
       const dataUri = c.toDataURL('image/png');
+      const paddingHeight = Math.floor((img.height * scale) / 2);
+      const paddingWidth = Math.floor((img.width * scale) / 2);
 
       console.log(
         `%c ${title}`,
         `font-size: 1px;
-         padding: ${Math.floor((img.height * scale) / 2)}px ${Math.floor((img.width * scale) / 2)}px;
+         padding: ${paddingHeight}px ${paddingWidth}px;
          background-image: url(${dataUri});
          background-repeat: no-repeat;
          background-size: ${img.width * scale}px ${img.height * scale}px;
@@ -96,7 +98,7 @@ const prettyLog = () => {
 
 // 只在开发环境中使用
 export const log =
-  import.meta.env.MODE === 'development'
+  process.env.MODE === 'development'
     ? prettyLog()
     : {
         info: () => {},
