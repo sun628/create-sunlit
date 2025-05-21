@@ -6,17 +6,17 @@
 // biome-ignore lint: disable
 export {}
 declare global {
-  const $config: typeof import('../config/auto-import/common')['$config']
-  const $confirm: typeof import('../config/auto-import/common')['$confirm']
-  const $dayjs: typeof import('../config/auto-import/common')['$dayjs']
-  const $error: typeof import('../config/auto-import/common')['$error']
-  const $info: typeof import('../config/auto-import/common')['$info']
-  const $message: typeof import('../config/auto-import/common')['$message']
-  const $notification: typeof import('../config/auto-import/common')['$notification']
-  const $success: typeof import('../config/auto-import/common')['$success']
-  const $warning: typeof import('../config/auto-import/common')['$warning']
+  const $config: typeof import('../config/auto-import/index')['$config']
+  const $confirm: typeof import('../config/auto-import/index')['$confirm']
+  const $dayjs: typeof import('../config/auto-import/index')['$dayjs']
+  const $error: typeof import('../config/auto-import/index')['$error']
+  const $info: typeof import('../config/auto-import/index')['$info']
+  const $message: typeof import('../config/auto-import/index')['$message']
+  const $notification: typeof import('../config/auto-import/index')['$notification']
+  const $success: typeof import('../config/auto-import/index')['$success']
+  const $toRem: typeof import('../config/auto-import/index')['$toRem']
+  const $warning: typeof import('../config/auto-import/index')['$warning']
   const EffectScope: typeof import('vue')['EffectScope']
-  const MenuStore: typeof import('../store/modules/menu')['MenuStore']
   const acceptHMRUpdate: typeof import('pinia')['acceptHMRUpdate']
   const computed: typeof import('vue')['computed']
   const createApp: typeof import('vue')['createApp']
@@ -70,16 +70,18 @@ declare global {
   const shallowReadonly: typeof import('vue')['shallowReadonly']
   const shallowRef: typeof import('vue')['shallowRef']
   const storeToRefs: typeof import('pinia')['storeToRefs']
+  const themeColor: typeof import('../store/modules/app')['themeColor']
   const toRaw: typeof import('vue')['toRaw']
   const toRef: typeof import('vue')['toRef']
   const toRefs: typeof import('vue')['toRefs']
+  const toRem: typeof import('../config/auto-import/common')['toRem']
   const toValue: typeof import('vue')['toValue']
   const triggerRef: typeof import('vue')['triggerRef']
   const unref: typeof import('vue')['unref']
+  const useAppStore: typeof import('../store/modules/app')['useAppStore']
   const useAttrs: typeof import('vue')['useAttrs']
   const useCssModule: typeof import('vue')['useCssModule']
   const useCssVars: typeof import('vue')['useCssVars']
-  const useGlobalStore: typeof import('../store/modules/global')['useGlobalStore']
   const useId: typeof import('vue')['useId']
   const useLink: typeof import('vue-router')['useLink']
   const useModel: typeof import('vue')['useModel']
@@ -98,4 +100,7 @@ declare global {
   // @ts-ignore
   export type { Component, Slot, Slots, ComponentPublicInstance, ComputedRef, DirectiveBinding, ExtractDefaultPropTypes, ExtractPropTypes, ExtractPublicPropTypes, InjectionKey, PropType, Ref, MaybeRef, MaybeRefOrGetter, VNode, WritableComputedRef } from 'vue'
   import('vue')
+  // @ts-ignore
+  export type { ThemeType, AppStore } from '../store/modules/app'
+  import('../store/modules/app')
 }

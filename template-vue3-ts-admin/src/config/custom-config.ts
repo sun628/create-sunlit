@@ -1,22 +1,24 @@
 import { ThemeConfig } from 'ant-design-vue/es/config-provider/context';
-import styles from '@/assets/styles/variables/index.module.less';
+import { loadEnv } from '../utils';
+
+const env = loadEnv();
 
 export const servers = [
   {
     name: 'base_server',
-    url: import.meta.env.VITE_BASE_API as string
+    url: env.VITE_BASE_API as string
   },
   {
     name: 'flow_server',
-    url: import.meta.env.FLOW_SERVER as string
+    url: env.FLOW_SERVER as string
   }
 ] as const;
 
 export const antTheme: ThemeConfig = {
   token: {
-    colorText: styles.colorBlack,
-    colorPrimary: styles.colorPrimary, // 主题色
-    colorTextDescription: styles.colorTextDescription // 描述色
+    colorText: '#000000',
+    colorPrimary: '#ff5c93', // 主题色
+    colorTextDescription: '#a8abb2' // 描述色
   },
   components: {
     List: {},

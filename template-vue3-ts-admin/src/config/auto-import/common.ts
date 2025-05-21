@@ -1,12 +1,18 @@
-import { Modal, message, notification } from 'ant-design-vue';
-import dayjs from 'dayjs';
-import config from '@/config';
-export const $config = config;
-export const $dayjs = dayjs;
-export const $message = message;
-export const $notification = notification;
-export const $confirm = Modal.confirm;
-export const $info = Modal.info;
-export const $success = Modal.success;
-export const $error = Modal.error;
-export const $warning = Modal.warning;
+import { loadEnv } from '@/utils';
+
+const env = loadEnv();
+const baseSize = Number(env.VITE_PX_REM_ROOT_VALUE);
+
+export function toRem(px: number): string {
+  // 参数验证
+  if (typeof px !== 'number' || isNaN(px)) {
+    console.warn('toRem: 输入参数必须是数字类型');
+    return '0rem';
+  }
+
+  // 计算 rem 值并保留三位小数
+  const remValue = (px / baseSize).toFixed(3);
+
+  // 添加单位并返回
+  return `${remValue}rem`;
+}

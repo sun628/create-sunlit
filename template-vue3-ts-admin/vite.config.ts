@@ -3,12 +3,12 @@ import { defineConfig } from 'vite';
 import { loadEnv } from 'vite';
 import postCssPxToRem from 'postcss-pxtorem';
 import { createVitePlugin } from './src/plugins';
-import config from './src/config/default-config';
 
 const pathSrc = path.resolve(__dirname, 'src');
 
 export default defineConfig(({ mode }) => {
   const viteEnv = loadEnv(mode, process.cwd());
+  console.log('🚀 ~ defineConfig ~ viteEnv:', viteEnv);
   return {
     plugins: createVitePlugin(viteEnv),
     resolve: {
@@ -25,7 +25,15 @@ export default defineConfig(({ mode }) => {
         }
       },
       postcss: {
-        plugins: [postCssPxToRem(config.pxtorem)]
+        plugins: [
+          postCssPxToRem({
+            rootValue: Number(viteEnv.VITE_PX_REM_ROOT_VALUE),
+            propList: ['*'],
+            unitPrecision: 5,
+            minPixelValue: 0,
+            selectorBlackList: ['.norem']
+          })
+        ]
       }
     },
     server: {
@@ -49,7 +57,6 @@ export default defineConfig(({ mode }) => {
         }
       }
     },
-    assetsInclude: ['**/*.webp', '**/*.svg', '**/*.png', '**/*.jpg', '**/*.gif'],
     build: {
       outDir: 'dist/' + viteEnv.VITE_TITLE + '-' + viteEnv.VITE_MODE,
       minify: 'esbuild',
@@ -59,17 +66,12 @@ export default defineConfig(({ mode }) => {
           chunkFileNames: 'assets/js/[name]-[hash].js',
           entryFileNames: 'assets/js/[name]-[hash].js',
           assetFileNames: 'assets/[ext]/[name]-[hash].[ext]',
-          manualChunks(id) {
-            if (id.includes('node_modules')) {
-              const moduleName = id.toString().split('node_modules/')[1].split('/')[1];
-              if (moduleName.includes('ant-design-vue')) {
-                return 'ant-design-chunks';
-              } else if (moduleName.includes('echarts')) {
-                return 'echarts-chunks';
-              }
-              // return id.toString().split('node_modules/')[1].split('/')[0].toString();
-              return 'vendor';
-            }
+          manualChunks: {
+            antd: ['ant-design-vue'],
+            echarts: ['echarts'],
+            vue: ['vue', 'vue-router', 'pinia', 'pinia-plugin-persistedstate', '@vueuse/core'],
+            axios: ['axios'],
+            other: ['nprogress', 'dayjs']
           }
         }
       }

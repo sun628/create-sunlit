@@ -1,8 +1,9 @@
-export * from './default-config.js';
-export * from './custom-config.js';
-// 默认配置
-import defaultConfig from './default-config.js';
-// 自定义配置
-import customConfig from './custom-config.js';
+import * as defaultConfig from './default-config.js';
+import * as customConfig from './custom-config.js';
 
-export default Object.assign({}, defaultConfig, customConfig);
+export * from './default-config';
+export * from './custom-config';
+
+const config = Object.assign({}, defaultConfig, customConfig);
+
+export default config;

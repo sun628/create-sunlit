@@ -1,7 +1,8 @@
 import NProgress from 'nprogress';
 import 'nprogress/nprogress.css';
 import router from '@/router/routes';
-import { useUserStore } from '@/store/modules/user';
+import { useUserStore } from '@/store';
+import { App } from 'vue';
 
 NProgress.configure({
   easing: 'ease', // 动画方式
@@ -38,4 +39,6 @@ router.afterEach((_to) => {
   NProgress.done();
 });
 
-export default router;
+export function setupRouter(app: App) {
+  app.use(router);
+}

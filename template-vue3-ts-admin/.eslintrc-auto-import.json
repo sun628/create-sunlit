@@ -101,6 +101,24 @@
     "watch": true,
     "watchEffect": true,
     "watchPostEffect": true,
-    "watchSyncEffect": true
+    "watchSyncEffect": true,
+    "LayoutSetting": true,
+    "defaultSetting": true,
+    "useLayoutSettingStore": true,
+    "USE": true,
+    "USEa": true,
+    "useAppStore": true,
+    "A": true,
+    "AppStore": true,
+    "ThemeType": true,
+    "AppState": true,
+    "AppGetters": true,
+    "tthemeColor": true,
+    "themeColor": true,
+    "toRem": true,
+    "$toRem": true,
+    "false": true,
+    "binding": true,
+    "window": true
   }
 }

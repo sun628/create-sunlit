@@ -8,14 +8,14 @@ import importJson from './.eslintrc-auto-import.json' with { type: 'json' };
 import globalJson from './.eslint.globals.json' with { type: 'json' };
 
 export default [
-  { files: ['**/*.{js,mjs,cjs,jsx,ts,tsx,vue}'] },
-  {
-    ignores: ['*dist/', 'node_modules/**/**', '*.svg', '**/*.d.ts', '*.min.js', '**/*.cjs']
-  },
   pluginJs.configs.recommended,
   ...tsEslint.configs.recommended,
   ...pluginVue.configs['flat/essential'],
   pluginPrettierRecommended,
+  { files: ['**/*.{js,mjs,cjs,jsx,ts,tsx,vue}'] },
+  {
+    ignores: ['*dist/', 'node_modules/**/**', '*.svg', '**/*.d.ts', '*.min.js', '**/*.cjs']
+  },
   {
     languageOptions: {
       globals: {

@@ -10,7 +10,6 @@
       <p class="">本基础模版基于 Vite + Vue3.5 + Pinia + Unocss + Ant Design Vue</p>
       <p class="small">环境要求 node 22+ & pnpm 包管理器</p>
       <BaseButton type="primary" color="red">点击</BaseButton>
-      <ProLayout></ProLayout>
     </div>
   </AWatermark>
 </template>

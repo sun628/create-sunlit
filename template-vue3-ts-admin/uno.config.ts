@@ -1,5 +1,5 @@
 // uno.config.ts
-import { defineConfig, presetAttributify, presetUno } from 'unocss';
+import { defineConfig, presetAttributify, presetWind3 } from 'unocss';
 
 export default defineConfig({
   shortcuts: [
@@ -11,7 +11,7 @@ export default defineConfig({
     }
   },
 
-  presets: [presetUno(), presetAttributify()],
+  presets: [presetWind3(), presetAttributify()],
   // transformers: [transformerDirectives(), transformerVariantGroup()],
   rules: [
     // ...custom rules

@@ -1,5 +1,5 @@
 <template>
-  <ADivider v-bind="getBindValue" orientation="center" :orientationMargin="0">
+  <ADivider v-bind="getBindValue" orientation="center" :orientation-margin="0">
     <template v-for="(_, slotName) of $slots" #[slotName]>
       <slot :name="slotName" />
     </template>

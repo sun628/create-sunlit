@@ -6,14 +6,15 @@
   </StyleProvider>
 </template>
 <script setup lang="ts">
+import { px2remTransformer, StyleProvider } from 'ant-design-vue';
 import zhCN from 'ant-design-vue/es/locale/zh_CN';
 import { antTheme } from '@/config';
+import { loadEnv } from '@/utils';
 import dayjs from 'dayjs';
 import 'dayjs/locale/zh-cn';
-import { px2remTransformer, StyleProvider } from 'ant-design-vue';
 
 const px2rem = px2remTransformer({
-  rootValue: $config.pxtorem.rootValue
+  rootValue: Number(loadEnv().VITE_PX_REM_ROOT_VALUE)
 });
 
 dayjs.locale('zh-cn');
