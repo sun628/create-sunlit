@@ -44,7 +44,8 @@ export function createVitePlugin(viteEnv: Record<string, string>): PluginOption[
     Components({
       resolvers: [
         AntDesignVueResolver({
-          importStyle: false // css in js
+          importStyle: false, // css in js
+          resolveIcons: true // 自动导入图标组件
         })
       ],
       // dirs: ['src/components'], // 指定要包含的目录

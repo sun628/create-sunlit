@@ -9,9 +9,22 @@
       class="layout-sider"
     >
       <Logo :collapsed="collapsed" />
-      <!-- <AsideMenu :collapsed="collapsed" :theme="getTheme" /> -->
+
+      <AsideMenu :collapsed="collapsed" :theme="getTheme" />
     </AntSider>
     <AntLayout>
+      <!-- <component :is="name" /> -->
+
+      <SvgIcon prefix="ant-design" name="home-outlined" />
+      <SvgIcon name="vite" />
+      <SvgIcon prefix="ant-design" name="arrow-up-outlined" />
+      <SvgIcon prefix="ant-design" name="arrow-down-outlined" />
+      <SvgIcon prefix="ant-design" name="arrow-left-outlined" />
+      <SvgIcon prefix="ant-design" name="arrow-right-outlined" />
+      <SvgIcon prefix="ant-design" name="arrow-up-outlined" />
+      <SvgIcon prefix="ant-design" name="step-backward-outlined" />
+      <SvgIcon prefix="ant-design" name="up-circle-filled" />
+
       <!-- <PageHeader v-model:collapsed="collapsed" :theme="getTheme">
         <template v-if="layoutSetting.layout === 'topmenu'" #left>
           <Logo :collapsed="collapsed" />
@@ -29,18 +42,18 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, computed } from 'vue';
+import { ref, computed, h } from 'vue';
 import { Layout as AntLayout } from 'ant-design-vue';
+
 const { Sider: AntSider } = AntLayout;
 import Logo from './logo/index.vue';
 // import { TabsView } from './tabs';
-// import AsideMenu from './menu/menu.vue';
+import AsideMenu from './menu/menu.vue';
 // import PageHeader from './header/index.vue';
 // import PageFooter from './footer';
 import { useAppStore } from '@/store';
 
 const { layoutSetting } = useAppStore();
-console.log('🚀 ~ layoutSetting:', layoutSetting);
 
 const collapsed = ref<boolean>(false);
 // 自定义侧边栏菜单收缩和展开时的宽度

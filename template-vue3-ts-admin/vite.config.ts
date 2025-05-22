@@ -8,7 +8,6 @@ const pathSrc = path.resolve(__dirname, 'src');
 
 export default defineConfig(({ mode }) => {
   const viteEnv = loadEnv(mode, process.cwd());
-  console.log('🚀 ~ defineConfig ~ viteEnv:', viteEnv);
   return {
     plugins: createVitePlugin(viteEnv),
     resolve: {
@@ -67,10 +66,11 @@ export default defineConfig(({ mode }) => {
           entryFileNames: 'assets/js/[name]-[hash].js',
           assetFileNames: 'assets/[ext]/[name]-[hash].[ext]',
           manualChunks: {
-            antd: ['ant-design-vue'],
             echarts: ['echarts'],
             vue: ['vue', 'vue-router', 'pinia', 'pinia-plugin-persistedstate', '@vueuse/core'],
             axios: ['axios'],
+            antd: ['ant-design-vue'],
+            antdIcon: ['@ant-design/icons-vue'],
             other: ['nprogress', 'dayjs']
           }
         }

@@ -1,12 +1,11 @@
 <template>
   <div class="logo">
-    <img :src="logo" alt="" />
+    <SvgIcon name="vite" class="mr-5" />
     <h2 v-show="!collapsed" class="title">{{ title }}</h2>
   </div>
 </template>
 
 <script setup lang="tsx">
-import logo from '@/assets/images/layout/vite.svg';
 import { loadEnv } from '@/utils';
 
 const title = loadEnv().VITE_TITLE;
@@ -32,9 +31,8 @@ defineProps({
   height: 64px;
   line-height: 64px;
 
-  img {
-    height: 32px;
-    margin-right: 8px;
+  .logo-icon {
+    margin-right: 5px;
   }
 
   .title {
