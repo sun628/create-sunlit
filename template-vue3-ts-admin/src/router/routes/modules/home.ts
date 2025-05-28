@@ -1,12 +1,11 @@
-import { Layout } from '@/router/helper/constant';
+import { RouteRecordRaw } from 'vue-router';
 
-const routes: AppRouteRecordRaw[] = [
+const routes: RouteRecordRaw[] = [
   {
     path: '/home',
     name: 'Home',
-    component: Layout,
     redirect: '/home/index',
-    meta: { title: '首页', rank: 0 },
+    meta: { title: '首页' },
     children: [
       {
         path: '/home/index',

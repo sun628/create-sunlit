@@ -49,7 +49,7 @@ export function createVitePlugin(viteEnv: Record<string, string>): PluginOption[
         })
       ],
       // dirs: ['src/components'], // 指定要包含的目录
-      globs: ['src/components/**/*.vue', '!src/components/layout/**/*.vue'],
+      globs: ['src/components/**/*.vue'],
       dts: 'src/typings/components.d.ts'
     }),
     AutoImport({

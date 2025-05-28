@@ -9,9 +9,8 @@ declare global {
   }
 }
 
-interface CustomGlobalComponents {
-  VChart: (typeof import('vue-echarts'))['default'];
-}
 declare module 'vue' {
-  export interface GlobalComponents extends CustomGlobalComponents {}
+  export interface GlobalComponents {
+    VChart: (typeof import('vue-echarts'))['default'];
+  }
 }

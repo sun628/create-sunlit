@@ -13,17 +13,8 @@
       <AsideMenu :collapsed="collapsed" :theme="getTheme" />
     </AntSider>
     <AntLayout>
+      <BaseButton color="red" type="primary"></BaseButton>
       <!-- <component :is="name" /> -->
-
-      <SvgIcon prefix="ant-design" name="home-outlined" />
-      <SvgIcon name="vite" />
-      <SvgIcon prefix="ant-design" name="arrow-up-outlined" />
-      <SvgIcon prefix="ant-design" name="arrow-down-outlined" />
-      <SvgIcon prefix="ant-design" name="arrow-left-outlined" />
-      <SvgIcon prefix="ant-design" name="arrow-right-outlined" />
-      <SvgIcon prefix="ant-design" name="arrow-up-outlined" />
-      <SvgIcon prefix="ant-design" name="step-backward-outlined" />
-      <SvgIcon prefix="ant-design" name="up-circle-filled" />
 
       <!-- <PageHeader v-model:collapsed="collapsed" :theme="getTheme">
         <template v-if="layoutSetting.layout === 'topmenu'" #left>
@@ -42,7 +33,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, computed, h } from 'vue';
+import { ref, computed } from 'vue';
 import { Layout as AntLayout } from 'ant-design-vue';
 
 const { Sider: AntSider } = AntLayout;

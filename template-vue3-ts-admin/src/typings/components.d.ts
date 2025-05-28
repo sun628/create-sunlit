@@ -9,12 +9,13 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     AButton: typeof import('ant-design-vue/es')['Button']
+    ACol: typeof import('ant-design-vue/es')['Col']
     AConfigProvider: typeof import('ant-design-vue/es')['ConfigProvider']
+    ARow: typeof import('ant-design-vue/es')['Row']
     AWatermark: typeof import('ant-design-vue/es')['Watermark']
     BaseButton: typeof import('./../components/base-components/button/BaseButton.vue')['default']
     BaseDivider: typeof import('./../components/base-components/divider/BaseDivider.vue')['default']
     BaseLoading: typeof import('./../components/base-components/loading/BaseLoading.vue')['default']
-    ProLayout: typeof import('./../components/pro-layout/page-layout/ProLayout.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     SvgIcon: typeof import('./../components/base-components/svg-icon/SvgIcon.vue')['default']

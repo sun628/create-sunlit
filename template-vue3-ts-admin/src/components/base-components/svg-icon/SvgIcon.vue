@@ -2,6 +2,7 @@
   <div class="svg-icon" :class="[iconName]" :style="iconStyle" />
 </template>
 <script setup lang="ts">
+import { isNumber } from 'lodash-es';
 import { computed } from 'vue';
 
 defineOptions({
@@ -15,14 +16,28 @@ export type SvgIconProps = {
   color?: string;
 };
 
-const props = withDefaults(defineProps<SvgIconProps>(), {
-  prefix: 'svg'
+const props = defineProps({
+  name: {
+    type: String,
+    required: true
+  },
+  prefix: {
+    type: String,
+    default: 'svg'
+  },
+  fontSize: {
+    type: [String, Number],
+    default: '0.24rem'
+  },
+  color: String
 });
 
 const iconStyle = computed(() => {
+  const { fontSize, color } = props;
+  const fontSizeValue = isNumber(fontSize) ? toRem(fontSize) : fontSize;
   return {
-    fontSize: props.fontSize || '0.24rem',
-    color: props.color
+    fontSize: fontSizeValue,
+    color
   };
 });
 

@@ -22,7 +22,7 @@ defineOptions({
   name: 'BaseButton'
 });
 
-const props = withDefaults(defineProps<ButtonProps>(), {});
+const props = defineProps<ButtonProps>();
 
 const isCustomType = computed(() => Reflect.has(buttonColorPrimary, props.type!));
 
@@ -42,11 +42,11 @@ const ButtonTheme = computed(() => {
     const lightenColorValue = lightenColor(colorPrimary, 20);
     return {
       token: {
-        colorPrimary: colorPrimary,
-        controlOutline: colorPrimary,
-        colorLink: colorPrimary,
-        colorLinkHover: lightenColorValue,
-        colorLinkActive: lightenColorValue
+        colorPrimary: colorPrimary
+        // controlOutline: colorPrimary,
+        // colorLink: colorPrimary,
+        // colorLinkHover: lightenColorValue,
+        // colorLinkActive: lightenColorValue
       }
     };
   }

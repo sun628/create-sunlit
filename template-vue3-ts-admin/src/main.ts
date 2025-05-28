@@ -10,7 +10,6 @@ import { loadEnv } from './utils';
 
 const app = createApp(App);
 const env = loadEnv();
-console.log('🚀 ~ env:', env);
 
 setupStore(app, { namespace: env.VITE_APP_NAMESPACE + env.MODE });
 setupRouter(app);

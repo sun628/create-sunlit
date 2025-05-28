@@ -26,16 +26,6 @@ const generateSafeList = () => {
 };
 
 export default defineConfig({
-  shortcuts: [
-    ['flex-center', 'flex items-center justify-center'],
-    ['flex-between', 'flex items-center justify-between'],
-    ['flex-end', 'flex items-end justify-between'],
-    ['flex-column', 'flex flex-col'],
-    ['flex-1', 'flex-1'],
-    ['bg-cover', 'bg-cover bg-no-repeat'],
-    ['disabled', 'cursor-not-allowed text-gray-500'],
-    ['text-ellipsis', 'truncate']
-  ],
   theme: {
     colors: {
       // ...
@@ -70,5 +60,14 @@ export default defineConfig({
     // ...custom rules
     ['pointer', { cursor: 'pointer' }]
   ],
-  safelist: generateSafeList() // 动态生成 `safelist`
+  safelist: generateSafeList(), // 动态生成 `safelist`
+  shortcuts: {
+    'wh-full': 'w-full h-full',
+    'flex-center': 'flex items-center justify-center',
+    'flex-between': 'flex items-center justify-between',
+    'flex-end': 'flex items-end justify-between',
+    'flex-column': 'flex flex-col',
+    'bg-cover': 'bg-cover bg-no-repeat',
+    'text-ellipsis': 'truncate'
+  }
 });

@@ -1,4 +1,4 @@
-import { RouteRecordRaw } from 'vue-router';
+import type { RouteRecordRaw } from 'vue-router';
 
 // prettier-ignore
 // eslint-disable-next-line no-useless-escape
