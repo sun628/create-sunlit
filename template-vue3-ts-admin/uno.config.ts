@@ -3,7 +3,6 @@ import { defineConfig, presetAttributify, presetIcons, presetWind3 } from 'unocs
 import { FileSystemIconLoader } from '@iconify/utils/lib/loader/node-loaders';
 import ANT_ICONS_JSON from '@iconify-json/ant-design/icons.json' with { type: 'json' };
 import presetRemToPx from '@unocss/preset-rem-to-px';
-
 import fs from 'fs';
 
 const ant_icons = Object.keys(ANT_ICONS_JSON.icons).map((item) => `i-ant-design:${item}`);
