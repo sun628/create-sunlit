@@ -39,14 +39,9 @@ const ButtonTheme = computed(() => {
   if (props.color || isCustomType.value) {
     const type = props.type as keyof typeof buttonColorPrimary;
     const colorPrimary = props.color || buttonColorPrimary[type];
-    const lightenColorValue = lightenColor(colorPrimary, 20);
     return {
       token: {
         colorPrimary: colorPrimary
-        // controlOutline: colorPrimary,
-        // colorLink: colorPrimary,
-        // colorLinkHover: lightenColorValue,
-        // colorLinkActive: lightenColorValue
       }
     };
   }
