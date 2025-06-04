@@ -1,4 +1,4 @@
-import request from '@/utils/request';
+import request from '@/interceptors';
 
 import * as Map from './interface';
 export type * from './interface';
@@ -10,7 +10,9 @@ export type * from './interface';
  **/
 export const getSectionPolyLinesApi = () => {
   return request.get<Array<Map.ResSectionPolyLines>>('/gantry/getSectionPolyLines', {
-    loading: true
+    loading: true,
+    server: 'flow_server',
+    A: 2
   });
 };
 
