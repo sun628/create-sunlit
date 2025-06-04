@@ -14,7 +14,7 @@ export const layoutSetting: LayoutSetting = {
   headerHeight: 48 // 头部高度
 };
 
-export const servers = [
+export const serversConfig = [
   {
     name: 'base_server',
     url: env.VITE_BASE_API as string
@@ -24,6 +24,8 @@ export const servers = [
     url: env.FLOW_SERVER as string
   }
 ] as const;
+
+export type ServersName = (typeof serversConfig)[number]['name'];
 
 export const antTheme: ThemeConfig = {
   token: {
@@ -64,6 +66,6 @@ export const antTheme: ThemeConfig = {
 
 export default {
   layoutSetting,
-  servers,
+  serversConfig,
   antTheme
 };
