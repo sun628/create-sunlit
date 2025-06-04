@@ -13,7 +13,6 @@
       <AsideMenu :collapsed="collapsed" :theme="getTheme" />
     </AntSider>
     <AntLayout>
-      <BaseButton color="red" type="primary"></BaseButton>
       <!-- <component :is="name" /> -->
 
       <!-- <PageHeader v-model:collapsed="collapsed" :theme="getTheme">
@@ -28,6 +27,20 @@
         <TabsView />
       </AntContent>
       <PageFooter /> -->
+
+      <AntContent class="layout-content wh-full">
+        <!-- <TabsView /> -->
+        <router-view v-slot="{ Component, route }">
+          <Suspense>
+            <Transition name="fade-transform" mode="out-in" appear>
+              <!-- <KeepAlive :include="keepAliveComponents"> -->
+              <component :is="Component" :key="route.fullPath" />
+              <!-- </KeepAlive> -->
+            </Transition>
+            <template #fallback>正在加载...</template>
+          </Suspense>
+        </router-view>
+      </AntContent>
     </AntLayout>
   </AntLayout>
 </template>
@@ -60,10 +73,24 @@ const getTheme = computed(() => (layoutSetting.navTheme === 'light' ? 'light' : 
 
   .ant-layout {
     overflow: hidden;
-  }
+    .layout-content {
+      flex: none;
 
-  .layout-content {
-    flex: none;
+      .fade-transform-enter-active,
+      .fade-transform-leave-active {
+        transition: all 0.5s;
+      }
+
+      .fade-transform-enter-from {
+        opacity: 0;
+        transform: translateX(50px);
+      }
+
+      .fade-transform-leave-to {
+        opacity: 0;
+        transform: translateX(-50px);
+      }
+    }
   }
 }
 </style>
