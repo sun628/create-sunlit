@@ -1,10 +1,6 @@
 <template>
   <ConfigProvider :theme="ButtonTheme">
-    <Button
-      v-bind="{ ...$attrs, ...omit(props, ['color', 'type']) }"
-      :type="buttonType"
-      class="base-button"
-    >
+    <Button v-bind="{ ...$attrs, ...buttonProps }" :type="buttonType" class="base-button">
       <template v-for="(_, slotName) of $slots" #[slotName]>
         <slot :name="slotName" />
       </template>
@@ -12,17 +8,17 @@
   </ConfigProvider>
 </template>
 <script lang="ts" setup>
-import { omit } from 'lodash-es';
 import { computed } from 'vue';
 import { Button, ConfigProvider } from 'ant-design-vue';
 import { aButtonTypes, buttonColorPrimary, type AButtonType, type ButtonProps } from './types';
-import { lightenColor } from './color';
 
 defineOptions({
   name: 'BaseButton'
 });
 
 const props = defineProps<ButtonProps>();
+
+const { color: _, type: __, ...buttonProps } = props;
 
 const isCustomType = computed(() => Reflect.has(buttonColorPrimary, props.type!));
 
