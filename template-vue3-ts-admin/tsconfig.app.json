@@ -1,7 +1,6 @@
 {
   "compilerOptions": {
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
-    "composite": true, // 启用复合项目
     "target": "es2022", // 目标版本
     "useDefineForClassFields": true, // 启用类字段定义
     "module": "esnext", // 模块类型
