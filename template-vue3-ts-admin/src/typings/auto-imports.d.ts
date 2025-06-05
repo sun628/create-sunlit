@@ -101,6 +101,9 @@ declare global {
   export type { Component, Slot, Slots, ComponentPublicInstance, ComputedRef, DirectiveBinding, ExtractDefaultPropTypes, ExtractPropTypes, ExtractPublicPropTypes, InjectionKey, PropType, Ref, MaybeRef, MaybeRefOrGetter, VNode, WritableComputedRef } from 'vue'
   import('vue')
   // @ts-ignore
-  export type { ThemeType, AppStore } from '../store/modules/app'
+  export type { AppStore, ThemeType } from '../store/modules/app'
   import('../store/modules/app')
+  // @ts-ignore
+  export type { userInfo } from '../store/modules/user'
+  import('../store/modules/user')
 }
