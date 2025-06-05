@@ -2,21 +2,7 @@ import { defineStore } from 'pinia';
 import type { ThemeConfig } from 'ant-design-vue/es/config-provider/context';
 import { theme as antdTheme } from 'ant-design-vue';
 import { layoutSetting as defaultSetting, type LayoutSetting } from '@/config';
-export type ThemeType = 'light' | 'dark' | 'realDark';
 import type { ComputedRef } from 'vue';
-
-export const themeColor = {
-  light: antdTheme.defaultAlgorithm,
-  dark: antdTheme.darkAlgorithm,
-  realDark: antdTheme.compactAlgorithm
-};
-/**
- * 项目默认配置项
- * primaryColor - 默认主题色, 如果修改颜色不生效，请清理 localStorage
- * navTheme - sidebar theme ['dark', 'light'] 两种主题
- * layout - 整体布局方式 ['vertical', 'horizontal'] 两种布局
- * headerHeight - 头部高度
- */
 
 export type AppStore = {
   layoutSetting: LayoutSetting;
@@ -25,6 +11,14 @@ export type AppStore = {
   toggleTheme: (navTheme: ThemeType) => void;
   setColorPrimary: (color: string) => void;
   updateLayoutSetting: (settings: Partial<LayoutSetting>) => void;
+};
+
+export type ThemeType = 'light' | 'dark' | 'realDark';
+
+export const themeColor = {
+  light: antdTheme.defaultAlgorithm,
+  dark: antdTheme.darkAlgorithm,
+  realDark: antdTheme.compactAlgorithm
 };
 
 export const useAppStore = defineStore<'app', AppStore>(

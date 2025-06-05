@@ -1,22 +1,28 @@
 import { defineStore } from 'pinia';
-import { UserState } from '@/store/interface';
-import piniaPersistConfig from '@/store/piniaPersist';
+import type { RouteRecordRaw } from 'vue-router';
+import { storeToRefs } from 'pinia';
 
-export const useUserStore = defineStore('UserState', {
-  state: (): UserState => ({
-    token: '',
-    userInfo: { username: '' }
-  }),
-  getters: {},
-  actions: {
-    // Set Token
-    setToken(token: string) {
-      this.token = token;
-    },
-    // Set setUserInfo
-    setUserInfo(userInfo: UserState['userInfo']) {
-      this.userInfo = userInfo;
-    }
+export interface UserInfo {
+  username?: string;
+  role?: string;
+  permissions?: string[];
+}
+
+export const useUserStore = defineStore(
+  'user',
+  () => {
+    const token = ref<string>('');
+    const userInfo = reactive<UserInfo>({});
+    const menus = reactive<RouteRecordRaw[]>([]);
+    return {
+      token,
+      userInfo,
+      menus
+    };
   },
-  persist: piniaPersistConfig('UserState')
-});
+  {
+    persist: {
+      pick: ['token']
+    }
+  }
+);
