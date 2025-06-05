@@ -3,11 +3,8 @@ import { message } from 'ant-design-vue';
 import { useLoading } from '@/hooks/useLoading';
 import { serversConfig, ServersName } from '@/config';
 import { checkStatus } from './checkStatus';
-import { ResultData, ResultEnum, CustomRequestConfig, CustomAxiosRequestConfig } from './types';
+import { ResultData, ResultEnum, CustomRequestConfig, CustomInternalConfig } from './types';
 
-message.config({
-  maxCount: 1
-});
 const getBaseUrl = (serverName: ServersName) => {
   const serverItem = serversConfig.find((item) => item.name === serverName);
   if (!serverItem) throw new Error('The server name is not found in the configuration file!');
@@ -30,12 +27,11 @@ class RequestHttp {
     this.service = axios.create(config);
 
     this.service.interceptors.request.use(
-      (config: CustomAxiosRequestConfig) => {
-        const { server, loading } = config;
-        if (server) {
-          config.baseURL = getBaseUrl(server);
+      (config: CustomInternalConfig) => {
+        if (config.server) {
+          config.baseURL = getBaseUrl(config.server);
         }
-        loading && showLoading();
+        config.loading && showLoading();
         return config;
       },
       (error: AxiosError) => {

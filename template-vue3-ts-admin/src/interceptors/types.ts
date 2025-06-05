@@ -1,14 +1,16 @@
 import { ServersName } from '@/config';
-import { AxiosRequestConfig, InternalAxiosRequestConfig } from 'axios';
+import type { AxiosRequestConfig, InternalAxiosRequestConfig } from 'axios';
 
-export interface CustomAxiosRequestConfig extends InternalAxiosRequestConfig {
+// 基础配置类型
+interface BaseConfig {
   loading?: boolean;
   server?: ServersName;
 }
-export interface CustomRequestConfig extends AxiosRequestConfig {
-  loading?: boolean;
-  server?: ServersName;
-}
+
+// 扩展 Axios 配置
+export interface CustomRequestConfig extends BaseConfig, AxiosRequestConfig {}
+export interface CustomInternalConfig extends BaseConfig, InternalAxiosRequestConfig {}
+
 export interface ResultData<T = any> {
   data: T;
   code: string | number;
