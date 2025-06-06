@@ -6,6 +6,7 @@
       :trigger="null"
       collapsible
       class="layout-sider"
+      :theme="layoutSetting.navTheme"
     >
       <Logo :collapsed="collapsed" />
       <SiderMenu :collapsed="collapsed" />
@@ -36,6 +37,8 @@ const { Sider: AntSider } = Layout;
 import Logo from './logo/index.vue';
 import LayoutHeader from './header/index.vue';
 import SiderMenu from './menu/menu.vue';
+
+const { layoutSetting } = useAppStore();
 
 const collapsed = ref<boolean>(false);
 // 自定义侧边栏菜单收缩和展开时的宽度

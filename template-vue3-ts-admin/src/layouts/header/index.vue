@@ -1,5 +1,5 @@
 <template>
-  <a-layout-header class="layout-header">
+  <a-layout-header class="layout-header" :style="headerStyle">
     <div class="layout-header-container">
       <div class="flex-1 overflow-x-auto">
         <slot name="headerContent">
@@ -18,6 +18,7 @@
 </template>
 
 <script setup lang="ts">
+import { computed, type CSSProperties } from 'vue';
 defineOptions({
   name: 'LayoutHeader'
 });
@@ -29,6 +30,8 @@ defineProps({
   }
 });
 
+const { layoutSetting } = useAppStore();
+
 const emits = defineEmits<{
   (e: 'collapse', val: boolean): void;
   (e: 'update:collapsed', val: boolean): void;
@@ -38,6 +41,15 @@ function updatedCollapsed(val: boolean) {
   emits('collapse', val);
   emits('update:collapsed', val);
 }
+
+const headerStyle = computed<CSSProperties>(() => {
+  const { theme } = layoutSetting;
+  const isDark = theme === 'dark';
+  return {
+    backgroundColor: isDark ? '' : 'rgba(255, 255, 255, 0.85)',
+    color: isDark ? 'rgba(255, 255, 255, 0.85)' : ''
+  };
+});
 </script>
 
 <style scoped lang="less">
