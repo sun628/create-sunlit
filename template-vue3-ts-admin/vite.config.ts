@@ -2,18 +2,19 @@ import path from 'path';
 import { defineConfig } from 'vite';
 import { loadEnv } from 'vite';
 import postCssPxToRem from 'postcss-pxtorem';
-import { createVitePlugin } from './src/plugins';
+import { createVitePlugins } from './build/createVitePlugins';
 
 const pathSrc = path.resolve(__dirname, 'src');
 
 export default defineConfig(({ mode }) => {
   const viteEnv = loadEnv(mode, process.cwd());
   return {
-    plugins: createVitePlugin(viteEnv),
+    plugins: createVitePlugins(viteEnv),
     resolve: {
       alias: {
         '@': pathSrc
-      }
+      },
+      extensions: ['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json', '.vue']
     },
     base: './',
     publicDir: 'public',
@@ -70,8 +71,7 @@ export default defineConfig(({ mode }) => {
             vue: ['vue', 'vue-router', 'pinia', 'pinia-plugin-persistedstate', '@vueuse/core'],
             axios: ['axios'],
             antd: ['ant-design-vue'],
-            antdIcon: ['@ant-design/icons-vue'],
-            other: ['nprogress', 'dayjs']
+            antdIcon: ['@ant-design/icons-vue']
           }
         }
       }
