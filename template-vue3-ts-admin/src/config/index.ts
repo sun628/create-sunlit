@@ -1,7 +1,6 @@
-import { ThemeConfig } from 'ant-design-vue/es/config-provider/context';
 import type { LayoutSetting } from './types';
 import { loadEnv } from '../utils';
-
+import { antTheme } from './antTheme';
 export * from './types';
 
 const env = loadEnv();
@@ -15,7 +14,7 @@ const env = loadEnv();
  */
 export const defaultLayoutSetting: LayoutSetting = {
   layout: 'vertical', // 整体布局方式
-  navTheme: 'dark', // sidebar theme ['dark', 'light'] 两种主题
+  navTheme: 'light', // sidebar theme ['dark', 'light'] 两种主题
   theme: 'light',
   colorPrimary: '#722ED1'
 } as const;
@@ -32,43 +31,6 @@ export const serversConfig = [
 ] as const;
 
 export type ServersName = (typeof serversConfig)[number]['name'];
-
-export const antTheme: ThemeConfig = {
-  token: {
-    colorText: '#000000',
-    colorPrimary: '#ff5c93', // 主题色
-    colorTextDescription: '#a8abb2' // 描述色
-  },
-  components: {
-    List: {},
-    Spin: {
-      colorBgContainer: '#000' // 背景色
-    },
-    Form: {
-      colorTextHeading: '#fff' // 表单标题颜色
-    },
-    DatePicker: {
-      colorBgContainer: '#1c2a45', // 背景色
-      colorBorder: '#527eac',
-      colorTextDisabled: '#a8abb2'
-    },
-    Select: {
-      colorBgContainer: '#1c2a45', // 背景色
-      colorBgElevated: '#1c2a45', // dropdown 背景色
-      controlItemBgActive: '#00aeff', // 选中背景色
-      colorText: '#fff', // 文字颜色
-      colorTextPlaceholder: '#a8abb2', // 占位符颜色
-      colorBorder: '#527eac' // 边框颜色
-    },
-    Input: {
-      colorBorder: '#527eac', // 边框颜色
-      colorText: '#fff' // 文字颜色
-    },
-    Pagination: {
-      colorText: '#fff'
-    }
-  }
-} as const;
 
 export default {
   defaultLayoutSetting,

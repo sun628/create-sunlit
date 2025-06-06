@@ -5,14 +5,13 @@
       :width="asiderWidth"
       :trigger="null"
       collapsible
-      :theme="getTheme"
       class="layout-sider"
     >
       <Logo :collapsed="collapsed" />
-      <SiderMenu :collapsed="collapsed" :theme="getTheme" />
+      <SiderMenu :collapsed="collapsed" />
     </AntSider>
     <a-layout>
-      <LayoutHeader v-model:collapsed="collapsed" :theme="getTheme" />
+      <LayoutHeader v-model:collapsed="collapsed" />
       <a-layout-content class="layout-content wh-full">
         <!-- <TabsView /> -->
         <router-view v-slot="{ Component, route }">
@@ -37,14 +36,10 @@ const { Sider: AntSider } = Layout;
 import Logo from './logo/index.vue';
 import LayoutHeader from './header/index.vue';
 import SiderMenu from './menu/menu.vue';
-import { useAppStore } from '@/store';
-
-const { layoutSetting } = useAppStore();
 
 const collapsed = ref<boolean>(false);
 // 自定义侧边栏菜单收缩和展开时的宽度
 const asiderWidth = computed(() => (collapsed.value ? $toRem(80) : $toRem(220)));
-const getTheme = computed(() => (layoutSetting.navTheme === 'light' ? 'light' : 'dark'));
 </script>
 
 <style lang="less" scoped>
