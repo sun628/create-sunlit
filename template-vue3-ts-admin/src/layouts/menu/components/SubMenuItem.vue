@@ -1,24 +1,25 @@
 <template>
   <!-- 目录 -->
-  <AntdSubMenu v-if="isShowSubMenu(item)" :key="item?.name" v-bind="$attrs">
-    <template #title>
-      <MenuItemContent :item="item" />
-    </template>
-    <template v-for="child in item.children || []" :key="child.name">
+  <a-sub-menu
+    v-if="isShowSubMenu(item)"
+    :key="item?.path"
+    v-bind="$attrs"
+    :icon="renderIcon(item?.meta?.icon)"
+    :title="item?.meta?.title"
+  >
+    <template v-for="child in item.children || []" :key="child.path">
       <SubMenuItem :item="child" />
     </template>
-  </AntdSubMenu>
+  </a-sub-menu>
   <!-- 菜单 -->
   <MenuItem v-else :item="item" />
 </template>
 
-<script setup lang="ts">
-import { SubMenu as AntdSubMenu } from 'ant-design-vue';
+<script setup lang="tsx">
 import MenuItem from './MenuItem.vue';
-import MenuItemContent from './MenuItemContent.vue';
 import type { PropType } from 'vue';
 import type { RouteRecordRaw } from 'vue-router';
-
+import { renderIcon } from '@/components/base-components/svg-icon';
 defineOptions({
   name: 'SubMenuItem'
 });
@@ -30,12 +31,13 @@ defineProps({
   }
 });
 
+/**
+ * @function
+ * @todo 判断是否显示子菜单
+ * @param  menuItem - 菜单项
+ * @returns  是否显示子菜单
+ **/
 const isShowSubMenu = (menuItem: RouteRecordRaw) => {
-  return (
-    menuItem?.meta?.type === 0 ||
-    (!Object.is(menuItem?.meta?.hideChildrenInMenu, true) && menuItem?.children?.length)
-  );
+  return !Object.is(menuItem?.meta?.hideChildrenInMenu, true) && menuItem?.children?.length;
 };
 </script>
-
-<style scoped></style>

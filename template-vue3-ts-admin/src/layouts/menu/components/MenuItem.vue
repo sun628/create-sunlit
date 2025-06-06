@@ -1,16 +1,18 @@
 <template>
-  <AntdMenuItem :key="item?.name" @click="handleMenuItemClick(item)">
-    <MenuItemContent :item="item" />
-  </AntdMenuItem>
+  <a-menu-item
+    :key="item?.path"
+    :icon="renderIcon(item?.meta?.icon)"
+    @click="handleMenuItemClick(item)"
+  >
+    <span>{{ item?.meta?.title }}</span>
+  </a-menu-item>
 </template>
 
 <script setup lang="ts">
-import { MenuItem as AntdMenuItem } from 'ant-design-vue';
-import MenuItemContent from './MenuItemContent.vue';
+import { renderIcon } from '@/components/base-components/svg-icon';
 import { useRouter } from 'vue-router';
 import type { PropType } from 'vue';
 import type { RouteRecordRaw } from 'vue-router';
-
 defineOptions({
   name: 'MyMenuItem'
 });
