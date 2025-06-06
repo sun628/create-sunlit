@@ -13,13 +13,12 @@ const env = loadEnv();
  * @param layout - 整体布局方式 ['vertical', 'horizontal'] 两种布局
  * @param headerHeight - 头部高度
  */
-export const layoutSetting: LayoutSetting = {
+export const defaultLayoutSetting: LayoutSetting = {
   layout: 'vertical', // 整体布局方式
-  navTheme: 'dark', // sidebar主题
-  theme: 'light', // 主题
-  colorPrimary: '#1677FF', // 主题色
-  headerHeight: 48 // 头部高度
-};
+  navTheme: 'dark', // sidebar theme ['dark', 'light'] 两种主题
+  theme: 'light',
+  colorPrimary: '#722ED1'
+} as const;
 
 export const serversConfig = [
   {
@@ -72,7 +71,7 @@ export const antTheme: ThemeConfig = {
 } as const;
 
 export default {
-  layoutSetting,
+  defaultLayoutSetting,
   serversConfig,
   antTheme
 };
