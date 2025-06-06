@@ -1,13 +1,9 @@
 import outsideRoutes from './outsideLayout.ts';
 import type { RouteRecordRaw } from 'vue-router';
 
-const staticModules = import.meta.glob(['./modules/**/*.ts', '!./modules/**/remaining.ts'], {
-  eager: true
-});
+// const staticModules = import.meta.glob(['./modules/**/*.ts'], { eager: true });
 
-console.log('🚀 ~ staticModules:', staticModules);
-
-export const LayoutRoute: RouteRecordRaw = {
+export const LayoutRoutes: RouteRecordRaw = {
   path: '/',
   name: 'Layout',
   redirect: '/home',
@@ -20,13 +16,13 @@ export const LayoutRoute: RouteRecordRaw = {
       path: '/home',
       name: 'Home',
       redirect: '/home/index',
-      meta: { title: '首页' },
+      meta: { title: '首页', icon: 'ant-design:home-outlined' },
       children: [
         {
           path: '/home/index',
           name: 'home/index',
           component: () => import('@/views/home/index.vue'),
-          meta: { title: '首页', icon: 'vite' }
+          meta: { title: '首页' }
         }
       ]
     },
@@ -34,13 +30,13 @@ export const LayoutRoute: RouteRecordRaw = {
       path: '/example',
       name: 'example',
       redirect: '/example/echarts',
-      meta: { title: '使用案例' },
+      meta: { title: '使用案例', icon: 'vite' },
       children: [
         {
           path: '/example/echarts',
           name: 'example/echarts',
           component: () => import('@/views/example/Echarts.vue'),
-          meta: { title: 'echarts', icon: 'vite' }
+          meta: { title: 'echarts', icon: 'ant-design:bar-chart-outlined' }
         }
       ]
     }
@@ -48,7 +44,7 @@ export const LayoutRoute: RouteRecordRaw = {
 };
 
 export const basicRoutes: Array<RouteRecordRaw> = [
-  LayoutRoute,
+  LayoutRoutes,
   // Layout之外的路由
   ...outsideRoutes
 ];
