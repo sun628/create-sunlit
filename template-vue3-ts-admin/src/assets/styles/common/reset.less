@@ -23,31 +23,11 @@ a {
   color: inherit;
 }
 
-a:hover,
-a:link,
-a:visited,
-a:active {
-  text-decoration: none;
-}
-
 ol,
 ul,
 dl {
   margin-bottom: 0;
   list-style: none;
-}
-
-input,
-textarea {
-  outline: none;
-  border: none;
-  resize: none;
-}
-
-img,
-video {
-  max-width: 100%;
-  height: auto;
 }
 
 /* 全局滚动条样式 */
@@ -67,15 +47,15 @@ video {
   background: rgba(201, 201, 201, 0.1);
 }
 
-#nprogress .bar {
-  background: var(--primary-color) !important;
-}
-#nprogress .spinner-icon {
-  border-top-color: var(--primary-color) !important;
-  border-left-color: var(--primary-color) !important;
-}
-#nprogress .peg {
-  box-shadow:
-    0 0 10px var(--primary-color),
-    0 0 5px var(--primary-color) !important;
+#nprogress {
+  .bar {
+    background-color: var(--color-primary) !important;
+  }
+  .spinner-icon {
+    border-top-color: var(--color-primary) !important;
+    border-left-color: var(--color-primary) !important;
+  }
+  .peg {
+    box-shadow: 0 0 10px var(--color-primary), 0 0 5px var(--color-primary) !important;
+  }
 }
