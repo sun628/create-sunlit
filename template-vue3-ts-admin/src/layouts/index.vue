@@ -1,5 +1,5 @@
 <template>
-  <AntLayout class="layout">
+  <a-layout class="layout">
     <AntSider
       v-model:collapsed="collapsed"
       :width="asiderWidth"
@@ -9,26 +9,11 @@
       class="layout-sider"
     >
       <Logo :collapsed="collapsed" />
-
-      <AsideMenu :collapsed="collapsed" :theme="getTheme" />
+      <SiderMenu :collapsed="collapsed" :theme="getTheme" />
     </AntSider>
-    <AntLayout>
-      <!-- <component :is="name" /> -->
-
-      <!-- <PageHeader v-model:collapsed="collapsed" :theme="getTheme">
-        <template v-if="layoutSetting.layout === 'topmenu'" #left>
-          <Logo :collapsed="collapsed" />
-        </template>
-        <template v-if="layoutSetting.layout === 'topmenu'" #menu>
-          <AsideMenu :collapsed="collapsed" :theme="getTheme" />
-        </template>
-      </PageHeader>
-      <AntContent class="layout-content">
-        <TabsView />
-      </AntContent>
-      <PageFooter /> -->
-
-      <AntContent class="layout-content wh-full">
+    <a-layout>
+      <LayoutHeader v-model:collapsed="collapsed" :theme="getTheme" />
+      <a-layout-content class="layout-content wh-full">
         <!-- <TabsView /> -->
         <router-view v-slot="{ Component, route }">
           <Suspense>
@@ -40,21 +25,18 @@
             <template #fallback>正在加载...</template>
           </Suspense>
         </router-view>
-      </AntContent>
-    </AntLayout>
-  </AntLayout>
+      </a-layout-content>
+    </a-layout>
+  </a-layout>
 </template>
 
 <script lang="ts" setup>
 import { ref, computed } from 'vue';
-import { Layout as AntLayout } from 'ant-design-vue';
-
-const { Sider: AntSider } = AntLayout;
+import { Layout } from 'ant-design-vue';
+const { Sider: AntSider } = Layout;
 import Logo from './logo/index.vue';
-// import { TabsView } from './tabs';
-import AsideMenu from './menu/menu.vue';
-// import PageHeader from './header/index.vue';
-// import PageFooter from './footer';
+import LayoutHeader from './header/index.vue';
+import SiderMenu from './menu/menu.vue';
 import { useAppStore } from '@/store';
 
 const { layoutSetting } = useAppStore();
