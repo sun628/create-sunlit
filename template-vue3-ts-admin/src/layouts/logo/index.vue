@@ -38,7 +38,7 @@ defineProps({
   .title {
     margin-bottom: 0;
     font-size: 20px;
-    color: var(--el-color-primary);
+    color: var(--color-primary);
   }
 }
 </style>
