@@ -42,6 +42,9 @@
 
 <!-- 使用 ant-design 图标 -->
 <SvgIcon name="user" prefix="ant-design" />
+
+<!-- 使用 ant-design 图标 -->
+<SvgIcon name="ant-design:user" />
 ```
 
 ## 注意事项
@@ -49,7 +52,8 @@
 1. 使用组件时必须提供 `name` 属性
 2. `fontSize` 支持字符串（如 '0.24rem'）或数字类型
 3. 图标前缀（prefix）默认为 'svg'，可选值为 'ant-design' 或 'svg'
-4. ant-design 图标需要在 uno.config 中挂在
+4. ant-design 图标需要在 uno.config 中挂载
+5. name
 
 ## 类型定义
 
