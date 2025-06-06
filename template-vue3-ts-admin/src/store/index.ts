@@ -1,5 +1,7 @@
-import type { App } from 'vue';
+export * from './modules/app';
+export * from './modules/user';
 
+import type { App } from 'vue';
 import { createPersistedState } from 'pinia-plugin-persistedstate';
 
 interface initStoreConfig {
@@ -8,16 +10,9 @@ interface initStoreConfig {
 
 export const store = createPinia();
 
-export function setupStore(app: App<Element>, options: initStoreConfig) {
-  const { namespace } = options;
+export function setupStore(app: App<Element>, { namespace }: initStoreConfig) {
+  const persistedState = createPersistedState({ key: (id) => `${namespace}:${id}` });
 
-  store.use(
-    createPersistedState({
-      key: (id) => `${namespace}:${id}`
-    })
-  );
+  store.use(persistedState);
   app.use(store);
 }
-
-export * from './modules/app';
-export * from './modules/user';

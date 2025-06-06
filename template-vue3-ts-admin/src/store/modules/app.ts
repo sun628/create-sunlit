@@ -1,80 +1,67 @@
-import { defineStore } from 'pinia';
 import type { ThemeConfig } from 'ant-design-vue/es/config-provider/context';
-import { theme as antdTheme } from 'ant-design-vue';
-import { layoutSetting as defaultSetting, type LayoutSetting } from '@/config';
-import type { ComputedRef } from 'vue';
+import { defaultLayoutSetting } from '@/config';
+import type { LayoutSetting, ThemeType } from '@/config/types';
+import { theme as antdTheme } from 'ant-design-vue/es';
 
-export type AppStore = {
-  layoutSetting: LayoutSetting;
-  themeConfig: ThemeConfig;
-  getNavTheme: ComputedRef<ThemeType | undefined>;
-  toggleTheme: (navTheme: ThemeType) => void;
-  setColorPrimary: (color: string) => void;
-  updateLayoutSetting: (settings: Partial<LayoutSetting>) => void;
-};
+const isDark = useDark();
+const toggleDark = useToggle(isDark);
 
-export type ThemeType = 'light' | 'dark' | 'realDark';
+export const useAppStore = defineStore('app', () => {
+  /**
+   * ----------------------------- theme&layout start-----------------------------
+   * --------------------------主题以及布局相关----------------------------------
+   */
+  const { darkAlgorithm, defaultAlgorithm } = antdTheme;
 
-export const themeColor = {
-  light: antdTheme.defaultAlgorithm,
-  dark: antdTheme.darkAlgorithm,
-  realDark: antdTheme.compactAlgorithm
-};
+  const layoutSetting = reactive<LayoutSetting>(defaultLayoutSetting);
+  const themeConfig: ThemeConfig = reactive<ThemeConfig>({
+    algorithm: layoutSetting.theme === 'light' ? [defaultAlgorithm] : [darkAlgorithm],
+    token: {
+      colorPrimary: layoutSetting.colorPrimary,
+      colorBgContainer: layoutSetting.theme === 'light' ? '#fff' : 'rgb(36, 37, 37)'
+    }
+  });
 
-export const useAppStore = defineStore<'app', AppStore>(
-  'app',
-  () => {
-    const layoutSetting = reactive({ ...defaultSetting });
+  if (isDark.value || layoutSetting.theme === 'dark') toggleTheme('dark');
 
-    const themeConfig = reactive<ThemeConfig>({
-      algorithm: themeColor[layoutSetting.navTheme!] || antdTheme.defaultAlgorithm,
-      token: {
-        colorPrimary: layoutSetting.colorPrimary
-      }
-    });
+  watch(isDark, () => {
+    if (isDark.value) toggleTheme('dark');
+    else toggleTheme('light');
+  });
 
-    const getNavTheme = computed(() => {
-      return layoutSetting.navTheme;
-    });
-
-    watchPostEffect(() => {
-      if (layoutSetting.navTheme) {
-        toggleTheme(layoutSetting.navTheme);
-      }
-      if (layoutSetting.colorPrimary) {
-        setColorPrimary(layoutSetting.colorPrimary);
-      }
-    });
-
-    // 切换主题
-    const toggleTheme = (navTheme: ThemeType) => {
-      if (navTheme === 'realDark') {
-        document.documentElement.classList.add('dark');
-      } else {
-        document.documentElement.classList.remove('dark');
-      }
-      themeConfig.algorithm = themeColor[navTheme];
-    };
-
-    /** 设置主题色 */
-    const setColorPrimary = (color: string) => {
-      themeConfig.token!.colorPrimary = color;
-    };
-
-    const updateLayoutSetting = (settings: Partial<LayoutSetting>) => {
-      Object.assign(layoutSetting, settings);
-    };
-
-    return {
-      layoutSetting,
-      themeConfig,
-      getNavTheme,
-      toggleTheme,
-      setColorPrimary,
-      updateLayoutSetting
-    };
-  },
-  {
-    persist: true
+  /**
+   * 切换主题配置
+   * @param theme 当前选择的主题类型，可以是 'light' 或 'dark'
+   */
+  function toggleTheme(theme: ThemeType) {
+    layoutSetting.theme = theme;
+    if (theme === 'light') {
+      toggleDark(false);
+      themeConfig.algorithm = [defaultAlgorithm];
+      if (themeConfig.token) themeConfig.token.colorBgContainer = '#fff';
+    } else if (theme === 'dark') {
+      toggleDark(true);
+      themeConfig.algorithm = [darkAlgorithm];
+      if (themeConfig.token) themeConfig.token.colorBgContainer = 'rgb(36, 37, 37)';
+    }
   }
-);
+
+  /**
+   * 切换主颜色设置
+   * 此函数用于更新布局设置中的主颜色，并同步更新主题配置中的主颜色
+   * @param color 新的主颜色值
+   */
+  function toggleColorPrimary(color: string) {
+    layoutSetting.colorPrimary = color;
+    if (themeConfig.token) {
+      themeConfig.token.colorPrimary = color;
+    }
+  }
+
+  return {
+    layoutSetting,
+    theme: themeConfig,
+    toggleTheme,
+    toggleColorPrimary
+  };
+});
