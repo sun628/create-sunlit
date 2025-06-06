@@ -1,5 +1,5 @@
 <template>
-  <div v-show="loading" class="mv-loading">
+  <div v-show="loading" class="base-loading">
     <ASpin />
   </div>
 </template>
