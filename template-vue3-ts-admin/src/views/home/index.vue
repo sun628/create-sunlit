@@ -9,7 +9,7 @@
       <h3>Vue3 Vite Base</h3>
       <p class="">本基础模版基于 Vite + Vue3.5 + Pinia + Unocss + Ant Design Vue</p>
       <p class="small">环境要求 node 22+ & pnpm 包管理器</p>
-      <BaseButton type="primary" color="red">点击</BaseButton>
+      <BaseButton type="primary" color="red">按钮</BaseButton>
     </div>
   </AWatermark>
 </template>
