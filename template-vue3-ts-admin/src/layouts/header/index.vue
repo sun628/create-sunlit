@@ -1,13 +1,13 @@
 <template>
   <a-layout-header class="layout-header" :style="headerStyle">
-    <div class="layout-header-container">
+    <div class="layout-header-container flex">
       <div class="flex-1 overflow-x-auto">
         <slot name="headerContent">
           <MenuUnfoldOutlined v-if="collapsed" class="trigger" @click="updatedCollapsed(false)" />
           <MenuFoldOutlined v-else class="trigger" @click="updatedCollapsed(true)" />
-          <!-- <slot name="breadcrumb">
+          <slot name="breadcrumb">
             <Breadcrumb />
-          </slot> -->
+          </slot>
         </slot>
       </div>
       <a-space align="center" class="flex-shrink-0">
@@ -18,7 +18,8 @@
 </template>
 
 <script setup lang="ts">
-import { computed, type CSSProperties } from 'vue';
+import { type CSSProperties } from 'vue';
+import Breadcrumb from './components/breadcrumb/index.vue';
 defineOptions({
   name: 'LayoutHeader'
 });
@@ -56,6 +57,9 @@ const headerStyle = computed<CSSProperties>(() => {
 .layout-header {
   height: 64px;
   line-height: 64px;
-  padding-inline: 0;
+  font-size: 16px;
+  padding-left: 16px;
+  box-shadow: 0 5px 4px rgba(0, 21, 41, 0.08);
+  position: relative;
 }
 </style>

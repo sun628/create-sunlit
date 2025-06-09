@@ -9,18 +9,18 @@
       :theme="layoutSetting.navTheme"
     >
       <Logo :collapsed="collapsed" />
-      <SiderMenu :collapsed="collapsed" />
+      <SiderMenu :collapsed="collapsed" :theme="layoutSetting.navTheme" />
     </AntSider>
     <a-layout>
       <LayoutHeader v-model:collapsed="collapsed" />
-      <a-layout-content class="layout-content wh-full">
+      <a-layout-content class="layout-content flex-1">
         <!-- <TabsView /> -->
         <router-view v-slot="{ Component, route }">
           <Suspense>
             <Transition name="fade-transform" mode="out-in" appear>
-              <!-- <KeepAlive :include="keepAliveComponents"> -->
-              <component :is="Component" :key="route.fullPath" />
-              <!-- </KeepAlive> -->
+              <KeepAlive max="10">
+                <component :is="Component" :key="route.fullPath" />
+              </KeepAlive>
             </Transition>
             <template #fallback>正在加载...</template>
           </Suspense>
@@ -53,9 +53,11 @@ const asiderWidth = computed(() => (collapsed.value ? $toRem(80) : $toRem(220)))
 
   .ant-layout {
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
     .layout-content {
-      flex: none;
-
+      flex: 1;
+      background-color: #edf1fa;
       .fade-transform-enter-active,
       .fade-transform-leave-active {
         transition: all 0.5s;
