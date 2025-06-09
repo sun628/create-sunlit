@@ -1,6 +1,6 @@
 <template>
   <ConfigProvider :theme="ButtonTheme">
-    <Button v-bind="{ ...$attrs, ...buttonProps }" :type="buttonType" class="base-button">
+    <Button v-bind="{ ...$attrs, ...buttonProps }" :type="buttonType" :class="buttonCls">
       <template v-for="(_, slotName) of $slots" #[slotName]>
         <slot :name="slotName" />
       </template>
@@ -11,6 +11,9 @@
 import { computed } from 'vue';
 import { Button, ConfigProvider } from 'ant-design-vue';
 import { aButtonTypes, buttonColorPrimary, type AButtonType, type ButtonProps } from './types';
+import { useNamespace } from '@/hooks';
+const ns = useNamespace('button');
+const buttonCls = ns.b();
 
 defineOptions({
   name: 'BaseButton'

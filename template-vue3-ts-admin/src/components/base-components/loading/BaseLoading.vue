@@ -1,10 +1,13 @@
 <template>
-  <div v-show="loading" class="base-loading">
+  <div v-show="loading" :class="loadingCls">
     <ASpin />
   </div>
 </template>
 <script setup lang="ts">
 import { LoadingProps } from './types';
+import { useNamespace } from '@/hooks';
+const ns = useNamespace('loading');
+const loadingCls = ns.b();
 
 const props = withDefaults(defineProps<LoadingProps>(), {
   loading: false
