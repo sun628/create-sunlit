@@ -4,16 +4,13 @@ import postCssPxToRem from 'postcss-pxtorem';
 import { createPlugins } from './build/plugins';
 import { createProxy } from './build/proxy';
 
-const pathSrc = path.resolve(__dirname, 'src');
-
 export default defineConfig(({ mode }) => {
   const viteEnv = loadEnv(mode, process.cwd());
-
   return {
     plugins: createPlugins(viteEnv),
     resolve: {
       alias: {
-        '@': pathSrc
+        '@': path.resolve(__dirname, 'src')
       },
       extensions: ['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json', '.vue']
     },
