@@ -3,7 +3,7 @@ import { createProxyConfig } from '../src/config';
 
 /**
  * 创建Vite代理配置
- * @param serverConfig 服务器配置列表，key为服务名称，value为包含prefix和config的对象
+ * @param env 环境变量
  * @returns Vite代理配置对象
  */
 export function createProxy(env: Record<string, string>) {
