@@ -1,15 +1,16 @@
 import path from 'path';
-import { defineConfig } from 'vite';
-import { loadEnv } from 'vite';
+import { defineConfig, loadEnv } from 'vite';
 import postCssPxToRem from 'postcss-pxtorem';
-import { createVitePlugins } from './build/createVitePlugins';
+import { createPlugins } from './build/plugins';
+import { createProxy } from './build/proxy';
 
 const pathSrc = path.resolve(__dirname, 'src');
 
 export default defineConfig(({ mode }) => {
   const viteEnv = loadEnv(mode, process.cwd());
+
   return {
-    plugins: createVitePlugins(viteEnv),
+    plugins: createPlugins(viteEnv),
     resolve: {
       alias: {
         '@': pathSrc
@@ -38,24 +39,10 @@ export default defineConfig(({ mode }) => {
     },
     server: {
       host: '0.0.0.0',
-      port: 8088, // 服务端口号
-      open: false, // 服务启动时是否自动打开浏览器
-      cors: true, // 允许跨域
-      proxy: {
-        [viteEnv.VITE_BASE_API]: {
-          target: viteEnv.VITE_BASE_API_URL,
-          changeOrigin: true,
-          secure: false, // 如果是https接口，需要配置这个参数
-          rewrite: (path) => path.replace(viteEnv.VITE_BASE_API, ''),
-          configure: (proxy, options) => {
-            // 配置此项可在响应头中看到请求的真实地址
-            proxy.on('proxyRes', (proxyRes, req) => {
-              proxyRes.headers['x-real-url'] =
-                new URL(req.url || '', options.target as string)?.href || '';
-            });
-          }
-        }
-      }
+      port: 8088,
+      open: false,
+      cors: true,
+      proxy: createProxy(viteEnv)
     },
     build: {
       outDir: 'dist/' + viteEnv.VITE_TITLE + '-' + viteEnv.VITE_MODE,
