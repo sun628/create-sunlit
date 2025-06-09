@@ -230,7 +230,7 @@ pnpm run lint:fix
 ├── .env.test                                          # 测试环境变量配置
 ├── .eslint.globals.json                               # eslint 全局变量配置
 │── .eslintrc-auto-import.json                         # AutoImport会生成eslint的自动引入extends文件
-├── .gitignore                                         # git忽略文件（svn无法自动识别忽略文件，手动引入该文件）
+├── .gitignore                                         # git忽略文件
 ├── .prettierignore                                    # prettier忽略文件
 ├── .prettierrc.cjs                                    # prettier 配置项
 ├── babel.config.json                                  # babel配置文件
@@ -412,29 +412,6 @@ Unocss({
 ```
 
 如果需要配置全局的变量，在.eslint.globals.json中
-
-## 代码版本忽略文件
-
-`git` 可以自动识别根目录下的 `.gitignore`
-但是svn不可以，可以在svn的设置（windows）或者属性（mac os）中导入忽略文件
-<img src="./src/assets/images/README/svn.jpg">
-目前设置了,有需要请补充
-
-```
-*.local
-.DS_Store
-node_modules
-*dist
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-.idea
-.vscode
-pnpm-lock.yaml
-package-lock.json
-yarn.lock
-```
 
 ## 其他注意
 
