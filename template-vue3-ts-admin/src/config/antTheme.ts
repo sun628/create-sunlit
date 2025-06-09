@@ -9,7 +9,11 @@ export type AntTheme = {
  * 亮色主题和暗色主题
  */
 export const antTheme: AntTheme = {
-  light: {},
+  light: {
+    token: {
+      colorTextDisabled: 'rgba(0, 0, 0, 0.35)'
+    }
+  },
   dark: {
     token: {
       colorText: '#000000',
