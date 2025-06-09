@@ -8,9 +8,7 @@ export const LayoutRoutes: RouteRecordRaw = {
   name: 'Layout',
   redirect: '/home',
   component: () => import('@/layouts/index.vue'),
-  meta: {
-    title: '根路由'
-  },
+  meta: { title: '首页', icon: 'ant-design:home-outlined' },
   children: [
     {
       path: '/home',
@@ -22,7 +20,7 @@ export const LayoutRoutes: RouteRecordRaw = {
           path: '/home/index',
           name: 'home/index',
           component: () => import('@/views/home/index.vue'),
-          meta: { title: '首页' }
+          meta: { title: '介绍' }
         }
       ]
     },
