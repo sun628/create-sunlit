@@ -6,18 +6,7 @@ import minimist from 'minimist'
 import prompts from 'prompts'
 import colors from 'picocolors'
 
-const {
-  blue,
-  blueBright,
-  cyan,
-  green,
-  greenBright,
-  magenta,
-  red,
-  redBright,
-  reset,
-  yellow,
-} = colors
+const { blue, blueBright, cyan, green, greenBright, magenta, red, reset, yellow } = colors
 
 // Avoids autoconversion to number of the project name by defining that the args
 // non associated with an option ( _ ) needs to be parsed as a string. See #4606
@@ -71,7 +60,7 @@ const FRAMEWORKS: Framework[] = [
       {
         name: 'vue3-ts-base',
         display: 'ts-base',
-        color: blue,
+        color: green,
       },
       {
         name: 'vue3-ts-map',
@@ -86,7 +75,7 @@ const FRAMEWORKS: Framework[] = [
       {
         name: 'custom-create-vue',
         display: 'Customize with create-vue ↗',
-        color: green,
+        color: magenta,
         customCommand: 'npm create vue@latest TARGET_DIR',
       },
       {
