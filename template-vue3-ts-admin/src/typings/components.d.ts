@@ -20,14 +20,11 @@ declare module 'vue' {
     ASubMenu: typeof import('ant-design-vue/es')['SubMenu']
     AWatermark: typeof import('ant-design-vue/es')['Watermark']
     BaseButton: typeof import('./../components/base-components/button/BaseButton.vue')['default']
-    BaseDivider: typeof import('./../components/base-components/divider/BaseDivider.vue')['default']
     BaseLoading: typeof import('./../components/base-components/loading/BaseLoading.vue')['default']
     MenuFoldOutlined: typeof import('@ant-design/icons-vue')['MenuFoldOutlined']
     MenuUnfoldOutlined: typeof import('@ant-design/icons-vue')['MenuUnfoldOutlined']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
-    StepBackwardOutlined: typeof import('@ant-design/icons-vue')['StepBackwardOutlined']
     SvgIcon: typeof import('./../components/base-components/svg-icon/SvgIcon.vue')['default']
-    TeamOutlined: typeof import('@ant-design/icons-vue')['TeamOutlined']
   }
 }
