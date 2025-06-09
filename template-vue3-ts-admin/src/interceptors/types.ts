@@ -1,10 +1,10 @@
-import { ServersName } from '@/config';
+import { proxyName } from '@/config';
 import type { AxiosRequestConfig, InternalAxiosRequestConfig } from 'axios';
 
 // 基础配置类型
 interface BaseConfig {
   loading?: boolean;
-  server?: ServersName;
+  server?: proxyName;
 }
 
 // 扩展 Axios 配置

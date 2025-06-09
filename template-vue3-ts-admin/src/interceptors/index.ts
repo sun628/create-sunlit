@@ -1,14 +1,17 @@
 import axios, { AxiosInstance, AxiosError, AxiosRequestConfig, AxiosResponse } from 'axios';
-import { message } from 'ant-design-vue';
-import { useLoading } from '@/hooks/useLoading';
-import { serversConfig, ServersName } from '@/config';
-import { checkStatus } from './checkStatus';
 import { ResultData, ResultEnum, CustomRequestConfig, CustomInternalConfig } from './types';
+import { type proxyName, createProxyConfig } from '@/config';
+import { useLoading } from '@/hooks/useLoading';
+import { checkStatus } from './checkStatus';
+import { message } from 'ant-design-vue';
+import { isString } from 'lodash-es';
 
-const getBaseUrl = (serverName: ServersName) => {
-  const serverItem = serversConfig.find((item) => item.name === serverName);
-  if (!serverItem) throw new Error('The server name is not found in the configuration file!');
-  return serverItem.url;
+const proxyConfig = createProxyConfig(import.meta.env);
+
+const getBaseUrl = (serverName: proxyName) => {
+  const { config } = proxyConfig[serverName];
+  if (!config) throw new Error('The server name is not found in the configuration file!');
+  return isString(config) ? config : config.target;
 };
 
 const { showLoading, hideLoading } = useLoading();
