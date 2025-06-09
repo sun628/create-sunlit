@@ -44,12 +44,8 @@ Options:
 Available templates:
 ${green     ('vue3-ts-map    vue'      )}
 ${yellow    ('vue3-ts-base   vue'      )}
+${blue     ('vue3-ts-admin  vue'      )}
 ${cyan      ('react-ts       react'    )}
-${cyan      ('react-swc-ts   react-swc')}
-${magenta   ('preact-ts      preact'   )}
-${redBright ('lit-ts         lit'      )}
-${red       ('svelte-ts      svelte'   )}
-${blue      ('solid-ts       solid'    )}
 ${blueBright('qwik-ts        qwik'     )}`
 
 type ColorFunc = (str: string | number) => string
@@ -83,6 +79,11 @@ const FRAMEWORKS: Framework[] = [
         color: yellow,
       },
       {
+        name: 'vue3-ts-admin',
+        display: 'ts-admin',
+        color: blue,
+      },
+      {
         name: 'custom-create-vue',
         display: 'Customize with create-vue ↗',
         color: green,
@@ -105,27 +106,6 @@ const FRAMEWORKS: Framework[] = [
         name: 'react-ts',
         display: 'TypeScript',
         color: blue,
-      },
-      {
-        name: 'react-swc-ts',
-        display: 'TypeScript + SWC',
-        color: blue,
-      },
-      {
-        name: 'react',
-        display: 'JavaScript',
-        color: yellow,
-      },
-      {
-        name: 'react-swc',
-        display: 'JavaScript + SWC',
-        color: yellow,
-      },
-      {
-        name: 'custom-remix',
-        display: 'Remix ↗',
-        color: cyan,
-        customCommand: 'npm create remix@latest TARGET_DIR',
       },
     ],
   },
