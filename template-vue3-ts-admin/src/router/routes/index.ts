@@ -17,9 +17,9 @@ export const LayoutRoutes: RouteRecordRaw = {
       meta: { title: '首页', icon: 'ant-design:home-outlined' },
       children: [
         {
-          path: '/home/index',
-          name: 'home/index',
-          component: () => import('@/views/home/index.vue'),
+          path: '/home/introduction',
+          name: 'home/introduction',
+          component: () => import('@/views/home/introduction.vue'),
           meta: { title: '介绍' }
         }
       ]

@@ -1,3 +1,42 @@
+<template>
+  <div class="breadcrumb-container">
+    <ol class="breadcrumb">
+      <TransitionGroup name="breadcrumb">
+        <li
+          v-for="(item, index) in breadcrumbList"
+          :key="item.path"
+          class="breadcrumb-item"
+          :class="{ 'breadcrumb-item-last': isLastItem(index) }"
+        >
+          <AntDropdown>
+            <span class="breadcrumb-item__title" :class="{ disabled: isLastItem(index) }">
+              <router-link v-if="item.components" :to="item.path">
+                {{ genItemTitle(item) }}
+              </router-link>
+              <span v-else>{{ genItemTitle(item) }}</span>
+              <DownOutlined
+                v-if="item.children.length > 1"
+                style="margin-inline-start: 4px; width: 12px; height: 12px"
+              />
+            </span>
+            <template v-if="item.children.length > 1" #overlay>
+              <AntMenu :selected-keys="[$route.path]">
+                <AntMenuItem
+                  v-for="menuItem in genMenuItems(item.children)"
+                  :key="menuItem.key"
+                  @click="() => $router.push(menuItem.key)"
+                >
+                  {{ menuItem.title }}
+                </AntMenuItem>
+              </AntMenu>
+            </template>
+          </AntDropdown>
+          <span v-if="!isLastItem(index)" style="margin-inline: 8px">/</span>
+        </li>
+      </TransitionGroup>
+    </ol>
+  </div>
+</template>
 <script setup lang="ts">
 import { DownOutlined } from '@ant-design/icons-vue';
 import {
@@ -42,46 +81,6 @@ function isLastItem(idx: number) {
 }
 </script>
 
-<template>
-  <div class="breadcrumb-container">
-    <ol class="breadcrumb">
-      <TransitionGroup name="breadcrumb">
-        <li
-          v-for="(item, index) in breadcrumbList"
-          :key="item.path"
-          class="breadcrumb-item"
-          :class="{ 'breadcrumb-item-last': isLastItem(index) }"
-        >
-          <AntDropdown>
-            <span class="breadcrumb-item__title" :class="{ disabled: isLastItem(index) }">
-              <router-link v-if="item.components" :to="item.path">
-                {{ genItemTitle(item) }}
-              </router-link>
-              <span v-else>{{ genItemTitle(item) }}</span>
-              <DownOutlined
-                v-if="item.children.length > 1"
-                style="margin-inline-start: 4px; width: 12px; height: 12px"
-              />
-            </span>
-            <template v-if="item.children.length > 1" #overlay>
-              <AntMenu :selected-keys="[$route.path]">
-                <AntMenuItem
-                  v-for="menuItem in genMenuItems(item.children)"
-                  :key="menuItem.key"
-                  @click="() => $router.push(menuItem.key)"
-                >
-                  {{ menuItem.title }}
-                </AntMenuItem>
-              </AntMenu>
-            </template>
-          </AntDropdown>
-          <span v-if="!isLastItem(index)" style="margin-inline: 8px">/</span>
-        </li>
-      </TransitionGroup>
-    </ol>
-  </div>
-</template>
-
 <style lang="less" scoped>
 .breadcrumb-container {
   display: inline-block;
@@ -114,11 +113,17 @@ function isLastItem(idx: number) {
 
 .breadcrumb-enter-active,
 .breadcrumb-leave-active {
-  transition: all 0.5s;
+  transition: all 1s;
 }
 
 .breadcrumb-enter-from {
+  opacity: 0;
   transform: translateX(20px);
+}
+
+.breadcrumb-leave-to {
+  opacity: 0;
+  transform: translateX(-20px);
 }
 
 .breadcrumb-leave-active {

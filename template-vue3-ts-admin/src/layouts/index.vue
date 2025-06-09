@@ -42,7 +42,7 @@ const { layoutSetting } = useAppStore();
 
 const collapsed = ref<boolean>(false);
 // 自定义侧边栏菜单收缩和展开时的宽度
-const asiderWidth = computed(() => (collapsed.value ? $toRem(80) : $toRem(240)));
+const asiderWidth = computed(() => (collapsed.value ? $toRem(80) : $toRem(220)));
 </script>
 
 <style lang="less" scoped>
