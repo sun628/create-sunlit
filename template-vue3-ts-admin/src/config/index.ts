@@ -25,10 +25,10 @@ export const defaultLayoutSetting: LayoutSetting = {
 export function createProxyConfig(env: Record<string, string>) {
   return {
     // 基础服务
-    base_server: {
-      prefix: '/api',
+    BASE_SERVER: {
+      prefix: env.VITE_BASE_API,
       config: {
-        target: env.VITE_BASE_API_URL,
+        target: env.VITE_BASE_URL,
         changeOrigin: true,
         secure: false
       }
