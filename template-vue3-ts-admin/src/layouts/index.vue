@@ -33,10 +33,10 @@
 <script lang="ts" setup>
 import { ref, computed } from 'vue';
 import { Layout } from 'ant-design-vue';
-const { Sider: AntSider } = Layout;
 import Logo from './logo/index.vue';
 import LayoutHeader from './header/index.vue';
 import SiderMenu from './menu/menu.vue';
+const { Sider: AntSider } = Layout;
 
 const { layoutSetting } = useAppStore();
 

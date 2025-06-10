@@ -1,14 +1,14 @@
 <template>
   <div class="logo">
     <SvgIcon name="vite" class="mr-5" />
-    <h2 v-show="!collapsed" class="title">{{ title }}</h2>
+    <h2 v-show="!collapsed" class="title">{{ VITE_TITLE }}</h2>
   </div>
 </template>
 
 <script setup lang="tsx">
 import { loadEnv } from '@/utils';
 
-const title = loadEnv().VITE_TITLE;
+const { VITE_TITLE } = loadEnv();
 
 defineOptions({
   name: 'Logo'

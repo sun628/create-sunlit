@@ -13,7 +13,7 @@ export const LayoutRoutes: RouteRecordRaw = {
     {
       path: '/home',
       name: 'Home',
-      redirect: '/home/index',
+      redirect: '/home/introduction',
       meta: { title: '首页', icon: 'ant-design:home-outlined' },
       children: [
         {
