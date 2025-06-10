@@ -12,7 +12,7 @@ declare module 'vue-router' {
     icon?: string;
     /** 不在菜单中显示 */
     hideInMenu?: boolean;
-     /** 在菜单中隐藏子节点 */
+    /** 在菜单中隐藏子节点 */
     hideChildrenInMenu?: boolean;
     loaded?: boolean;
     /** 是否外链 */

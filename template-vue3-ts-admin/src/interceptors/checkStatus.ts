@@ -39,7 +39,7 @@ export const checkStatus = (status: number, msg: string) => {
       message.error(msg || '服务不可用！');
       break;
     case 504:
-      message.error(msg || '网关超时！');
+      message.error(msg || '请求超时！');
       break;
     default:
       message.error(msg || `后端接口${status}异常`);
