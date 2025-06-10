@@ -1,10 +1,9 @@
 import { ref, App } from 'vue';
 import { Spin } from 'ant-design-vue';
-import { useDebounceFn } from '@vueuse/core';
+import { useDebounceFn, createSharedComposable } from '@vueuse/core';
 
 let loadingApp: App<Element> | null = null;
 let loadingDiv: HTMLElement | null = null;
-const loadingCount = ref(0);
 
 /**
  * @function
@@ -31,7 +30,8 @@ export type UseLoadingOptions = {
  * @todo 显示或隐藏加载组件
  * @param options 配置项
  **/
-export function useLoading(options?: UseLoadingOptions) {
+export const useLoading = createSharedComposable((options?: UseLoadingOptions) => {
+  const loadingCount = ref(0);
   const { delay = 0 } = options || {};
 
   // 显示或隐藏加载组件
@@ -69,4 +69,4 @@ export function useLoading(options?: UseLoadingOptions) {
     hideLoading,
     resetLoading
   };
-}
+});
