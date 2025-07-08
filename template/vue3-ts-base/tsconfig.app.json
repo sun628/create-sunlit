@@ -1,0 +1,36 @@
+{
+  "compilerOptions": {
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
+    "target": "es2022", // 目标版本
+    "useDefineForClassFields": true, // 启用类字段定义
+    "module": "esnext", // 模块类型
+    "lib": ["esnext", "DOM", "DOM.Iterable"], // 库
+    "skipLibCheck": true, // 跳过库检查
+
+    /* Bundler mode */
+    "moduleResolution": "Bundler", // 模块解析
+    "allowImportingTsExtensions": true, // 允许导入ts扩展
+    "resolveJsonModule": true, // 解析json模块
+    "isolatedModules": true, // 独立模块
+    "moduleDetection": "force", // 模块检测
+    "noEmit": true, // 不输出
+    "jsx": "preserve", // jsx
+
+    /* Linting */
+    "strict": true, // 严格模式
+    "noUnusedLocals": true, // 未使用的局部变量
+    "noUnusedParameters": true, // 未使用的参数
+    "noFallthroughCasesInSwitch": true, // 开关
+    "esModuleInterop": true, // 启用es模块互操作
+    "allowJs": true, // 允许js
+    "baseUrl": ".", // 基础url
+
+    "noImplicitOverride": true, // 禁止隐式重写
+    "paths": {
+      "@/*": ["src/*"]
+    },
+    "plugins": [{ "name": "typescript-plugin-css-modules" }]
+  },
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
+  "exclude": ["node_modules", "dist"]
+}

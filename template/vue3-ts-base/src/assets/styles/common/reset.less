@@ -1,0 +1,61 @@
+html {
+  box-sizing: border-box;
+}
+
+*,
+::before,
+::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html,
+body,
+#app {
+  width: 100%;
+  height: 100%;
+  font-size: 16px;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ol,
+ul,
+dl {
+  margin-bottom: 0;
+  list-style: none;
+}
+
+/* 全局滚动条样式 */
+*::-webkit-scrollbar {
+  width: 6px;
+  height: 5px;
+}
+
+*::-webkit-scrollbar-thumb {
+  border-radius: 8px !important;
+  box-shadow: inset 0 0 5px rgba(221, 220, 220, 0.2);
+  background: #ddd;
+}
+*::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px rgba(201, 201, 201, 0.2);
+  border-radius: 0;
+  background: rgba(201, 201, 201, 0.1);
+}
+
+#nprogress {
+  .bar {
+    background-color: var(--color-primary) !important;
+  }
+  .spinner-icon {
+    border-top-color: var(--color-primary) !important;
+    border-left-color: var(--color-primary) !important;
+  }
+  .peg {
+    box-shadow: 0 0 10px var(--color-primary), 0 0 5px var(--color-primary) !important;
+  }
+}
