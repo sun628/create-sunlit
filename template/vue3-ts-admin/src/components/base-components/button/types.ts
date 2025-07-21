@@ -11,6 +11,7 @@ export type ButtonType = AButtonType | 'warning' | 'success' | 'error' | 'reset'
 export type ButtonProps = Omit<AButtonProps, 'type'> & {
   color?: string;
   type?: ButtonType;
+  text?: string;
 };
 
 /** 这里自定义颜色 */

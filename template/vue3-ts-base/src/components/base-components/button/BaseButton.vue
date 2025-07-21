@@ -4,6 +4,7 @@
       <template v-for="(_, slotName) of $slots" #[slotName]>
         <slot :name="slotName" />
       </template>
+      <template v-if="props.text">{{ props.text }}</template>
     </Button>
   </ConfigProvider>
 </template>
