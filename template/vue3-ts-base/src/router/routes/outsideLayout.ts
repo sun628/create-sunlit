@@ -1,6 +1,5 @@
 import { RouterView, type RouteRecordRaw } from 'vue-router';
-import router from '@/router';
-
+import { router } from '@/router';
 /**
  * 重定向路由 主要用于刷新当前页面
  */

@@ -13,5 +13,3 @@ export function setupRouter(app: App) {
   setupRouterGuards(router);
   app.use(router);
 }
-
-export default router;

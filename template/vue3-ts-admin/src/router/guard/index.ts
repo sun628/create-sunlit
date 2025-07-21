@@ -1,5 +1,5 @@
 import type { Router } from 'vue-router';
-import NProgress from 'nprogress';
+import nprogress from 'nprogress';
 import { Modal, notification } from 'ant-design-vue';
 import 'nprogress/nprogress.css';
 export function setupRouterGuards(router: Router) {
@@ -25,12 +25,12 @@ function createPageGuard(router: Router) {
 function createProgressGuard(router: Router) {
   router.beforeEach(async (to) => {
     if (to.meta.loaded) return true;
-    NProgress.start();
+    nprogress.start();
     return true;
   });
 
   router.afterEach(async () => {
-    NProgress.done();
+    nprogress.done();
     return true;
   });
 }

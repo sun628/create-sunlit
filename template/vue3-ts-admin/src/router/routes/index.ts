@@ -1,4 +1,4 @@
-import outsideRoutes from './outsideLayout.ts';
+import outsideLayout from './outsideLayout.ts';
 import type { RouteRecordRaw } from 'vue-router';
 
 // const staticModules = import.meta.glob(['./modules/**/*.ts'], { eager: true });
@@ -44,5 +44,5 @@ export const LayoutRoutes: RouteRecordRaw = {
 export const basicRoutes: Array<RouteRecordRaw> = [
   LayoutRoutes,
   // Layout之外的路由
-  ...outsideRoutes
+  ...outsideLayout
 ];
