@@ -68,16 +68,6 @@ export const schemaFormProps = {
     }
   },
   rulesMessageJoinLabel: { type: Boolean as PropType<boolean>, default: true },
-  /** 超过3行自动折叠 */
-  autoAdvancedLine: {
-    type: Number as PropType<number>,
-    default: 3
-  },
-  /** 不受折叠影响的行数 */
-  alwaysShowLines: {
-    type: Number as PropType<number>,
-    default: 1
-  },
 
   /** 是否显示操作按钮 */
   showActionButtonGroup: { type: Boolean as PropType<boolean>, default: true },

@@ -16,10 +16,7 @@
           />
         </template>
         <FormAction v-if="showActionButtonGroup" v-bind="getFormActionBindProps">
-          <template
-            v-for="item in ['resetBefore', 'submitBefore', 'advanceBefore', 'advanceAfter']"
-            #[item]="data"
-          >
+          <template v-for="item in ['resetBefore', 'submitBefore']" #[item]="data">
             <slot :name="item" v-bind="data || {}" />
           </template>
         </FormAction>
