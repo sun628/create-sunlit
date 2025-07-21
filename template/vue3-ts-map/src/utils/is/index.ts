@@ -1,7 +1,7 @@
 import { isString } from 'radash';
 /**
  * @function
- * @todo  是否为经纬度LngLatLike数组
+ * @description  是否为经纬度LngLatLike数组
  * @returns {boolean}
  **/
 export function isLngLatLike(arg: any): arg is [number, number] {
@@ -10,7 +10,7 @@ export function isLngLatLike(arg: any): arg is [number, number] {
 
 /**
  * @function
- * @todo 校验是否为车牌号
+ * @description 校验是否为车牌号
  * @param val 车牌号
  * @returns {boolean}
  **/

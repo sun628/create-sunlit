@@ -7,7 +7,7 @@ const a = 6378245.0;
 
 /**
  * @function
- * @todo transformLngLat
+ * @description transformLngLat
  * @param {number|string} lng 经度
  * @param {number|string} lat 纬度
  * @returns { [number, number]} 经纬度转换后的坐标
@@ -28,7 +28,7 @@ function transformLngLat(lng: number, lat: number): [number, number] {
 
 /**
  * @function
- * @todo WGS84toCj02
+ * @description WGS84toCj02
  * @param {number|string} lng 经度
  * @param {number|string} lat 纬度
  * @returns { [number, number]} 经纬度转换后的坐标
@@ -42,7 +42,7 @@ export function wgs84_to_gcj02(lng: number, lat: number): [number, number] {
 
 /**
  * @function
- * @todo gcj02_to_wgs84
+ * @description gcj02_to_wgs84
  * @param {number} lng 经度
  * @param {number} lat 纬度
  * @returns {[number, number]} 经纬度转换后的坐标
@@ -84,7 +84,7 @@ function out_of_china(lng: number, lat: number) {
 
 /**
  * @function
- * @todo 坐标转换 wps84转gcj02
+ * @description 坐标转换 wps84转gcj02
  * @param {number|string} lng 经度
  * @param {number|string} lat 纬度
  * @returns { [number, number]} 经纬度转换后的坐标
@@ -95,12 +95,12 @@ export function gpsChange(lng: string | number, lat: string | number): [number, 
 
 /**
  * @function pathChange
- * @todo 坐标转换
+ * @description 坐标转换
  * @param { Array<[number, number]>} path 多个坐标的数组
  * @returns {Array<Array<number>>}
  */
 export function pathChange(
-  path: Array<[number, number]> | [number, number],
+  path: Array<[number, number]> | [number, number]
 ): AMap.Line | AMap.Line[] | Array<[number, number]> {
   if (isLngLatLike(path)) {
     return [gpsChange(path[0], path[1])];

@@ -15,7 +15,7 @@ import dayjs, { Dayjs } from 'dayjs';
  **/
 export function getDayRange(
   daysAgo = 0,
-  format = 'YYYY-MM-DD HH:mm:ss',
+  format = 'YYYY-MM-DD HH:mm:ss'
 ): [string, string] | [Dayjs, Dayjs] {
   const start = dayjs().subtract(daysAgo, 'day').startOf('day').format(format);
   const end =
@@ -54,7 +54,7 @@ export const convertSeconds = (totalSeconds: number): string => {
 
 /**
  * @function
- * @todo 时间字符串转秒数 -- 00:00:00 => 秒数
+ * @description 时间字符串转秒数 -- 00:00:00 => 秒数
  * @param time 时间字符串
  * @returns 秒数
  */
@@ -68,7 +68,7 @@ export function timeToSeconds(time: string) {
 
 /**
  * @function
- * @todo 获取时间戳
+ * @description 获取时间戳
  * @param {string} time
  * @returns {number} 时间戳
  **/
@@ -78,7 +78,7 @@ export function getTimeStamp(time: string): number {
 
 /**
  * @function
- * @todo 日期格式化
+ * @description 日期格式化
  * @param {string | number | Date} time 时间
  * @param {string | undefined }pattern 时间格式
  * @example
@@ -129,6 +129,6 @@ export function parseTime(time: string | number | Date, pattern: string | undefi
         }
       }
       return value;
-    },
+    }
   );
 }

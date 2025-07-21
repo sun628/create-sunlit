@@ -5,7 +5,7 @@ export type * from './interface';
 
 /**
  * @function
- * @todo 获取门架区间坐标串列表
+ * @description 获取门架区间坐标串列表
  * @returns {}
  **/
 export const getSectionPolyLinesApi = () => {

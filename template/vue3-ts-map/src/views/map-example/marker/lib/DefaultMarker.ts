@@ -18,7 +18,7 @@ class DefaultMarker {
   }
   /**
    * @function
-   * @todo 添加url图标
+   * @description 添加url图标
    **/
   addByUrlIcon(map: AMap.Map | undefined) {
     this.map = map;
@@ -32,12 +32,12 @@ class DefaultMarker {
         map, // 不加则需要map.add(marker)
         extData: { name: '点标记' },
       },
-      this.markerClickHandler,
+      this.markerClickHandler
     );
   }
   /**
    * @function
-   * @todo 更新url图标
+   * @description 更新url图标
    **/
   updateUrlIcon() {
     if (!this.marker) return $message.warning('请先添加点标记');
@@ -46,7 +46,7 @@ class DefaultMarker {
 
   /**
    * @function
-   * @todo 添加本地图标
+   * @description 添加本地图标
    **/
   addByLocalIcon(map: AMap.Map | undefined) {
     this.map = map;
@@ -60,13 +60,13 @@ class DefaultMarker {
         map, // 不加则需要map.add(marker)
         extData: { name: '点标记' },
       },
-      this.markerClickHandler,
+      this.markerClickHandler
     );
   }
 
   /**
    * @function
-   * @todo 添加自定义内容marker
+   * @description 添加自定义内容marker
    **/
   addByContent(map: AMap.Map | undefined) {
     this.clearMarker();
@@ -83,13 +83,13 @@ class DefaultMarker {
         map, // 不加则需要map.add(marker)
         extData: { name: '点标记' },
       },
-      this.markerClickHandler,
+      this.markerClickHandler
     );
   }
 
   /**
    * @function
-   * @todo 修改图标尺寸
+   * @description 修改图标尺寸
    **/
   updateIconSize() {
     if (!this.marker) return $message.warning('请先添加点标记');
@@ -107,7 +107,7 @@ class DefaultMarker {
       `<div class="custom-content-marker">
         <img src="//a.amap.com/jsapi_demos/static/demo-center/icons/poi-marker-red.png" />
         <span class='marker-content'>更新点标记内容</span>
-       </div>`,
+       </div>`
     );
   }
 

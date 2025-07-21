@@ -15,7 +15,7 @@ const router = useRouter();
 
 /**
  * @function
- * @todo 判断是否为外链
+ * @description 判断是否为外链
  * @param path
  * @returns {boolean}
  */

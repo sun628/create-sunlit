@@ -2,7 +2,7 @@ import { isNil } from 'lodash-es';
 
 /**
  * @function
- * @todo 判断是否需要排序
+ * @description 判断是否需要排序
  **/
 export function handRank(routeInfo: AppRouteRecordRaw) {
   return isNil(routeInfo.meta?.rank);

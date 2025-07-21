@@ -12,7 +12,7 @@ const router = useRouter();
 
 /**
  * @function
- * @todo 返回首页
+ * @description 返回首页
  */
 const returnHome = () => {
   router.push('/');

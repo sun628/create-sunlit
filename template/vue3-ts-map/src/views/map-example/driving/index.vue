@@ -90,7 +90,7 @@ function clickListener(e) {
 
 /**
  * @function
- * @todo 根据路径规划绘制路线
+ * @description 根据路径规划绘制路线
  **/
 function drawPolylineByDriving() {
   const { startLnLat, endLngLat } = formState;

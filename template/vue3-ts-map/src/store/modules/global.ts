@@ -15,7 +15,7 @@ export const useGlobalStore = defineStore({
   actions: {
     /**
      * @function
-     * @todo 获取门架区间坐标串列表
+     * @description 获取门架区间坐标串列表
      * @returns {}
      **/
     async getSectMap() {

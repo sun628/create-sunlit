@@ -1,6 +1,6 @@
 /**
  * @function createInfoWindow
- * @todo 信息窗体，地图仅可同时展示一个信息窗体，推荐为信息窗体通过样式显示设置尺寸。[自定义窗体示例](https://lbs.amap.com/api/jsapi-v2/example/infowindow/default-style-infowindow)
+ * @description 信息窗体，地图仅可同时展示一个信息窗体，推荐为信息窗体通过样式显示设置尺寸。[自定义窗体示例](https://lbs.amap.com/api/jsapi-v2/example/infowindow/default-style-infowindow)
  * @param {string | AMap.InfoWindowOptions} opts 信息窗体参数
  * @param {boolean} [opts.isCustom=false] 是否自定义窗体
  * @example

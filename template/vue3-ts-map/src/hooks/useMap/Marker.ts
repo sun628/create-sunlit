@@ -1,7 +1,7 @@
 import { onBeforeUnmount } from 'vue';
 /**
  * @function
- * @todo 添加点标记
+ * @description 添加点标记
  * @see https://lbs.amap.com/api/javascript-api-v2/documentation#marker
  * @template ExtraData 自定义数据类型
  * @param {AMap.MarkerOptions<ExtraData>} opts - 创建标记的配置选项，包括基本设置和事件监听器，允许对标记的外观和行为进行广泛的自定义。
@@ -9,12 +9,12 @@ import { onBeforeUnmount } from 'vue';
  */
 export const addMarker = <ExtraData>(
   opts: AMap.MarkerOptions<ExtraData>,
-  callback?: (e: AMap.MarkerEvent<ExtraData>, extData: ExtraData) => void,
+  callback?: (e: AMap.MarkerEvent<ExtraData>, extData: ExtraData) => void
 ) => {
   const marker: AMap.Marker<ExtraData> = new AMap.Marker<ExtraData>({ ...opts, cursor: 'pointer' });
   if (callback) {
     marker.on('click', (e: AMap.MarkerEvent<ExtraData>) =>
-      callback(e, e.target.getExtData() as ExtraData),
+      callback(e, e.target.getExtData() as ExtraData)
     );
   }
   return marker;
@@ -30,7 +30,7 @@ const DefaultLngLat = ['lon', 'lat'] as const;
 let map: ComputedRef<AMap.Map | undefined>;
 /**
  * @function
- * @todo 使用marker
+ * @description 使用marker
  * @example
  * const { createMarkerLayer,clearMarkerLayer}=useMarker()
  **/
@@ -39,7 +39,7 @@ export const useMarker = (Map: MaybeRef<AMap.Map | undefined>) => {
   map = computed(() => unref(Map));
   /**
    * @function
-   * @todo 创建点标记marker群组图层
+   * @description 创建点标记marker群组图层
    * @template ExtraData 数据源类型
    * @param { Array<ExtraData> } data 数据源
    * @param markerLayerOptions 配置项
@@ -48,7 +48,7 @@ export const useMarker = (Map: MaybeRef<AMap.Map | undefined>) => {
   const createMarkerLayer = <ExtraData extends { active?: boolean; [key: string]: any }>(
     data: Array<ExtraData>,
     markerLayerOptions?: MarkerLayerOptions<ExtraData>, // 使用封装的类型
-    callback?: (e: AMap.MarkerEvent<ExtraData>, extData: ExtraData) => void,
+    callback?: (e: AMap.MarkerEvent<ExtraData>, extData: ExtraData) => void
   ) => {
     clearMarkerLayer();
     const { LngLat = DefaultLngLat, options } = markerLayerOptions || {};
@@ -66,7 +66,7 @@ export const useMarker = (Map: MaybeRef<AMap.Map | undefined>) => {
 
   /**
    * @function
-   * @todo 清除点标记
+   * @description 清除点标记
    **/
   const clearMarkerLayer = () => {
     if (map.value && markerArr.length) {
@@ -104,7 +104,7 @@ export const useMarker = (Map: MaybeRef<AMap.Map | undefined>) => {
 export const addMassMarkers = (
   data: AMap.MassMarkersDataOption[],
   opts: AMap.MassMarkersOptions,
-  callback: (e: Event) => void,
+  callback: (e: Event) => void
 ) => {
   const massMarks = new AMap.MassMarks(data, opts);
   if (callback) massMarks.on('click', callback);

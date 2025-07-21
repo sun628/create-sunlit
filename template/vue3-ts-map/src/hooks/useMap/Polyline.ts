@@ -1,6 +1,6 @@
 /**
  * @function
- * @todo 构造折线对象，支持 lineString 和 MultiLineString
+ * @description 构造折线对象，支持 lineString 和 MultiLineString
  * @see  https://lbs.amap.com/api/javascript-api-v2/documentation#polyline
  * @param {AMap.PolylineOptions} opts 折线配置项
  * @param callback
@@ -8,7 +8,7 @@
  */
 export const addPolyline = <ExtraData>(
   opts: AMap.PolylineOptions,
-  callback?: (event: AMap.PolylineEvent<ExtraData>, extData: ExtraData) => void,
+  callback?: (event: AMap.PolylineEvent<ExtraData>, extData: ExtraData) => void
 ) => {
   const polyline: AMap.Polyline<ExtraData> = new AMap.Polyline({
     path: opts.path,
@@ -22,7 +22,7 @@ export const addPolyline = <ExtraData>(
   });
   if (callback)
     polyline.on('click', (e: AMap.PolylineEvent<ExtraData>) =>
-      callback(e, e.target.getExtData() as ExtraData),
+      callback(e, e.target.getExtData() as ExtraData)
     );
   return polyline;
 };
@@ -33,7 +33,7 @@ export const usePolyline = () => {
 
   /**
    * @function
-   * @todo 绘制折线Polyline
+   * @description 绘制折线Polyline
    * @param Map
    * @template ExtraData 数据源类型
    * @param { Array<ExtraData> } dataList 数据列表
@@ -45,7 +45,7 @@ export const usePolyline = () => {
     Map: AMap.Map | null | undefined,
     dataList: Array<ExtraData>,
     arg3?: AMap.PolylineOptions | ((e: AMap.PolylineEvent<ExtraData>, extData: ExtraData) => void),
-    arg4?: (e: AMap.PolylineEvent<ExtraData>, extData: ExtraData) => void,
+    arg4?: (e: AMap.PolylineEvent<ExtraData>, extData: ExtraData) => void
   ) => {
     map = Map;
     clearPolyline(); // 这个函数需要实现，用来清除地图上已经画的所有折线
