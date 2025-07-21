@@ -4,7 +4,7 @@ export default SvgIcon;
 
 /**
  * @function
- * @todo 渲染图标
+ * @description 渲染图标
  * @param  icon - 图标名称
  * @returns  图标组件
  **/

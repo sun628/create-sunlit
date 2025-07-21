@@ -18,7 +18,7 @@ export const defaultLayoutSetting: LayoutSetting = {
 
 /**
  * @function
- * @todo 创建代理配置
+ * @description 创建代理配置
  * @param env - 环境变量
  * @returns  代理配置
  **/

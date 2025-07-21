@@ -11,7 +11,7 @@ import { cloneDeep } from 'lodash-es';
 
 /**
  * @function
- * @todo 重置数据
+ * @description 重置数据
  * @param value 表单数据
  **/
 export function useResetRef<T>(value: T) {
@@ -26,7 +26,7 @@ export function useResetRef<T>(value: T) {
 
 /**
  * @function
- * @todo reactive重置表单数据
+ * @description reactive重置表单数据
  * @param {Object} value - 表单数据
  **/
 export function useResetReactive<T extends Record<string, any>>(value: T) {

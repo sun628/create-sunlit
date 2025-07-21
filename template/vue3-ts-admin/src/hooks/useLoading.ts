@@ -7,7 +7,7 @@ let loadingDiv: HTMLElement | null = null;
 
 /**
  * @function
- * @todo 初始化加载组件
+ * @description 初始化加载组件
  **/
 const initLoadingComponent = () => {
   if (!loadingDiv) {
@@ -27,7 +27,7 @@ export type UseLoadingOptions = {
 
 /**
  * @function
- * @todo 显示或隐藏加载组件
+ * @description 显示或隐藏加载组件
  * @param options 配置项
  **/
 export const useLoading = createSharedComposable((options?: UseLoadingOptions) => {
