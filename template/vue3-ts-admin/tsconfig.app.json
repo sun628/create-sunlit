@@ -1,35 +1,42 @@
 {
   "compilerOptions": {
-    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
-    "target": "es2022", // 目标版本
-    "useDefineForClassFields": true, // 启用类字段定义
-    "module": "esnext", // 模块类型
-    "lib": ["esnext", "DOM", "DOM.Iterable"], // 库
-    "skipLibCheck": true, // 跳过库检查
-
-    /* Bundler mode */
-    "moduleResolution": "Bundler", // 模块解析
-    "allowImportingTsExtensions": true, // 允许导入ts扩展
-    "resolveJsonModule": true, // 解析json模块
-    "isolatedModules": true, // 独立模块
-    "moduleDetection": "force", // 模块检测
-    "noEmit": true, // 不输出
-    "jsx": "preserve", // jsx
-
-    /* Linting */
-    "strict": true, // 严格模式
-    "noUnusedLocals": true, // 未使用的局部变量
-    "noUnusedParameters": true, // 未使用的参数
-    "noFallthroughCasesInSwitch": true, // 开关
-    "esModuleInterop": true, // 启用es模块互操作
-    "allowJs": true, // 允许js
-    "baseUrl": ".", // 基础url
-
-    "noImplicitOverride": true, // 禁止隐式重写
+    "target": "ESNext",
+    "jsx": "preserve",
+    "jsxImportSource": "vue",
+    "lib": ["dom", "esnext", "DOM.Iterable"],
+    "noLib": false, // 不排除默认库文件（比如 lib.d.ts）的类型检查。
+    "useDefineForClassFields": true,
+    "experimentalDecorators": true, // 启用对装饰器的实验性支持。
+    "baseUrl": ".",
+    "module": "ESNext",
+    /*  Bundler mode | 编译相关 */
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "types": ["node", "vite/client"],
+    "allowImportingTsExtensions": true,
+    "allowJs": true,
+    /* Linting | 代码质量相关 */
+    "strict": true,
+    "strictFunctionTypes": false,
+    "noImplicitAny": false,
+    "noImplicitOverride": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": false,
+    "useUnknownInCatchVariables": false, // 是否允许在 catch 语句中使用 unknown 类型的变量。
+    "declarationMap": false, // 是否为每个生成的 .d.ts 文件生成源映射。
+    "inlineSources": false, // 是否将源文件的内容嵌入到源映射中。
+    "noEmit": true,
+    "removeComments": true,
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "isolatedModules": true,
+    "skipLibCheck": true, // 跳过所有的 *.d.ts 文件的类型检查。
+    "preserveWatchOutput": true, // 在 TypeScript 的观察模式下保留控制台输出。
     "paths": {
-      "@/*": ["src/*"]
-    },
-    "plugins": [{ "name": "typescript-plugin-css-modules" }]
+      "@/*": ["src/*"],
+      "@base-components/*": ["src/components/base-components/*"],
+      "@business-components/*": ["src/components/business-components/*"]
+    }
   },
   "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
   "exclude": ["node_modules", "dist"]
