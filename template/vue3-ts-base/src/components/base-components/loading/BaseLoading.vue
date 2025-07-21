@@ -1,7 +1,7 @@
 <template>
-  <div v-show="loading" :class="loadingCls">
-    <ASpin />
-  </div>
+  <ASpin v-show="loading" :class="loadingCls">
+    <slot></slot>
+  </ASpin>
 </template>
 <script setup lang="ts">
 import { LoadingProps } from './types';
