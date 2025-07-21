@@ -7,10 +7,11 @@ import { setupRouter } from './router';
 import { setupStore } from './store';
 import directives from '@/directives/index'; // custom directives
 import VChart from 'vue-echarts';
-
+import { loadEnv } from './utils';
 const app = createApp(App);
 
-setupStore(app, { namespace: import.meta.env.VITE_APP_NAMESPACE + import.meta.env.MODE });
+const env = loadEnv();
+setupStore(app, { namespace: env.VITE_APP_NAMESPACE + env.MODE });
 setupRouter(app);
 
 app.component('VChart', VChart);
