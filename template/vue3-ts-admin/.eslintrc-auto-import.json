@@ -49,6 +49,7 @@
     "isReactive": true,
     "isReadonly": true,
     "isRef": true,
+    "loadEnv": true,
     "log": true,
     "mapActions": true,
     "mapGetters": true,
