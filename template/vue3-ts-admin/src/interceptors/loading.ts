@@ -2,13 +2,13 @@ import { AxiosRequestConfig, AxiosResponse } from 'axios';
 
 /**
  * @function
- * @todo loading 拦截
+ * @description loading 拦截
  **/
 export function loadingInterceptor() {
   const { showLoading, hideLoading } = useLoading();
   /**
    * @function
-   * @todo 请求拦截
+   * @description 请求拦截
    **/
   const requestLoading = (config: AxiosRequestConfig) => {
     if (config.loading) {
@@ -19,7 +19,7 @@ export function loadingInterceptor() {
   };
   /**
    * @function
-   * @todo 响应拦截
+   * @description 响应拦截
    **/
   const responseLoading = (response?: AxiosResponse) => {
     hideLoading();

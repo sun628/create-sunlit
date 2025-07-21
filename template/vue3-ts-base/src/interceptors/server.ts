@@ -12,7 +12,7 @@ const getBaseUrl = (serverName: proxyName) => {
 
 /**
  * @function
- * @todo 创建服务配置
+ * @description 创建服务配置
  **/
 export const requestServer = (config: InternalAxiosRequestConfig) => {
   if (config.server) {

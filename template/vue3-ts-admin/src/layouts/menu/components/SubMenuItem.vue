@@ -33,7 +33,7 @@ defineProps({
 
 /**
  * @function
- * @todo 判断是否显示子菜单
+ * @description 判断是否显示子菜单
  * @param  menuItem - 菜单项
  * @returns  是否显示子菜单
  **/
