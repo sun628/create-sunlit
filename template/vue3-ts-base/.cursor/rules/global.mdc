@@ -1,0 +1,94 @@
+---
+description: 全局
+alwaysApply: true
+---
+
+回答总是使用中文
+
+1. 代码风格：
+   - 使用TypeScript类型定义,避免使用any类型
+   - 遵循项目的ESLint和Prettier规则
+   - 行宽最多100个字符
+   - 使用单引号而非双引号
+   - 语句末尾使用分号
+   - 不使用尾随逗号
+   - 使用空格而非制表符进行缩进
+
+2. Vue 3相关:
+   - 使用<script setup lang="ts">语法
+   - 组件名使用PascalCase命名
+   - 遵循Vue 3 Composition API的最佳实践
+   - 处理响应式时优先使用ref和reactive
+   - 使用defineProps和defineEmits定义组件属性和事件
+
+3. 依赖库使用：
+   - 使用Ant Design Vue 4.x组件库及其图标库
+   - 使用Pinia进行状态管理
+   - 使用dayjs进行日期处理
+   - 使用ECharts和Vue-ECharts进行图表展示
+   - 使用VueUse工具库
+   - 使用UnoCSS进行原子化CSS
+
+4. 项目结构：
+   - API请求放在src/api目录下
+   - 组件放在src/components目录下
+   - 页面放在src/views目录下
+   - 工具函数放在src/utils目录下
+   - 状态管理放在src/store目录下
+   - 路由定义放在src/router目录下
+   - 类型定义放在src/typings目录下
+
+5. 最佳实践：
+   - 使用@/路径别名引入模块
+   - 确保组件和函数有良好的类型定义
+   - 优先使用异步组件和懒加载以提高性能
+   - 使用环境变量配置不同环境的参数
+
+6. 响应式设计：
+   - 使用px2rem转换器实现响应式设计
+
+   - 根据项目环境变量VITE_PX_REMelement
+
+7. 代码风格：
+   - 使用TypeScript类型定义,避免使用any类型
+   - 遵循项目的ESLint和Prettier规则
+   - 行宽最多100个字符
+   - 使用单引号而非双引号
+   - 语句末尾使用分号
+   - 不使用尾随逗号
+   - 使用空格而非制表符进行缩进
+
+8. Vue 3相关:
+   - 使用<script setup lang="ts">语法
+   - 组件名使用PascalCase命名
+   - 遵循Vue 3 Composition API的最佳实践
+   - 处理响应式时优先使用ref和reactive
+   - 使用defineProps和defineEmits定义组件属性和事件
+
+9. 依赖库使用：
+   - 使用Ant Design Vue 4.x组件库及其图标库
+   - 使用Pinia进行状态管理
+   - 使用dayjs进行日期处理
+   - 使用ECharts和Vue-ECharts进行图表展示
+   - 使用VueUse工具库
+   - 使用UnoCSS进行原子化CSS
+
+10. 项目结构：
+    - API请求放在src/api目录下
+    - 组件放在src/components目录下
+    - 页面放在src/views目录下
+    - 工具函数放在src/utils目录下
+    - 状态管理放在src/store目录下
+    - 路由定义放在src/router目录下
+    - 类型定义放在src/typings目录下
+
+11. 最佳实践：
+    - 使用@/路径别名引入模块
+    - 确保组件和函数有良好的类型定义
+    - 优先使用异步组件和懒加载以提高性能
+    - 使用环境变量配置不同环境的参数
+
+12. 响应式设计：
+    - 使用px2rem转换器实现响应式设计
+
+    - 根据项目环境变量VITE_PX_REMelement
