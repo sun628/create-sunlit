@@ -10,7 +10,9 @@ export default defineConfig(({ mode }) => {
     plugins: createPlugins(viteEnv),
     resolve: {
       alias: {
-        '@': path.resolve(__dirname, 'src')
+        '@': path.resolve(__dirname, 'src'),
+        '@base-components': path.resolve(__dirname, 'src/components/base-components'),
+        '@business-components': path.resolve(__dirname, 'src/components/business-components')
       },
       extensions: ['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json', '.vue']
     },
