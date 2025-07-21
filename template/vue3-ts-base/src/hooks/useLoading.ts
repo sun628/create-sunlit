@@ -2,6 +2,10 @@ import { ref, App } from 'vue';
 import { Spin } from 'ant-design-vue';
 import { useDebounceFn, createSharedComposable } from '@vueuse/core';
 
+export type UseLoadingOptions = {
+  delay?: number;
+};
+
 let loadingApp: App<Element> | null = null;
 let loadingDiv: HTMLElement | null = null;
 
@@ -19,10 +23,6 @@ const initLoadingComponent = () => {
     loadingApp = createApp(Spin, { size: 'large' });
     loadingApp.mount(loadingDiv as HTMLElement);
   }
-};
-
-export type UseLoadingOptions = {
-  delay?: number;
 };
 
 /**
