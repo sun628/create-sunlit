@@ -1,6 +1,12 @@
 {
   "globals": {
     "NodeJS": true,
-    "echarts": true
+    "echarts": true,
+    "Nullable": true,
+    "NonNullable": true,
+    "Recordable": true,
+    "Objectable": true,
+    "Fn": true,
+    "PromiseFn": true
   }
 }
