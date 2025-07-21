@@ -1,11 +1,26 @@
 import type { RouteMeta as VRouteMeta } from 'vue-router';
-
 declare global {
   interface Navigator {
     msSaveOrOpenBlob: (blob: Blob, fileName: string) => void;
     browserLanguage: string;
   }
+  declare interface Fn<T = any, R = T> {
+    (...arg: T[]): R;
+  }
+  export type Writable<T> = {
+    -readonly [P in keyof T]: T[P];
+  };
+
+  declare type Nullable<T> = T | null;
+  declare type NonNullable<T> = T extends null | undefined ? never : T;
+  declare type Recordable<T = any> = Record<string, T>;
+  declare type Objectable<T extends object> = {
+    [P in keyof T]: T[P];
+  } & Recordable;
+  declare type Key = string | number;
+  declare type PromiseFn<T, R> = (...args: T[]) => Promise<R>;
 }
+
 declare module 'vue-router' {
   interface RouteMeta extends VRouteMeta {
     title: string;
@@ -27,6 +42,9 @@ declare module 'vue-router' {
 
 declare module '*.vue' {
   export interface GlobalComponents {
-    VChart: typeof import('vue-echarts')['default'];
+    VChart: (typeof import('vue-echarts'))['default'];
   }
+  export type JSXComponent<Props = any> =
+    | { new (): ComponentPublicInstance<Props> }
+    | FunctionalComponent<Props>;
 }
