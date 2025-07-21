@@ -1,12 +1,4 @@
 import { isString } from 'lodash-es';
-/**
- * @function
- * @todo  是否为经纬度LngLatLike数组
- * @returns {boolean}
- **/
-export function isLngLatLike(arg: any): arg is [number, number] {
-  return Array.isArray(arg) && arg.length === 2 && arg.every((item) => typeof item === 'number');
-}
 
 // 定义车牌号正则表达式
 const LICENSE_PATTERNS = {
@@ -35,11 +27,20 @@ export function isValidLicense(val: unknown): boolean {
 
 /**
  * @function
- * @todo 校验是否是空字符串、null或undefined
+ * @description 校验是否是空字符串、null或undefined
  * @param val 任意值
  * @returns {boolean}
  **/
 export function isEmptyStr(val: unknown): boolean {
   if (val === null || typeof val === 'undefined') return true;
   return isString(val) && val.trim() === '';
+}
+
+/**
+ * @function
+ * @description  是否为经纬度LngLatLike数组
+ * @returns {boolean}
+ **/
+export function isLngLatLike(arg: any): arg is [number, number] {
+  return Array.isArray(arg) && arg.length === 2 && arg.every((item) => typeof item === 'number');
 }
