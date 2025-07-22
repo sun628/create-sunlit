@@ -1,5 +1,9 @@
 import { isEmpty } from 'lodash-es';
 
+import { loadEnv } from '@/utils';
+
+const env = loadEnv();
+
 const prettyPrint = (title: string, text: string, color: string) => {
   console.log(
     `%c ${title} %c ${text} %c`,
@@ -98,7 +102,7 @@ const prettyLog = () => {
 
 // 只在开发环境中使用
 export const log =
-  process.env.MODE === 'development'
+  env.MODE === 'development'
     ? prettyLog()
     : {
         info: () => {},
