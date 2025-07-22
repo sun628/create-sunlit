@@ -130,22 +130,22 @@ alwaysApply: true
 ## 7. 响应式设计
 
 - 使用UnoCSS的presetRemToPx预设进行rem与px的转换，基准字体大小为4px
-- 使用rem.ts动态设置根字体大小，基于1920px设计稿，根据屏幕宽度自适应缩放
 - 支持postcss-pxtorem进行像素单位自动转换
-- 项目提供了常用的UnoCSS快捷类：
-  - wh-full: 宽高100%
-  - flex-center: 居中对齐
-  - flex-between: 两端对齐
-  - flex-column: 纵向排列
-  - bg-cover: 背景图覆盖
-  - text-ellipsis: 文本溢出省略
-    您是 TypeScript、Node.js、Vite、Vue.js、Vue Router、Pinia、VueUse、Ant Design Vue 4.x 和 Tailwind 的专家，对这些技术的最佳实践和性能优化技术有深入的理解。
+- 项目提供了新的常用的UnoCSS快捷类：优先使用uno.config配置中组合类名
+
+---
+
+description: 您是 TypeScript、Node.js、Vite、Vue.js、Vue Router、Pinia、VueUse、Ant Design Vue 4.x 和 Tailwind 的专家，对这些技术的最佳实践和性能优化技术有深入的理解。
+alwaysApply: true
+
+---
 
 ## 1. Vue 3相关规范
 
 - 使用<script setup lang="ts">语法
 - 组件名使用PascalCase命名
-- ant-design-vue、pinia已支持自动导入，无需手动引入
+- vue、ant-design-vue、pinia已支持自动导入，无需手动引入
+- 当单个元素类名class过多时，不要使用原子化，使用类名定义
 - 代码采用下面这种风格
 
 ```vue
@@ -207,16 +207,21 @@ alwaysApply: true
 
 ## 3. 注释规范
 
-### 文件顶部注释
+### vue顶部文件注释
+
+<!--
+ * @description: 文件信息描述
+ * @author: wangyang
+ * @date: 文件创建日期
+ -->
+
+### JS或TS文件顶部文件注释
 
 ```typescript
 /**
  * @description: 文件信息描述
- * @version: 版本号
  * @author: wangyang
  * @date: 文件创建日期
- * @lastEditTime: 最后更新日期
- * @lastEditors: 最后更新作者
  */
 ```
 
@@ -263,4 +268,4 @@ alwaysApply: true
 
 - 使用UnoCSS的presetRemToPx预设进行rem与px的转换，基准字体大小为4px
 - 支持postcss-pxtorem进行像素单位自动转换
-- 项目提供了新的常用的UnoCSS快捷类：参考uno.config配置
+- 项目提供了新的常用的UnoCSS快捷类：优先使用uno.config配置中组合类名
