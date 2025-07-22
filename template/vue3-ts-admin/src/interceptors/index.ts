@@ -8,10 +8,10 @@ import axios, {
 import { ResultData, ResultEnum } from './types';
 import { checkStatus } from './checkStatus';
 import { message } from 'ant-design-vue';
-import { loadingInterceptor } from './loading';
-import { requestServer } from './server';
+import { requestService } from './service';
+import { useLoading } from '@/hooks/useLoading';
 
-const { requestLoading, responseLoading } = loadingInterceptor();
+const { showLoading, hideLoading } = useLoading();
 
 const config = {
   // 默认地址请求地址，可在 .env.** 文件中修改
@@ -29,8 +29,11 @@ class RequestHttp {
 
     this.service.interceptors.request.use(
       (config: InternalAxiosRequestConfig) => {
-        requestServer(config);
-        requestLoading(config);
+        requestService(config);
+        if (config.loading) {
+          showLoading();
+          delete config.loading;
+        }
         return config;
       },
       (error: AxiosError) => {
@@ -45,7 +48,7 @@ class RequestHttp {
     this.service.interceptors.response.use(
       ({ data }: AxiosResponse) => {
         const { code } = data;
-        responseLoading(data);
+        hideLoading();
         // 全局错误信息拦截（防止下载文件的时候返回数据流，没有 code 直接报错）
         if (code && parseInt(code) !== ResultEnum.SUCCESS) {
           message.error(data.message);
@@ -55,7 +58,7 @@ class RequestHttp {
       },
       async (error: AxiosError<ResultData>) => {
         const { response } = error;
-        responseLoading(response);
+        hideLoading();
         response && checkStatus(response.status, response.data.message);
         return Promise.reject(error);
       }

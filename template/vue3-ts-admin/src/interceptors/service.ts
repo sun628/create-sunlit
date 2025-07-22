@@ -14,7 +14,7 @@ const getBaseUrl = (serverName: proxyName) => {
  * @function
  * @description 创建服务配置
  **/
-export const requestServer = (config: InternalAxiosRequestConfig) => {
+export const requestService = (config: InternalAxiosRequestConfig) => {
   if (config.server) {
     config.baseURL = getBaseUrl(config.server);
     delete config.server;
