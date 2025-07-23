@@ -6,7 +6,7 @@
 
 <template>
   <div class="message-demo p-6">
-    <h2 class="text-xl font-bold mb-6 text-center">消息提示组件示例</h2>
+    <h2 class="font-bold mb-6 text-center">消息提示组件示例</h2>
 
     <a-card class="mb-6 shadow-sm">
       <template #title>
@@ -47,7 +47,7 @@
             错误提示
           </a-button>
           <BaseButton @click="showMessage('loading')">
-            <template #icon><SvgIcon name="ant-design:loading-outlined" spin /></template>
+            <template #icon><LoadingOutlined /></template>
             加载提示
           </BaseButton>
         </div>
@@ -58,7 +58,7 @@
       <a-card class="shadow-sm">
         <template #title>
           <div class="flex items-center">
-            <IconFont type="ant-design:interaction-outlined" class="mr-2" />
+            <SvgIcon name="ant-design:interaction-outlined" class="mr-2" />
             <span class="font-medium">快速重复点击测试</span>
           </div>
         </template>
@@ -74,7 +74,7 @@
       <a-card class="shadow-sm">
         <template #title>
           <div class="flex items-center">
-            <IconFont type="ant-design:api-outlined" class="mr-2" />
+            <SvgIcon name="ant-design:api-outlined" class="mr-2" />
             <span class="font-medium">对比测试</span>
           </div>
         </template>
@@ -91,7 +91,7 @@
     <a-card class="mt-6 shadow-sm">
       <template #title>
         <div class="flex items-center">
-          <IconFont type="ant-design:clock-circle-outlined" class="mr-2" />
+          <SvgIcon name="ant-design:clock-circle-outlined" class="mr-2" />
           <span class="font-medium">定时关闭测试</span>
         </div>
       </template>
@@ -109,7 +109,7 @@
             />
           </div>
           <a-button type="primary" @click="showTimedMessage">
-            <template #icon><IconFont type="ant-design:field-time-outlined" /></template>
+            <template #icon><SvgIcon name="ant-design:field-time-outlined" /></template>
             显示定时消息
           </a-button>
         </div>
@@ -123,12 +123,6 @@ import { ref } from 'vue';
 import { useMessage } from '@/hooks';
 import { message } from 'ant-design-vue';
 import type { NoticeType } from 'ant-design-vue/es/message';
-import { createFromIconfontCN } from '@ant-design/icons-vue';
-
-// 创建IconFont组件
-const IconFont = createFromIconfontCN({
-  scriptUrl: '//at.alicdn.com/t/font_8d5l8fzk5b87iudi.js'
-});
 
 // 使用自定义消息钩子
 const { info, success, warning, error, loading } = useMessage();
@@ -180,10 +174,7 @@ const showRepeatedMessage = () => {
  * 使用原始message组件测试
  */
 const showOriginalMessage = () => {
-  // 连续调用多次，会显示多条消息
-  for (let i = 0; i < 5; i++) {
-    message.info('这是一条原始message消息');
-  }
+  message.info('这是一条原始message消息');
 };
 
 /**

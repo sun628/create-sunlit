@@ -2,7 +2,7 @@
   <div>
     <Alert message="自定义表单组件示例" type="info" show-icon style="margin-bottom: 12px" />
     <a-card>
-      <SchemaForm @submit="handleSubmit">
+      <SchemaForm @submit="handleSubmit" class="pt-20px">
         <template #f4="{ formModel, field }">
           <a-input v-model:value="formModel[field]" placeholder="自定义slot" />
         </template>
@@ -16,7 +16,7 @@ import { type FormSchema, useForm } from '@/components/business-components/schem
 import InputNumberRange from './InputNumbeRange.vue';
 
 defineOptions({
-  name: 'CustomForm'
+  name: 'SchemaForm'
 });
 
 const schemas: FormSchema[] = [
