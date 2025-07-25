@@ -2,3 +2,5 @@
 /dist/*
 **/*.svg
 /public/*
+auto-imports.d.ts
+components.d.ts
