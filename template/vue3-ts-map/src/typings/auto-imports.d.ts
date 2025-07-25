@@ -6,96 +6,177 @@
 // biome-ignore lint: disable
 export {}
 declare global {
-  const $config: typeof import('../utils/auto-import/common')['$config']
-  const $confirm: typeof import('../utils/auto-import/common')['$confirm']
-  const $dayjs: typeof import('../utils/auto-import/common')['$dayjs']
-  const $error: typeof import('../utils/auto-import/common')['$error']
-  const $info: typeof import('../utils/auto-import/common')['$info']
-  const $message: typeof import('../utils/auto-import/common')['$message']
-  const $notification: typeof import('../utils/auto-import/common')['$notification']
-  const $success: typeof import('../utils/auto-import/common')['$success']
-  const $warning: typeof import('../utils/auto-import/common')['$warning']
-  const EffectScope: typeof import('vue')['EffectScope']
-  const MenuStore: typeof import('../store/modules/menu')['MenuStore']
-  const acceptHMRUpdate: typeof import('pinia')['acceptHMRUpdate']
-  const computed: typeof import('vue')['computed']
-  const createApp: typeof import('vue')['createApp']
-  const createPinia: typeof import('pinia')['createPinia']
-  const customRef: typeof import('vue')['customRef']
-  const defineAsyncComponent: typeof import('vue')['defineAsyncComponent']
-  const defineComponent: typeof import('vue')['defineComponent']
-  const defineStore: typeof import('pinia')['defineStore']
-  const effectScope: typeof import('vue')['effectScope']
-  const getActivePinia: typeof import('pinia')['getActivePinia']
-  const getCurrentInstance: typeof import('vue')['getCurrentInstance']
-  const getCurrentScope: typeof import('vue')['getCurrentScope']
-  const h: typeof import('vue')['h']
-  const inject: typeof import('vue')['inject']
-  const isProxy: typeof import('vue')['isProxy']
-  const isReactive: typeof import('vue')['isReactive']
-  const isReadonly: typeof import('vue')['isReadonly']
-  const isRef: typeof import('vue')['isRef']
-  const log: typeof import('../utils/auto-import/pretty-log')['log']
-  const mapActions: typeof import('pinia')['mapActions']
-  const mapGetters: typeof import('pinia')['mapGetters']
-  const mapState: typeof import('pinia')['mapState']
-  const mapStores: typeof import('pinia')['mapStores']
-  const mapWritableState: typeof import('pinia')['mapWritableState']
-  const markRaw: typeof import('vue')['markRaw']
-  const nextTick: typeof import('vue')['nextTick']
-  const onActivated: typeof import('vue')['onActivated']
-  const onBeforeMount: typeof import('vue')['onBeforeMount']
-  const onBeforeRouteLeave: typeof import('vue-router')['onBeforeRouteLeave']
-  const onBeforeRouteUpdate: typeof import('vue-router')['onBeforeRouteUpdate']
-  const onBeforeUnmount: typeof import('vue')['onBeforeUnmount']
-  const onBeforeUpdate: typeof import('vue')['onBeforeUpdate']
-  const onDeactivated: typeof import('vue')['onDeactivated']
-  const onErrorCaptured: typeof import('vue')['onErrorCaptured']
-  const onMounted: typeof import('vue')['onMounted']
-  const onRenderTracked: typeof import('vue')['onRenderTracked']
-  const onRenderTriggered: typeof import('vue')['onRenderTriggered']
-  const onScopeDispose: typeof import('vue')['onScopeDispose']
-  const onServerPrefetch: typeof import('vue')['onServerPrefetch']
-  const onUnmounted: typeof import('vue')['onUnmounted']
-  const onUpdated: typeof import('vue')['onUpdated']
-  const onWatcherCleanup: typeof import('vue')['onWatcherCleanup']
-  const provide: typeof import('vue')['provide']
-  const reactive: typeof import('vue')['reactive']
-  const readonly: typeof import('vue')['readonly']
-  const ref: typeof import('vue')['ref']
-  const resolveComponent: typeof import('vue')['resolveComponent']
-  const setActivePinia: typeof import('pinia')['setActivePinia']
-  const setMapStoreSuffix: typeof import('pinia')['setMapStoreSuffix']
-  const shallowReactive: typeof import('vue')['shallowReactive']
-  const shallowReadonly: typeof import('vue')['shallowReadonly']
-  const shallowRef: typeof import('vue')['shallowRef']
-  const storeToRefs: typeof import('pinia')['storeToRefs']
-  const toRaw: typeof import('vue')['toRaw']
-  const toRef: typeof import('vue')['toRef']
-  const toRefs: typeof import('vue')['toRefs']
-  const toValue: typeof import('vue')['toValue']
-  const triggerRef: typeof import('vue')['triggerRef']
-  const unref: typeof import('vue')['unref']
-  const useAttrs: typeof import('vue')['useAttrs']
-  const useCssModule: typeof import('vue')['useCssModule']
-  const useCssVars: typeof import('vue')['useCssVars']
-  const useGlobalStore: typeof import('../store/modules/global')['useGlobalStore']
-  const useId: typeof import('vue')['useId']
-  const useLink: typeof import('vue-router')['useLink']
-  const useModel: typeof import('vue')['useModel']
-  const useRoute: typeof import('vue-router')['useRoute']
-  const useRouter: typeof import('vue-router')['useRouter']
-  const useSlots: typeof import('vue')['useSlots']
-  const useTemplateRef: typeof import('vue')['useTemplateRef']
-  const useUserStore: typeof import('../store/modules/user')['useUserStore']
-  const watch: typeof import('vue')['watch']
-  const watchEffect: typeof import('vue')['watchEffect']
-  const watchPostEffect: typeof import('vue')['watchPostEffect']
-  const watchSyncEffect: typeof import('vue')['watchSyncEffect']
+  const $config: (typeof import('../config/auto-import/index'))['$config'];
+  const $confirm: (typeof import('../config/auto-import/index'))['$confirm'];
+  const $dayjs: (typeof import('../config/auto-import/index'))['$dayjs'];
+  const $error: (typeof import('../config/auto-import/index'))['$error'];
+  const $info: (typeof import('../config/auto-import/index'))['$info'];
+  const $message: (typeof import('../config/auto-import/index'))['$message'];
+  const $notification: (typeof import('../config/auto-import/index'))['$notification'];
+  const $success: (typeof import('../config/auto-import/index'))['$success'];
+  const $toRem: (typeof import('../config/auto-import/index'))['$toRem'];
+  const $warning: (typeof import('../config/auto-import/index'))['$warning'];
+  const DrivingService: (typeof import('../components/business-components/mv-map/hooks/useMap/Driving'))['DrivingService'];
+  const EffectScope: (typeof import('vue'))['EffectScope'];
+  const MAP_EVENT_KEY: (typeof import('../components/business-components/mv-map/hooks/useMapEventBus'))['MAP_EVENT_KEY'];
+  const MAP_INJECTION_KEY: (typeof import('../components/business-components/mv-map/hooks/useMap/Marker'))['MAP_INJECTION_KEY'];
+  const MenuStore: (typeof import('../store/modules/menu'))['MenuStore'];
+  const acceptHMRUpdate: (typeof import('pinia'))['acceptHMRUpdate'];
+  const addMarker: (typeof import('../components/business-components/mv-map/hooks/useMap/Marker'))['addMarker'];
+  const addMassMarkers: (typeof import('../components/business-components/mv-map/hooks/useMap/Marker'))['addMassMarkers'];
+  const addPolyline: (typeof import('../components/business-components/mv-map/hooks/useMap/Polyline'))['addPolyline'];
+  const computed: (typeof import('vue'))['computed'];
+  const createApp: (typeof import('vue'))['createApp'];
+  const createBreakpointListen: (typeof import('../hooks/event/useBreakpoint'))['createBreakpointListen'];
+  const createInfoWindow: (typeof import('../components/business-components/mv-map/hooks/useMap/InfoWindow'))['createInfoWindow'];
+  const createMassMarkers: (typeof import('../components/business-components/mv-map/hooks/useMap/Marker'))['createMassMarkers'];
+  const createPinia: (typeof import('pinia'))['createPinia'];
+  const createProvince: (typeof import('../components/business-components/mv-map/hooks/useMap/Map'))['createProvince'];
+  const customRef: (typeof import('vue'))['customRef'];
+  const defineAsyncComponent: (typeof import('vue'))['defineAsyncComponent'];
+  const defineComponent: (typeof import('vue'))['defineComponent'];
+  const defineStore: (typeof import('pinia'))['defineStore'];
+  const effectScope: (typeof import('vue'))['effectScope'];
+  const emitter: (typeof import('../hooks/useEventBus'))['emitter'];
+  const events: (typeof import('../hooks/useEventBus'))['events'];
+  const getActivePinia: (typeof import('pinia'))['getActivePinia'];
+  const getCurrentInstance: (typeof import('vue'))['getCurrentInstance'];
+  const getCurrentScope: (typeof import('vue'))['getCurrentScope'];
+  const h: (typeof import('vue'))['h'];
+  const initMap: (typeof import('../components/business-components/mv-map/hooks/useMap/Map'))['initMap'];
+  const inject: (typeof import('vue'))['inject'];
+  const isProxy: (typeof import('vue'))['isProxy'];
+  const isReactive: (typeof import('vue'))['isReactive'];
+  const isReadonly: (typeof import('vue'))['isReadonly'];
+  const isRef: (typeof import('vue'))['isRef'];
+  const loadEnv: (typeof import('../config/auto-import/common'))['loadEnv'];
+  const loadMapUI: (typeof import('../components/business-components/mv-map/hooks/useMap/createProvince'))['loadMapUI'];
+  const log: (typeof import('../config/auto-import/pretty-log'))['log'];
+  const mapActions: (typeof import('pinia'))['mapActions'];
+  const mapEventBus: (typeof import('../components/business-components/mv-map/hooks/useMapEventBus'))['mapEventBus'];
+  const mapGetters: (typeof import('pinia'))['mapGetters'];
+  const mapState: (typeof import('pinia'))['mapState'];
+  const mapStores: (typeof import('pinia'))['mapStores'];
+  const mapWritableState: (typeof import('pinia'))['mapWritableState'];
+  const markRaw: (typeof import('vue'))['markRaw'];
+  const nextTick: (typeof import('vue'))['nextTick'];
+  const onActivated: (typeof import('vue'))['onActivated'];
+  const onBeforeMount: (typeof import('vue'))['onBeforeMount'];
+  const onBeforeRouteLeave: (typeof import('vue-router'))['onBeforeRouteLeave'];
+  const onBeforeRouteUpdate: (typeof import('vue-router'))['onBeforeRouteUpdate'];
+  const onBeforeUnmount: (typeof import('vue'))['onBeforeUnmount'];
+  const onBeforeUpdate: (typeof import('vue'))['onBeforeUpdate'];
+  const onDeactivated: (typeof import('vue'))['onDeactivated'];
+  const onErrorCaptured: (typeof import('vue'))['onErrorCaptured'];
+  const onMounted: (typeof import('vue'))['onMounted'];
+  const onRenderTracked: (typeof import('vue'))['onRenderTracked'];
+  const onRenderTriggered: (typeof import('vue'))['onRenderTriggered'];
+  const onScopeDispose: (typeof import('vue'))['onScopeDispose'];
+  const onServerPrefetch: (typeof import('vue'))['onServerPrefetch'];
+  const onUnmounted: (typeof import('vue'))['onUnmounted'];
+  const onUpdated: (typeof import('vue'))['onUpdated'];
+  const onWatcherCleanup: (typeof import('vue'))['onWatcherCleanup'];
+  const provide: (typeof import('vue'))['provide'];
+  const provideMapInstance: (typeof import('../components/business-components/mv-map/hooks/useMap/Map'))['provideMapInstance'];
+  const re: (typeof import('../components/business-components/mv-map/hooks/useMap/Marker'))['re'];
+  const reactive: (typeof import('vue'))['reactive'];
+  const readonly: (typeof import('vue'))['readonly'];
+  const ref: (typeof import('vue'))['ref'];
+  const removeMarker: (typeof import('../components/business-components/mv-map/hooks/useMap/Marker'))['removeMarker'];
+  const resolveComponent: (typeof import('vue'))['resolveComponent'];
+  const setActivePinia: (typeof import('pinia'))['setActivePinia'];
+  const setMapStoreSuffix: (typeof import('pinia'))['setMapStoreSuffix'];
+  const shallowReactive: (typeof import('vue'))['shallowReactive'];
+  const shallowReadonly: (typeof import('vue'))['shallowReadonly'];
+  const shallowRef: (typeof import('vue'))['shallowRef'];
+  const sharedMapRef: (typeof import('../components/business-components/mv-map/hooks/useMapEventBus'))['sharedMapRef'];
+  const storeToRefs: (typeof import('pinia'))['storeToRefs'];
+  const toRaw: (typeof import('vue'))['toRaw'];
+  const toRef: (typeof import('vue'))['toRef'];
+  const toRefs: (typeof import('vue'))['toRefs'];
+  const toRem: (typeof import('../config/auto-import/common'))['toRem'];
+  const toValue: (typeof import('vue'))['toValue'];
+  const triggerRef: (typeof import('vue'))['triggerRef'];
+  const unref: (typeof import('vue'))['unref'];
+  const useAppStore: (typeof import('../store/modules/app'))['useAppStore'];
+  const useAttrs: (typeof import('vue'))['useAttrs'];
+  const useBreakpoint: (typeof import('../hooks/event/useBreakpoint'))['useBreakpoint'];
+  const useCssModule: (typeof import('vue'))['useCssModule'];
+  const useCssVars: (typeof import('vue'))['useCssVars'];
+  const useDownload: (typeof import('../hooks/useDownload'))['useDownload'];
+  const useEventBus: (typeof import('../hooks/useEventBus'))['useEventBus'];
+  const useEventListener: (typeof import('../hooks/event/useEventListener'))['useEventListener'];
+  const useGlobalStore: (typeof import('../store/modules/global'))['useGlobalStore'];
+  const useId: (typeof import('vue'))['useId'];
+  const useLink: (typeof import('vue-router'))['useLink'];
+  const useLoading: (typeof import('../hooks/useLoading'))['useLoading'];
+  const useMapEventBus: (typeof import('../components/business-components/mv-map/hooks/useMapEventBus'))['useMapEventBus'];
+  const useMarker: (typeof import('../components/business-components/mv-map/hooks/useMap/Marker'))['useMarker'];
+  const useMessage: (typeof import('../hooks/useMessage'))['default'];
+  const useModel: (typeof import('vue'))['useModel'];
+  const useNamespace: (typeof import('../hooks/useNamespace'))['useNamespace'];
+  const usePolyline: (typeof import('../components/business-components/mv-map/hooks/useMap/Polyline'))['usePolyline'];
+  const useResetReactive: (typeof import('../hooks/useReset'))['useResetReactive'];
+  const useResetRef: (typeof import('../hooks/useReset'))['useResetRef'];
+  const useRoute: (typeof import('vue-router'))['useRoute'];
+  const useRouter: (typeof import('vue-router'))['useRouter'];
+  const useSlots: (typeof import('vue'))['useSlots'];
+  const useTemplateRef: (typeof import('vue'))['useTemplateRef'];
+  const useUserStore: (typeof import('../store/modules/user'))['useUserStore'];
+  const useWebsocket: (typeof import('../hooks/useWebsocket'))['useWebsocket'];
+  const useWindowSizeFn: (typeof import('../hooks/event/useWindowSizeFn'))['useWindowSizeFn'];
+  const watch: (typeof import('vue'))['watch'];
+  const watchEffect: (typeof import('vue'))['watchEffect'];
+  const watchPostEffect: (typeof import('vue'))['watchPostEffect'];
+  const watchSyncEffect: (typeof import('vue'))['watchSyncEffect'];
 }
 // for type re-export
 declare global {
   // @ts-ignore
-  export type { Component, ComponentPublicInstance, ComputedRef, DirectiveBinding, ExtractDefaultPropTypes, ExtractPropTypes, ExtractPublicPropTypes, InjectionKey, PropType, Ref, MaybeRef, MaybeRefOrGetter, VNode, WritableComputedRef } from 'vue'
-  import('vue')
+  export type {
+    Component,
+    Slot,
+    Slots,
+    ComponentPublicInstance,
+    ComputedRef,
+    DirectiveBinding,
+    ExtractDefaultPropTypes,
+    ExtractPropTypes,
+    ExtractPublicPropTypes,
+    InjectionKey,
+    PropType,
+    Ref,
+    MaybeRef,
+    MaybeRefOrGetter,
+    VNode,
+    WritableComputedRef
+  } from 'vue';
+  import('vue');
+  // @ts-ignore
+  export type { UserInfo } from '../store/modules/user';
+  import('../store/modules/user');
+  // @ts-ignore
+  export type { UseLoadingOptions } from '../hooks/useLoading';
+  import('../hooks/useLoading');
+  // @ts-ignore
+  export type { UseNamespaceReturn } from '../hooks/useNamespace';
+  import('../hooks/useNamespace');
+  // @ts-ignore
+  export type { MarkerLayerOptions, MarkerHookResult } from '../hooks/useMap/Marker';
+  import('../components/business-components/mv-map/hooks/useMap/Marker');
+  // @ts-ignore
+  export type { PolylineLayerOptions, PolylineHookResult } from '../hooks/useMap/Polyline';
+  import('../components/business-components/mv-map/hooks/useMap/Polyline');
+  // @ts-ignore
+  export type { DrivingService, DrivingService, DrivingService } from '../hooks/useMap/Driving';
+  import('../components/business-components/mv-map/hooks/useMap/Driving');
+  // @ts-ignore
+  export type {
+    EventBusListener,
+    EventBusEvents,
+    EventBusKey,
+    EventBusIdentifier,
+    UseEventBusReturn
+  } from '../hooks/useEventBus';
+  import('../hooks/useEventBus');
 }

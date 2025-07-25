@@ -34,13 +34,13 @@ interface IOptions {
 const defaultReconnectConfig: Readonly<Required<ReconnectConfig>> = {
   retries: Infinity,
   delay: 1000,
-  onFailed: () => {},
+  onFailed: () => {}
 };
 
 const defaultHeartbeatConfig: Readonly<Required<HeartbeatConfig>> = {
   message: 'type:ping',
   interval: 1000,
-  pongTimeout: 1000,
+  pongTimeout: 1000
 };
 
 export function useWebsocket(options: IOptions) {
@@ -175,6 +175,6 @@ export function useWebsocket(options: IOptions) {
   return {
     ws,
     send,
-    close,
+    close
   };
 }

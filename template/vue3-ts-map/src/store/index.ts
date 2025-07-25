@@ -1,9 +1,18 @@
-import { createPinia } from 'pinia';
+export * from './modules/app';
+export * from './modules/user';
 
-import piniaPluginPersist from 'pinia-plugin-persistedstate';
+import type { App } from 'vue';
+import { createPersistedState } from 'pinia-plugin-persistedstate';
 
-// piniaPersist(持久化)
-const pinia = createPinia();
-pinia.use(piniaPluginPersist);
+interface initStoreConfig {
+  namespace: string;
+}
 
-export default pinia;
+export const store = createPinia();
+
+export function setupStore(app: App<Element>, { namespace }: initStoreConfig) {
+  const persistedState = createPersistedState({ key: (id) => `${namespace}:${id}` });
+
+  store.use(persistedState);
+  app.use(store);
+}

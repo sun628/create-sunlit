@@ -113,7 +113,7 @@ export function parseTime(time: string | number | Date, pattern: string | undefi
     h: date.getHours(),
     i: date.getMinutes(),
     s: date.getSeconds(),
-    a: date.getDay(),
+    a: date.getDay()
   } as const;
 
   return format.replace(

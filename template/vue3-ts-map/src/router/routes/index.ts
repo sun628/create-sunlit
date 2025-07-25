@@ -1,38 +1,35 @@
-import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
-import { generateRoutes } from '@/router/helper/utils';
+import outsideLayout from './outsideLayout.ts';
+import type { RouteRecordRaw } from 'vue-router';
+import example from './modules/example';
 
-// 导入模块路由
-const metaRouters = import.meta.glob('./modules/*.ts', { eager: true });
-
-// 处理路由表
-export const routerArray = generateRoutes(metaRouters);
-
-export const routes: AppRouteRecordRaw[] = [
-  {
-    path: '/',
-    name: 'Layout',
-    redirect: '/map-example',
-    meta: {
-      hidden: true,
+/**
+ * @description: 路由配置
+ * @author: wangyang
+ * @date: 2023-11-01
+ */
+export const LayoutRoutes: RouteRecordRaw = {
+  path: '/',
+  name: 'Layout',
+  redirect: '/home',
+  component: () => import('@/layouts/index.vue'),
+  children: [
+    {
+      path: '/home',
+      name: 'Home',
+      component: () => import('@/views/home/introduction.vue'),
+      meta: {
+        title: '首页',
+        icon: 'home-outlined'
+      }
     },
-  },
-  {
-    // 找不到路由重定向到 404 页面
-    path: '/:pathMatch(.*)',
-    // redirect: { name: '404' },
-    name: '404',
-    component: () => import('@/views/error/404.vue'),
-    meta: { hidden: true },
-  },
-  ...routerArray,
+    example
+  ]
+};
+
+export const basicRoutes: Array<RouteRecordRaw> = [
+  LayoutRoutes,
+  // Layout之外的路由
+  ...outsideLayout
 ];
 
-const router = createRouter({
-  history: createWebHashHistory(),
-  routes: routes as RouteRecordRaw[],
-  strict: false,
-  // 切换页面，滚动到最顶部
-  scrollBehavior: () => ({ left: 0, top: 0 }),
-});
-
-export default router;
+export default basicRoutes;

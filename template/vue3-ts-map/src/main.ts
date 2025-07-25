@@ -2,15 +2,18 @@ import { createApp } from 'vue';
 import App from './App.vue';
 import 'virtual:uno.css'; // css reset
 import '@/assets/styles/index.less';
-import '@/utils/browser';
-import router from '@/router';
-import pinia from '@/store/index';
+import '@/utils/rem';
+import { setupRouter } from './router';
+import { setupStore } from './store';
 import directives from '@/directives/index'; // custom directives
-import SvgIcon from '~virtual/svg-component';
-
+import VChart from 'vue-echarts';
+import { loadEnv } from './utils';
 const app = createApp(App);
 
-app.component(SvgIcon.name!, SvgIcon);
+const env = loadEnv();
+setupStore(app, { namespace: env.VITE_APP_NAMESPACE + env.MODE });
+setupRouter(app);
 
-app.use(router).use(pinia).use(directives);
+app.component('VChart', VChart);
+app.use(directives);
 app.mount('#app');

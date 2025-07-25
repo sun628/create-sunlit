@@ -1,29 +1,86 @@
 // uno.config.ts
-import { defineConfig, presetAttributify, presetUno } from 'unocss';
+import { defineConfig, presetAttributify, presetIcons, presetWind3 } from 'unocss';
+import { FileSystemIconLoader } from '@iconify/utils/lib/loader/node-loaders';
+import ANT_ICONS_JSON from '@iconify-json/ant-design/icons.json' with { type: 'json' };
+import { presetRemToPx } from '@unocss/preset-rem-to-px';
+import fs from 'fs';
+
+const ant_icons = Object.keys(ANT_ICONS_JSON.icons).map((item) => `i-ant-design:${item}`);
+
+// 本地 SVG 图标存放目录
+const iconsDir = './src/assets/icons';
+
+// 读取本地 SVG 目录，自动生成 `safelist`
+const generateSafeList = () => {
+  try {
+    const base_icons = fs
+      .readdirSync(iconsDir)
+      .filter((file) => file.endsWith('.svg'))
+      .map((file) => `i-svg:${file.replace('.svg', '')}`);
+    return [...ant_icons, ...base_icons];
+  } catch (error) {
+    console.error('无法读取图标目录:', error);
+    return [];
+  }
+};
 
 export default defineConfig({
-  shortcuts: [
-    // ...
-  ],
   theme: {
     colors: {
       // ...
     },
+    fontSize: {
+      xs: '12px',
+      sm: '14px',
+      base: '16px',
+      lg: '18px',
+      xl: '20px',
+      '2xl': '24px',
+      '3xl': '30px',
+      '4xl': '36px',
+      '5xl': '48px',
+      '6xl': '60px',
+      '7xl': '72px',
+      '8xl': '96px',
+      '9xl': '128px'
+    }
   },
 
-  presets: [presetUno(), presetAttributify()],
+  presets: [
+    presetRemToPx({
+      baseFontSize: 4
+    }),
+    presetWind3(),
+    presetAttributify(),
+    presetIcons({
+      warn: true,
+      extraProperties: {
+        width: '1em',
+        height: '1em',
+        display: 'inline-block'
+      },
+      collections: {
+        'ant-design': () => import('@iconify-json/ant-design/icons.json').then((i) => i.default),
+        svg: FileSystemIconLoader(iconsDir, (svg) => {
+          // 如果 SVG 文件未定义 `fill` 属性，则默认填充 `currentColor`
+          return svg.includes('fill="') ? svg : svg.replace(/^<svg /, '<svg fill="currentColor" ');
+        })
+      }
+    })
+  ],
   // transformers: [transformerDirectives(), transformerVariantGroup()],
   rules: [
     // ...custom rules
-    ['pointer', { cursor: 'pointer' }],
-    ['flex-center', { display: 'flex', 'justify-content': 'center', 'align-items': 'center' }],
-    ['flex-column', { display: 'flex', 'flex-direction': 'column' }],
-    [
-      'flex-between',
-      { display: 'flex', 'justify-content': 'space-between', 'align-items': 'center' },
-    ],
-    ['flex-1', { flex: 1 }],
-    ['bg-cover', { 'background-size': '100% 100%', 'background-repeat': 'no-repeat' }],
-    ['disabled', { cursor: 'not-allowed', color: 'rgba(0, 0, 0, 0.25)' }],
+    ['pointer', { cursor: 'pointer' }]
   ],
+  safelist: generateSafeList(), // 动态生成 `safelist`
+  shortcuts: {
+    'wh-full': 'w-full h-full',
+    'flex-center': 'flex items-center justify-center',
+    'flex-between': 'flex items-center justify-between',
+    'flex-end': 'flex items-end justify-between',
+    'flex-column': 'flex flex-col',
+    'bg-cover': 'bg-cover bg-no-repeat',
+    'text-ellipsis': 'truncate'
+  }
 });

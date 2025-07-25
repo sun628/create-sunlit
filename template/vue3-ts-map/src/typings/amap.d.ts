@@ -2,11 +2,7 @@
 import 'amap-jsapi-v2-types';
 
 declare global {
-  // ts namespace/interface 会合并声明
   namespace AMap {
-    // 目前大多数类型声明，出于避免严格考虑，采用 type 而不是 interface
-    export interface Line extends Array<AMap.LngLatLike> {}
-
     export type MarkerEvent<ExtraData = any> = {
       /**
        * 发生事件时光标所在处的经纬度坐标。
@@ -81,7 +77,7 @@ declare global {
 
     export type DrivingCallback = (
       status: 'complete' | 'error' | 'no_data',
-      result: DrivingResult,
+      result: DrivingResult
     ) => void;
 
     export type DrivingResult = {
@@ -176,7 +172,6 @@ declare global {
       cities: Array<DriveStepDetail>;
     };
 
-    // noinspection SpellCheckingInspection
     /** 途径城市详情 */
     export type DriveStepDetail = {
       /** 区域编码 */
@@ -198,7 +193,6 @@ declare global {
       }>;
     };
 
-    // noinspection Annotator
     export declare class Driving {
       constructor(opts: AMap.DrivingOptions);
       /**
@@ -212,7 +206,7 @@ declare global {
         origin: AMap.LngLatLike,
         destination: AMap.LngLatLike,
         opts: waypoints | { waypoints: waypoints },
-        callback?: DrivingCallback,
+        callback?: DrivingCallback
       ): void;
 
       /**
@@ -224,7 +218,7 @@ declare global {
       search(
         origin: AMap.LngLatLike,
         destination: AMap.LngLatLike,
-        callback?: DrivingCallback,
+        callback?: DrivingCallback
       ): void;
 
       /**
@@ -239,16 +233,14 @@ declare global {
       renderMarker?(opts: { marker: AMap.Marker<ExtraData>; data: Array<ExtraData> }): any;
     }
 
-    // noinspection Annotator
-    export declare class MarkerCluster extends MarkerCluster {
+    declare class MarkerCluster extends MarkerCluster {
       constructor(
         map?: Map,
         dataOptions?: MarkerClusterDataOption[],
-        opts?: ExtendMarkerClusterOptions, // 使用扩展后的选项接口
+        opts?: ExtendMarkerClusterOptions // 使用扩展后的选项接口
       ) {
         super(map, dataOptions, opts);
       }
-      // 你可以在这里添加新的方法或重写现有的方法
     }
 
     export type MarkerClusterEvent<ExtraData = any> = {
@@ -260,17 +252,6 @@ declare global {
       lnglat: AMap.LngLat;
       /** 点击的聚合点所包含的点对象 */
       marker: AMap.Marker<ExtraData>;
-    };
-  }
-
-  // 对 amap type 做扩展
-  namespace AMapUI {
-    export type SimpleMarkerOptions = Omit<AMap.MarkerOptions, 'content'> & {
-      iconTheme?: string;
-      iconStyle?: string | object;
-      iconLabel?: string | object;
-      showPositionPoint?: boolean | object;
-      containerClassNames?: string;
     };
   }
 }

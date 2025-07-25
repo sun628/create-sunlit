@@ -57,7 +57,7 @@ const draggable: Directive = {
   unmounted(el) {
     // 清理操作，移除事件监听
     el.onmousedown = null;
-  },
+  }
 };
 
 export default draggable;

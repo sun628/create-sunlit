@@ -1,4 +1,4 @@
-import { message } from 'ant-design-vue'
+import { message } from 'ant-design-vue';
 
 /**
  * @description 接收数据流生成 blob，创建链接，下载文件
@@ -15,38 +15,38 @@ export const useDownload = async (
   isNotify = true,
   fileType = '.xlsx'
 ) => {
-  let notifyTimeoutId: NodeJS.Timeout | null = null
+  let notifyTimeoutId: NodeJS.Timeout | null = null;
 
   if (isNotify) {
     notifyTimeoutId = setTimeout(() => {
-      message.info('如果数据庞大会导致下载缓慢哦，请您耐心等待！')
-    }, 3000)
+      message.info('如果数据庞大会导致下载缓慢哦，请您耐心等待！');
+    }, 3000);
   }
 
   try {
-    const res = await api(params)
-    const blob = new Blob([res])
+    const res = await api(params);
+    const blob = new Blob([res]);
     // 兼容 edge 不支持 createObjectURL 方法
 
-    const blobUrl = window.URL.createObjectURL(blob)
-    const exportFile = document.createElement('a')
-    exportFile.style.display = 'none'
-    exportFile.download = `${tempName}${fileType}`
-    exportFile.href = blobUrl
-    document.body.appendChild(exportFile)
-    exportFile.click()
-    document.body.removeChild(exportFile)
-    window.URL.revokeObjectURL(blobUrl)
+    const blobUrl = window.URL.createObjectURL(blob);
+    const exportFile = document.createElement('a');
+    exportFile.style.display = 'none';
+    exportFile.download = `${tempName}${fileType}`;
+    exportFile.href = blobUrl;
+    document.body.appendChild(exportFile);
+    exportFile.click();
+    document.body.removeChild(exportFile);
+    window.URL.revokeObjectURL(blobUrl);
   } catch (error) {
-    console.error(error)
+    console.error(error);
   } finally {
-    clearTimer(notifyTimeoutId)
+    clearTimer(notifyTimeoutId);
   }
-}
+};
 
 const clearTimer = (timer: NodeJS.Timeout | null) => {
   if (timer) {
-    clearTimeout(timer)
-    timer = null
+    clearTimeout(timer);
+    timer = null;
   }
-}
+};
