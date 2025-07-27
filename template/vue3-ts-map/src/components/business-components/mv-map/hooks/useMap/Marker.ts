@@ -177,7 +177,7 @@ export const useMarker = <ExtraData extends Record<string, any>>(
   };
 
   // 组件卸载时自动清除所有标记
-  onBeforeUnmount(() => {
+  onUnmounted(() => {
     removeMarkerLayer();
   });
 
