@@ -10,7 +10,7 @@
     "baseUrl": ".",
     "module": "ESNext",
     /*  Bundler mode | 编译相关 */
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "types": ["node", "vite/client"],
     "allowImportingTsExtensions": true,
