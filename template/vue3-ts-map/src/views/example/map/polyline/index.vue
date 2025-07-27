@@ -6,7 +6,7 @@
 <template>
   <div class="polyline-demo">
     <div class="map-container">
-      <MvMap @map-ready="onMapReady" />
+      <MvMap @map-load="onMapLoad" />
     </div>
     <div class="control-panel">
       <a-card title="折线控制面板">
@@ -63,9 +63,9 @@ const lineOptions = reactive({
 const generateRandomPaths = (count = 3, pointsPerPath = 5) => {
   const paths: AMap.PolylineOptions<{ name: string; id: string }>[] = [];
 
-  // 北京区域大致范围
-  const baseLng = 116.4;
-  const baseLat = 39.9;
+  // 泰州区域大致范围
+  const baseLng = 120.0;
+  const baseLat = 32.5;
 
   for (let i = 0; i < count; i++) {
     const path: AMap.LngLat[] = [];
@@ -107,6 +107,7 @@ const drawRandomPolyline = () => {
 
   // 绘制折线并添加点击事件
   const lines = createLineLayer(paths, options, (e, data) => {
+    console.log('🚀 ~ drawRandomPolyline ~ data:', data);
     info(`点击了折线: ${data.name}, ID: ${data.id}`);
   });
 
@@ -120,17 +121,12 @@ const clearPolyline = () => {
 };
 
 // 地图加载完成回调
-const onMapReady = (map: AMap.Map) => {
+const onMapLoad = (map: AMap.Map) => {
   mapInstance.value = map;
   success('地图加载完成');
+  // 组件加载完成后自动绘制一条折线
+  drawRandomPolyline();
 };
-
-// 组件加载完成后自动绘制一条折线
-onMounted(() => {
-  setTimeout(() => {
-    drawRandomPolyline();
-  }, 1000);
-});
 </script>
 
 <style lang="less" scoped>

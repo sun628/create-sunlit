@@ -26,6 +26,14 @@ const example: RouteRecordRaw = {
           meta: {
             title: '点标记（Marker）'
           }
+        },
+        {
+          path: 'polyline',
+          name: 'Polyline',
+          component: () => import('@/views/example/map/polyline/index.vue'),
+          meta: {
+            title: '折线（Polyline）'
+          }
         }
       ]
     },

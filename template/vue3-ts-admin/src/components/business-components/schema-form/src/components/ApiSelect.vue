@@ -24,7 +24,7 @@ import { ref, watchEffect, computed, unref, watch, type PropType } from 'vue';
 import { LoadingOutlined } from '@ant-design/icons-vue';
 import { selectProps } from 'ant-design-vue/es/select';
 import { get, omit, isFunction } from 'lodash-es';
-import { propTypes } from '@/utils/propTypes';
+import { propTypes } from '@/utils/helper/propTypes';
 import { Select } from 'ant-design-vue';
 
 type OptionsItem = { label: string; value: string; disabled?: boolean };
