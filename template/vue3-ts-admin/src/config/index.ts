@@ -1,5 +1,5 @@
 import type { LayoutSetting } from './types';
-import { antTheme } from './antTheme';
+import { antTheme } from './antdTheme';
 export * from './types';
 
 /**

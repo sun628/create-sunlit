@@ -1,6 +1,6 @@
 import type { ThemeConfig } from 'ant-design-vue/es/config-provider/context';
 
-export type AntTheme = {
+export type AntdTheme = {
   light: ThemeConfig;
   dark: ThemeConfig;
 };
@@ -8,7 +8,7 @@ export type AntTheme = {
 /**
  * 亮色主题和暗色主题
  */
-export const antTheme: AntTheme = {
+export const antdTheme: AntdTheme = {
   light: {
     token: {
       colorTextDisabled: 'rgba(0, 0, 0, 0.35)'

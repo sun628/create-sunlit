@@ -40,6 +40,7 @@ declare module 'vue' {
     BaseButton: typeof import('./../components/base-components/button/BaseButton.vue')['default']
     BaseHelp: typeof import('./../components/base-components/help/BaseHelp.vue')['default']
     BaseLoading: typeof import('./../components/base-components/loading/BaseLoading.vue')['default']
+    BaseTooltip: typeof import('./../components/base-components/tooltip/BaseTooltip.vue')['default']
     FormAction: typeof import('./../components/business-components/schema-form/src/components/form-action.vue')['default']
     MenuFoldOutlined: typeof import('@ant-design/icons-vue')['MenuFoldOutlined']
     MenuUnfoldOutlined: typeof import('@ant-design/icons-vue')['MenuUnfoldOutlined']

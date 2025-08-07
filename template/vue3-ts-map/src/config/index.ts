@@ -1,6 +1,6 @@
 import type { LayoutSetting } from './types';
 export * from './types';
-export * from './antTheme';
+export * from './antdTheme';
 export * from './mapConfig';
 export * as mapConfig from './mapConfig';
 

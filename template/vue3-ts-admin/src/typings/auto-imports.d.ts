@@ -86,6 +86,7 @@ declare global {
   const useCssModule: typeof import('vue')['useCssModule']
   const useCssVars: typeof import('vue')['useCssVars']
   const useDownload: typeof import('../hooks/useDownload')['useDownload']
+  const useEventBus: typeof import('../hooks/useEventBus')['useEventBus']
   const useEventListener: typeof import('../hooks/event/useEventListener')['useEventListener']
   const useId: typeof import('vue')['useId']
   const useLink: typeof import('vue-router')['useLink']
@@ -120,4 +121,7 @@ declare global {
   // @ts-ignore
   export type { UseNamespaceReturn } from '../hooks/useNamespace'
   import('../hooks/useNamespace')
+  // @ts-ignore
+  export type { EventBusListener, EventBusEvents, EventBusKey, EventBusIdentifier, UseEventBusReturn } from '../hooks/useEventBus'
+  import('../hooks/useEventBus')
 }

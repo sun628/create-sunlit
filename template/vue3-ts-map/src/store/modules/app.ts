@@ -1,24 +1,24 @@
 import type { ThemeConfig } from 'ant-design-vue/es/config-provider/context';
 import { defaultLayoutSetting } from '@/config';
 import type { LayoutSetting, ThemeType } from '@/config/types';
-import { theme as antdTheme } from 'ant-design-vue/es';
-import { antTheme } from '@/config/antTheme';
+import { theme } from 'ant-design-vue/es';
+import { antdTheme } from '@/config/antdTheme';
 
 export const useAppStore = defineStore('app', () => {
   /**
    * ----------------------------- theme&layout start-----------------------------
    * --------------------------主题以及布局相关----------------------------------
    */
-  const { darkAlgorithm, defaultAlgorithm } = antdTheme;
+  const { darkAlgorithm, defaultAlgorithm } = theme;
 
   const layoutSetting = reactive<LayoutSetting>(defaultLayoutSetting);
   const themeConfig: ThemeConfig = reactive<ThemeConfig>({
     algorithm: layoutSetting.theme === 'light' ? [defaultAlgorithm] : [darkAlgorithm],
     token: {
-      ...antTheme[layoutSetting.theme].token,
+      ...antdTheme[layoutSetting.theme].token,
       colorPrimary: layoutSetting.colorPrimary
     },
-    components: antTheme[layoutSetting.theme].components
+    components: antdTheme[layoutSetting.theme].components
   });
 
   if (layoutSetting.theme === 'dark') {
