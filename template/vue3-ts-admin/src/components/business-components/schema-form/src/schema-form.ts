@@ -103,8 +103,9 @@ export type SchemaFormEmits = typeof schemaFormEmits;
 
 export type SchemaFormEmitFn = EmitFn<SchemaFormEmits>;
 
-export type SchemaFormProps<T extends object = any> = ExtractPublicPropTypes<
-  Omit<typeof schemaFormProps, 'schemas'>
+export type SchemaFormProps<T extends object = any> = Omit<
+  ExtractPublicPropTypes<Omit<typeof schemaFormProps, 'schemas'>>,
+  'onSubmit'
 > & {
   schemas?: FormSchema<T>[];
 } & EmitsToProps<SchemaFormEmits>;
