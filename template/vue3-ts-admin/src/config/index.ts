@@ -1,5 +1,5 @@
 import type { LayoutSetting } from './types';
-import { antTheme } from './antdTheme';
+import { antdTheme } from './antdTheme';
 export * from './types';
 
 /**
@@ -53,5 +53,5 @@ export type proxyName = keyof ReturnType<typeof createProxyConfig>;
 
 export default {
   defaultLayoutSetting,
-  antTheme
+  antdTheme
 };

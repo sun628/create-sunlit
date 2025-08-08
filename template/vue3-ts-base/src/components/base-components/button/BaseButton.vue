@@ -13,6 +13,7 @@ import { computed } from 'vue';
 import { Button, ConfigProvider } from 'ant-design-vue';
 import { aButtonTypes, buttonColorPrimary, type AButtonType, type ButtonProps } from './types';
 import { useNamespace } from '@/hooks';
+import { omit } from 'lodash-es';
 const ns = useNamespace('button');
 const buttonCls = ns.b();
 
@@ -22,7 +23,7 @@ defineOptions({
 
 const props = defineProps<ButtonProps>();
 
-const { color: _, type: __, ...buttonProps } = props;
+const buttonProps = computed(() => omit(props, ['color', 'type']));
 
 const isCustomType = computed(() => Reflect.has(buttonColorPrimary, props.type!));
 
