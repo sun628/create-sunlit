@@ -6,7 +6,7 @@ import type { SchemaFormProps } from '../schema-form';
 
 type SchemaFormInstance = InstanceType<typeof SchemaForm>;
 
-export function useForm(props?: Partial<SchemaFormProps>) {
+export function useForm(props?: MaybeRefOrGetter<Partial<SchemaFormProps>>) {
   const formRef = ref<SchemaFormInstance>({} as SchemaFormInstance);
 
   async function getFormInstance() {
@@ -18,16 +18,15 @@ export function useForm(props?: Partial<SchemaFormProps>) {
     return form;
   }
   watch(
-    () => props,
-    async () => {
-      if (props) {
+    () => toValue(props),
+    async (val) => {
+      if (val) {
         await nextTick();
         const formInstance = await getFormInstance();
-        formInstance.setSchemaFormProps?.(props);
+        formInstance.setSchemaFormProps?.(val);
       }
     },
     {
-      immediate: true,
       deep: true,
       flush: 'post'
     }
@@ -52,7 +51,7 @@ export function useForm(props?: Partial<SchemaFormProps>) {
     return (
       <SchemaForm
         ref={formRef}
-        {...{ ...attrs, ...props, ...compProps }}
+        {...{ ...attrs, ...toValue(props), ...compProps }}
         v-slots={slots}
       ></SchemaForm>
     );
